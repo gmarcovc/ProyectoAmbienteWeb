@@ -49,7 +49,7 @@
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
 					<div class="left-top-bar">
-						Free shipping for standard order over $100
+						Envío gratuito para pedidos estándar superiores a 100
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
@@ -164,7 +164,7 @@
 			<ul class="topbar-mobile">
 				<li>
 					<div class="left-top-bar">
-						Free shipping for standard order over $100
+					Envío gratuito para pedidos estándar superiores a 100
 					</div>
 				</li>
 
@@ -337,7 +337,7 @@
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-									Coleccion de mujer 2018
+									Coleccion de mujer 2025
 								</span>
 							</div>
 								
@@ -361,13 +361,13 @@
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-								Nueva Temporada Hombre 
+								Nueva Temporada 2025 
 								</span>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									Jackets & Capas
+									Jackets
 								</h2>
 							</div>
 								
@@ -385,7 +385,7 @@
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-									Coleccion de hombre 2018
+									Coleccion de hombre 2025
 								</span>
 							</div>
 								
@@ -424,7 +424,7 @@
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									Primavera 2018
+									Primavera 2025
 								</span>
 							</div>
 
@@ -449,7 +449,7 @@
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									Primavera 2018
+									Primavera 2025
 								</span>
 							</div>
 
@@ -474,7 +474,7 @@
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									Nueva Moda
+									Nueva Moda 2025
 								</span>
 							</div>
 
@@ -514,16 +514,16 @@
 						Hombre
 					</button>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-						Bolso
-					</button>
-
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
 						Zapatos
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
 						Relojes
+					</button>
+
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
+						
 					</button>
 				</div>
 
@@ -757,11 +757,11 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Camisa 01
+									Conjunto mujer 1
 								</a>
 
 								<span class="stext-105 cl3">
-									$16.64
+									$100.00
 								</span>
 							</div>
 
@@ -789,11 +789,11 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Herschel supply
+									Conjunto mujer 2
 								</a>
 
 								<span class="stext-105 cl3">
-									$35.31
+									$50.00
 								</span>
 							</div>
 
@@ -821,11 +821,11 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Only Check Trouser
+									Conjunto mujer 3
 								</a>
 
 								<span class="stext-105 cl3">
-									$25.50
+								$50.00
 								</span>
 							</div>
 
@@ -853,11 +853,11 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Classic Trench Coat
+									Conjunto mujer 4
 								</a>
 
 								<span class="stext-105 cl3">
-									$75.00
+								$100.00
 								</span>
 							</div>
 
@@ -885,11 +885,11 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Front Pocket Jumper
+								Conjunto hombre 1
 								</a>
 
 								<span class="stext-105 cl3">
-									$34.75
+									$150.00
 								</span>
 							</div>
 
@@ -917,11 +917,11 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Reloj plateado casual
+								Conjunto hombre 2
 								</a>
 
 								<span class="stext-105 cl3">
-									$93.20
+									$125.00
 								</span>
 							</div>
 
@@ -949,11 +949,11 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Shirt in Stretch Cotton
+								Conjunto hombre 3
 								</a>
 
 								<span class="stext-105 cl3">
-									$52.66
+									$125.00
 								</span>
 							</div>
 
@@ -981,11 +981,11 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Pieces Metallic Printed
+									Conjunto hombre 4
 								</a>
 
 								<span class="stext-105 cl3">
-									$18.96
+									$150.00
 								</span>
 							</div>
 
@@ -1013,7 +1013,7 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Converse All Star Hi Plimsolls
+									Zapato Mujer 1
 								</a>
 
 								<span class="stext-105 cl3">
@@ -1045,11 +1045,11 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Femme T-Shirt In Stripe
+								Zapato Mujer 2
 								</a>
 
 								<span class="stext-105 cl3">
-									$25.85
+									$50.00
 								</span>
 							</div>
 
@@ -1077,11 +1077,11 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Herschel supply 
+								Zapato Mujer 3
 								</a>
 
 								<span class="stext-105 cl3">
-									$63.16
+									$80.00
 								</span>
 							</div>
 
@@ -1109,11 +1109,11 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Herschel supply
+								Zapato Mujer 4
 								</a>
 
 								<span class="stext-105 cl3">
-									$63.15
+									$35.00
 								</span>
 							</div>
 
@@ -1141,11 +1141,11 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									T-Shirt with Sleeve
+									Reloj 1
 								</a>
 
 								<span class="stext-105 cl3">
-									$18.49
+									$500.00
 								</span>
 							</div>
 
@@ -1173,11 +1173,11 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Pretty Little Thing
+								Reloj 2
 								</a>
 
 								<span class="stext-105 cl3">
-									$54.79
+									$550.00
 								</span>
 							</div>
 
@@ -1205,11 +1205,11 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Mini Silver Mesh Watch
+								Reloj 3
 								</a>
 
 								<span class="stext-105 cl3">
-									$86.85
+									$600.00
 								</span>
 							</div>
 
@@ -1237,11 +1237,11 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Square Neck Back
+								Reloj 4
 								</a>
 
 								<span class="stext-105 cl3">
-									$29.64
+									$700.00
 								</span>
 							</div>
 
