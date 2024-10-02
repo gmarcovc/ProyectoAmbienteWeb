@@ -4,8 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SeoDash Free Bootstrap Admin Template by Adminmart</title>
-    <link rel="shortcut icon" type="image/png" href="seodashlogo.png" />
+    <title>Inicio Sesion</title>
     <link rel="stylesheet" href="css/styles.min.css" />
 </head>
 
@@ -20,17 +19,16 @@
                         <div class="card mb-0">
                             <div class="card-body">
                                 <a href="home.php" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                                    <img src="images/logo-light.svg" alt="">
                                 </a>
-                                <p class="text-center">Your Social Campaigns</p>
+                                <p class="text-center">Tienda Ambiente</p>
                                 <form>
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Username</label>
+                                        <label for="exampleInputEmail1" class="form-label">Usuario</label>
                                         <input type="email" class="form-control" id="exampleInputEmail1"
                                             aria-describedby="emailHelp">
                                     </div>
                                     <div class="mb-4">
-                                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                                        <label for="exampleInputPassword1" class="form-label">Contraseña</label>
                                         <input type="password" class="form-control" id="exampleInputPassword1">
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mb-4">
@@ -40,7 +38,7 @@
                                     </div>
                                     <a href="home.php" class="btn btn-primary w-100 py-8 fs-4 mb-4">Iniciar Sesión</a>
                                     <div class="d-flex align-items-center justify-content-center">
-                                        <p class="fs-4 mb-0 fw-bold">New to SeoDash?</p>
+                                        <p class="fs-4 mb-0 fw-bold">No tienes cuenta?</p>
                                         <a class="text-primary fw-bold ms-2" href="registrarUsuario.php">Crear una
                                             cuenta</a>
                                     </div>

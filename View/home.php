@@ -101,11 +101,11 @@
 							</li>
 
 							<li>
-								<a href="blog.html">Blog</a>
+								<a href="inicioSesion.php">Iniciar Sesión</a>
 							</li>
 
 							<li>
-								<a href="about.html">Acerca de</a>
+								<a href="registrarUsuario.php">Crear Cuenta</a>
 							</li>
 						</ul>
 					</div>	
