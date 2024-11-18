@@ -66,7 +66,7 @@
 
                                     <div class="mb-4">
                                         <label class="form-label">Contraseña</label>
-                                        <input type="password" class="form-control" id="txtContrasenna"
+                                        <input type="password" class="form-control" id="txtContrasena"
                                             name="txtContrasena" required>
                                     </div>
 
@@ -131,7 +131,7 @@
     <script src="../js/jquery.min.js"></script>
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-    <!--<script src="../js/RegistrarUsuarios.js"></script>-->
+    <!--<script src="../js/registrarClientes.js"></script>-->
 
 </body>
 

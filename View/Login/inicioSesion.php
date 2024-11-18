@@ -58,7 +58,7 @@
                                     <a href="home.php" class="btn btn-primary w-100 py-8 fs-4 mb-4">Iniciar Sesión</a>
                                     <div class="d-flex align-items-center justify-content-center">
                                         <p class="fs-4 mb-0 fw-bold">No tienes cuenta?</p>
-                                        <a class="text-primary fw-bold ms-2" href="registrarUsuario.php">Crear una
+                                        <a class="text-primary fw-bold ms-2" href="registrarCliente.php">Crear una
                                             cuenta</a>
                                     </div>
                                 </form>

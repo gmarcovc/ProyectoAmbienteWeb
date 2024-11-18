@@ -92,7 +92,7 @@
 							</li>
 
 							<li>
-								<a href="../Login/registrarUsuario.php">Crear Cuenta</a>
+								<a href="../Login/registrarCliente.php">Crear Cuenta</a>
 							</li>
 						</ul>
 					</div>
