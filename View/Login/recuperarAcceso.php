@@ -1,3 +1,7 @@
+<?php
+    include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/LoginController.php';
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -5,11 +9,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Recuperar Acceso</title>
-    <link rel="shortcut icon" type="image/png" href="seodashlogo.png" />
-    <link rel="stylesheet" href="css/styles.min.css" />
+    <link rel="shortcut icon" type="image/png" href="../images/logo-01.jpeg" />
+    <link rel="stylesheet" href="../css/styles.min.css" />
+    <link rel="stylesheet" href="../css/proyecto.css" />
 </head>
 
 <body>
+
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
         <div
@@ -19,20 +25,34 @@
                     <div class="col-md-8 col-lg-6 col-xxl-3">
                         <div class="card mb-0">
                             <div class="card-body">
-                                <a href="home.php" class="text-nowrap logo-img text-center d-block py-3 w-100"></a>
-                                <p class="text-center">Tienda Ambiente</p>
-                                <form>
+                            <a href="home.php" class="logo-container">
+                                    <img src="../images/logo-01.jpeg" alt="Logo">
+                                </a>
+
+                                <p class="text-center">Recuperar acceso</p>
+
+                                <?php
+                                    if(isset($_POST["txtMensaje"]))
+                                    {
+                                        echo '<div class="alert alert-info Centrado">' . $_POST["txtMensaje"] . '</div>';
+                                    }
+                                ?>
+
+                                <form action="" method="POST">
+
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Usuario</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp">
+                                        <label class="form-label">Correo Electrónico</label>
+                                        <input type="email" class="form-control" id="txtCorreo" name="txtCorreo">
                                     </div>
-                                    <a href="home.php" class="btn btn-primary w-100 py-8 fs-4 mb-4">Iniciar Sesión</a>
+
+                                    <input type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4" value="Procesar"
+                                    id="btnRecuperarAcceso" name="btnRecuperarAcceso">
+                                    
                                     <div class="d-flex align-items-center justify-content-center">
-                                        <p class="fs-4 mb-0 fw-bold">No tienes cuenta?</p>
-                                        <a class="text-primary fw-bold ms-2" href="registrarUsuario.php">Crear una
-                                            cuenta</a>
+                                        <p class="fs-4 mb-0 fw-bold">Si te acuerdas de tu contraseña, puedes volver a: </p>
+                                        <a class="text-primary fw-bold ms-2" href="inicioSesion.php">Inicia sesión</a>
                                     </div>
+
                                 </form>
                             </div>
                         </div>
@@ -41,8 +61,9 @@
             </div>
         </div>
     </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 </body>
 
