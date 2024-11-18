@@ -21,7 +21,7 @@
         $correo = $_POST["txtCorreo"];
         
 
-        $resultado = RegistrarUsuarioModel($cedula, $nombre, $apellido1, $apellido2, $contrasena, 
+        $resultado = RegistrarClienteModel($cedula, $nombre, $apellido1, $apellido2, $contrasena, 
         $provinciaID, $cantonID, $distritoID, $otrasSenas, $codigoPostal, $correo, $telefono);
 
         if($resultado == true)

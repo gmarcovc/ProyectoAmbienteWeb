@@ -472,14 +472,12 @@ INSERT INTO Distritos(distritoID, distrito, cantonID, provinciaID) VALUES
 
  -- Procedimientos Almacenados (en caso de error, usar la opcion de Stored Procedures > Click Derecho > Create Stored Procedure en workbench)
 
-CREATE PROCEDURE `RegistrarCliente`(
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RegistrarCliente`(
     pCedula VARCHAR(9),
     pNombre VARCHAR(50),
     pApellido1 VARCHAR(50),
     pApellido2 VARCHAR(50),
     pContrasena VARCHAR(20),
-    pEstadoID INT,
-    pRolID INT,
     pProvinciaID INT,
     pCantonID INT,
     pDistritoID INT,
@@ -494,6 +492,6 @@ BEGIN
                            `correo`, `telefono`)
     VALUES (pCedula, pNombre, pApellido1, pApellido2, pContrasena, 1, 2, NOW(), 
             pProvinciaID, pCantonID, pDistritoID, pOtrasSenas, pCodigoPostal, pCorreo, pTelefono);
-END;
+END
 
 

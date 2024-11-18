@@ -1,13 +1,13 @@
 <?php
     include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Model/BaseDatos.php';
 
-    function RegistrarClienteModel($cedula, $nombre, $apellido1, $apellido2, $contrasena, $estadoID, $rolID, $provinciaID, $cantonID, $distritoID, $otrasSenas, $codigoPostal, $correo, $telefono) 
+    function RegistrarClienteModel($cedula, $nombre, $apellido1, $apellido2, $contrasena, $provinciaID, $cantonID, $distritoID, $otrasSenas, $codigoPostal, $correo, $telefono) 
     {
         try 
         {
             $enlace = AbrirBD();
     
-            $sentencia = "CALL RegistrarCliente('$cedula', '$nombre', '$apellido1', '$apellido2', '$contrasena', $estadoID, $rolID, $provinciaID, $cantonID, $distritoID, '$otrasSenas', '$codigoPostal', '$correo', '$telefono')";
+            $sentencia = "CALL RegistrarCliente('$cedula', '$nombre', '$apellido1', '$apellido2', '$contrasena', '$provinciaID', '$cantonID', '$distritoID', '$otrasSenas', '$codigoPostal', '$correo', '$telefono')";
             $resultado = $enlace->query($sentencia);
     
             CerrarBD($enlace);
