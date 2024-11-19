@@ -689,7 +689,7 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Tenis mujer 4
+									Tenis mujer 
 								</a>
 
 								<span class="stext-105 cl3">
@@ -716,7 +716,7 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Reloj hombre
+									Reloj hombre color metal
 								</a>
 
 								<span class="stext-105 cl3">
@@ -743,7 +743,7 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Reloj hombre 
+									Reloj hombre color bronce 
 								</a>
 
 								<span class="stext-105 cl3">
@@ -770,7 +770,7 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Reloj hombre
+									Reloj hombre color metal con acabados cafes 
 								</a>
 
 								<span class="stext-105 cl3">
@@ -796,7 +796,7 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Reloj hombre
+									Reloj hombre color dorado
 								</a>
 
 								<span class="stext-105 cl3">
