@@ -74,7 +74,7 @@
             $datos = mysqli_fetch_array($resultado);
             $codigo = GenerarCodigo();
 
-            ActualizarContrasennaModel($datos["clienteID"], $codigo);
+            ActualizarContrasenaModel($datos["clienteID"], $codigo);
 
             $contenido = "<html><body>
             Estimado(a) " . $datos["nombre"] . " " . $datos["apellido1"] . " " . $datos["apellido2"] . "<br/><br/>
@@ -110,8 +110,8 @@
             require 'PHPMailer/src/PHPMailer.php';
             require 'PHPMailer/src/SMTP.php';
     
-            $correoSalida = "";
-            $contrasennaSalida = "";
+            $correoSalida = "proyectoambienteweb@outlook.com";
+            $contrasennaSalida = "proyectoCodigo123";
     
             $mail = new PHPMailer();
             $mail -> CharSet = 'UTF-8';

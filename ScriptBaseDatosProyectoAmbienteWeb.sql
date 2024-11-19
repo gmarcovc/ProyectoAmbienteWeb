@@ -472,6 +472,7 @@ INSERT INTO Distritos(distritoID, distrito, cantonID, provinciaID) VALUES
 
  -- Procedimientos Almacenados (en caso de error, usar la opcion de Stored Procedures > Click Derecho > Create Stored Procedure en workbench)
 
+DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `RegistrarCliente`(
     pCedula VARCHAR(9),
     pNombre VARCHAR(50),
@@ -493,5 +494,42 @@ BEGIN
     VALUES (pCedula, pNombre, pApellido1, pApellido2, pContrasena, 1, 2, NOW(), 
             pProvinciaID, pCantonID, pDistritoID, pOtrasSenas, pCodigoPostal, pCorreo, pTelefono);
 END
+DELIMITER ;
 
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RecuperarAcceso`(pCorreo varchar(50))
+BEGIN
 
+	SELECT	clienteID,
+			cedula,
+			Nombre,
+            apellido1,
+            apellido2,
+            contrasena,
+            estadoID,
+            rolID,
+            fechaRegistro,
+            provinciaID,
+            cantonID,
+            distritoID,
+            otrasSenas,
+            codigoPostal,
+            correo,
+            telefono
+	FROM 	tiendaambienteproyectowebb.clientes
+	WHERE 	Correo = pCorreo;
+
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarContrasena`(pCedula VARCHAR(9),
+																	pCodigo varchar(10))
+BEGIN
+
+	UPDATE 	tiendaambienteproyectowebb.clientes
+    SET 	Contrasena = pCodigo
+    WHERE	clienteID = pClienteID;
+
+END$$
+DELIMITER ;
