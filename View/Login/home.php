@@ -843,25 +843,12 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="../Login/soporte.php" class="stext-107 cl7 hov-cl1 trans-04">
 								Servicio al cliente
 							</a>
 						</li>
 				</div>
-				<!-- Iconos: Métodos de pago -->
-				<div class="col-sm-6 col-lg-3 p-b-50">
-				</div>
-				<div class="p-t-40">
-					<div class="flex-c-m flex-w p-b-18">
-						<a href="#" class="m-all-1">
-							<img src="../images/icon-pay-02.png" alt="ICON-PAY">
-						</a>
-						<a href="#" class="m-all-1">
-							<img src="../images/icon-pay-03.png" alt="ICON-PAY">
-						</a>
-					</div>
-				</div>
-			</div>
+				<!-- Iconos: Métodos de pago -->	
 	</footer>
 
 
