@@ -107,9 +107,6 @@
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 
-						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
-							<i class="zmdi zmdi-favorite-outline"></i>
-						</a>
 					</div>
 				</nav>
 			</div>
@@ -261,8 +258,7 @@
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
-								<a href="../Resenas.php" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Compra Ahora
+
 								</a>
 							</div>
 						</div>
@@ -285,8 +281,7 @@
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="slideInUp" data-delay="1600">
-								<a href="../Resenas.php" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Compra Ahora
+
 								</a>
 							</div>
 						</div>
@@ -309,8 +304,7 @@
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
-								<a href="../Resenas.php" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Compra Ahora
+
 								</a>
 							</div>
 						</div>
@@ -408,8 +402,6 @@
 
 							<div class="block2-txt-child2 flex-r p-t-3">
 								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="../images/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="../images/icon-heart-02.png" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -843,7 +835,7 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="../Login/Soporte.php" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="../Login/soporte.php" class="stext-107 cl7 hov-cl1 trans-04">
 								Servicio al cliente
 							</a>
 						</li>
