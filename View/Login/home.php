@@ -392,7 +392,7 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Camisa Holgada
+									Blusa color negro mujer 
 								</a>
 
 								<span class="stext-105 cl3">
@@ -417,7 +417,7 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Conjunto mujer 2
+									Juego de pijama azul cielo  
 								</a>
 
 								<span class="stext-105 cl3">
@@ -445,7 +445,7 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Conjunto mujer 3
+									Juego de pijama rosa pastel 
 								</a>
 
 								<span class="stext-105 cl3">
@@ -473,7 +473,7 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Conjunto mujer 4
+									Blusa casual mujer  
 								</a>
 
 								<span class="stext-105 cl3">
@@ -500,7 +500,7 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Conjunto hombre 1
+									Camisa color dorado hombre 
 								</a>
 
 								<span class="stext-105 cl3">
@@ -527,7 +527,7 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Conjunto hombre 2
+									Camisa color gris hombre 
 								</a>
 
 								<span class="stext-105 cl3">
@@ -554,7 +554,7 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Conjunto hombre 3
+									Chaqueta color azulado hombre 
 								</a>
 
 								<span class="stext-105 cl3">
@@ -581,7 +581,7 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Conjunto hombre 4
+									Camisa de botones color verde hombre
 								</a>
 
 								<span class="stext-105 cl3">
@@ -608,7 +608,7 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Zapato Mujer 1
+									Zapatillas mujer 
 								</a>
 
 								<span class="stext-105 cl3">
@@ -635,7 +635,7 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Zapato Mujer 2
+									Zapatos altos mujer 
 								</a>
 
 								<span class="stext-105 cl3">
@@ -662,7 +662,7 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Zapato Mujer 3
+									Tacones mujer 
 								</a>
 
 								<span class="stext-105 cl3">
@@ -689,7 +689,7 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Zapato Mujer 4
+									Tenis mujer 4
 								</a>
 
 								<span class="stext-105 cl3">
@@ -716,7 +716,7 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Reloj 1
+									Reloj hombre
 								</a>
 
 								<span class="stext-105 cl3">
@@ -743,7 +743,7 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Reloj 2
+									Reloj hombre 
 								</a>
 
 								<span class="stext-105 cl3">
@@ -770,7 +770,7 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Reloj 3
+									Reloj hombre
 								</a>
 
 								<span class="stext-105 cl3">
@@ -793,9 +793,11 @@
 						<div class="block2-pic hov-img0">
 							<img src="../images/product-16.jpg" alt="IMG-PRODUCT">
 						</div>
-
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
+								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									Reloj hombre
+								</a>
 
 								<span class="stext-105 cl3">
 									$700.00
