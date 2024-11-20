@@ -668,5 +668,17 @@ BEGIN
     WHERE consultaID = pConsultaID;
 END$$
 DELIMITER ;
+CREATE TABLE Calificaciones (
+    calificacionID INT PRIMARY KEY AUTO_INCREMENT,
+    productoID INT NOT NULL,
+    clienteID INT NOT NULL,
+    estrellas INT NOT NULL,
+    comentario TEXT,
+    fecha DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (productoID) REFERENCES Productos(productoID),
+    FOREIGN KEY (clienteID) REFERENCES Clientes(clienteID)
+);
+ALTER TABLE Productos ADD descuento DECIMAL(5,2) DEFAULT 0;
+
 
 
