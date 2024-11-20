@@ -563,3 +563,37 @@ BEGIN
 
 END$$
 DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarPerfil`(
+	pClienteID int(11),
+    pCedula VARCHAR(9),
+    pNombre VARCHAR(50),
+    pApellido1 VARCHAR(50),
+    pApellido2 VARCHAR(50),
+    pProvinciaID INT,
+    pCantonID INT,
+    pDistritoID INT,
+    pOtrasSenas VARCHAR(200),
+    pCodigoPostal VARCHAR(10),
+    pCorreo VARCHAR(50),
+    pTelefono VARCHAR(15))
+
+BEGIN
+
+	UPDATE 	tiendaambienteproyectowebb.Clientes
+    SET 	Cedula = pCedula.
+			Nombre = pNombre.
+            Apellido1 = pApellido1.
+            Apellido2 = pApellido2.
+            ProvinciaID = pProvinciaID.
+            CantonID = pCantonID.
+            DistritoID = pDistritoID.
+            OtrasSenas = pOtrasSenas.
+            CodigoPostal = pCodigoPostal.
+            Correo = pCorreo.
+            pTelefono = pTelefono
+    WHERE	ClienteID = pClienteID;
+
+END$$
+DELIMITER ;
