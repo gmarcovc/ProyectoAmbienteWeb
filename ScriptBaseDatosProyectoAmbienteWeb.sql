@@ -597,19 +597,45 @@ BEGIN
 
 END$$
 DELIMITER ;
--- Crear la tabla de Consultas de Soporte
 CREATE TABLE ConsultasSoporte (
     consultaID INT PRIMARY KEY AUTO_INCREMENT,
-    clienteID INT NULL, -- Opcional, si quieres vincular la consulta a un cliente registrado
+    clienteID INT NULL,
     nombre VARCHAR(50) NOT NULL,
     correo VARCHAR(50) NOT NULL,
     mensaje TEXT NOT NULL,
     fecha DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    estadoID INT DEFAULT 1, -- 1: Pendiente, 2: En proceso, 3: Resuelto
+    estadoID INT DEFAULT 1,
     FOREIGN KEY (estadoID) REFERENCES Estados(estadoID)
 );
 
--- Procedimiento para registrar una nueva consulta de soporte
+CREATE TABLE HistorialEstadosConsultas (
+    historialID INT PRIMARY KEY AUTO_INCREMENT,
+    consultaID INT NOT NULL,
+    estadoAnteriorID INT NOT NULL,
+    estadoNuevoID INT NOT NULL,
+    fechaCambio DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (consultaID) REFERENCES ConsultasSoporte(consultaID),
+    FOREIGN KEY (estadoAnteriorID) REFERENCES Estados(estadoID),
+    FOREIGN KEY (estadoNuevoID) REFERENCES Estados(estadoID)
+);
+
+CREATE TABLE TiposConsultas (
+    tipoID INT PRIMARY KEY AUTO_INCREMENT,
+    nombreTipo VARCHAR(50) NOT NULL
+);
+
+ALTER TABLE ConsultasSoporte
+ADD tipoID INT,
+ADD FOREIGN KEY (tipoID) REFERENCES TiposConsultas(tipoID);
+
+CREATE TABLE NotasSoporte (
+    notaID INT PRIMARY KEY AUTO_INCREMENT,
+    consultaID INT NOT NULL,
+    nota TEXT NOT NULL,
+    fecha DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (consultaID) REFERENCES ConsultasSoporte(consultaID)
+);
+
 DELIMITER $$
 CREATE PROCEDURE RegistrarConsultaSoporte(
     pNombre VARCHAR(50),
@@ -618,11 +644,10 @@ CREATE PROCEDURE RegistrarConsultaSoporte(
 )
 BEGIN
     INSERT INTO ConsultasSoporte (nombre, correo, mensaje, estadoID)
-    VALUES (pNombre, pCorreo, pMensaje, 1); -- Estado "Pendiente"
+    VALUES (pNombre, pCorreo, pMensaje, 1);
 END$$
 DELIMITER ;
 
--- Procedimiento para consultar todas las consultas de soporte
 DELIMITER $$
 CREATE PROCEDURE ConsultarConsultasSoporte()
 BEGIN
@@ -632,7 +657,6 @@ BEGIN
 END$$
 DELIMITER ;
 
--- Procedimiento para actualizar el estado de una consulta
 DELIMITER $$
 CREATE PROCEDURE ActualizarEstadoConsulta(
     pConsultaID INT,
@@ -644,4 +668,5 @@ BEGIN
     WHERE consultaID = pConsultaID;
 END$$
 DELIMITER ;
+
 
