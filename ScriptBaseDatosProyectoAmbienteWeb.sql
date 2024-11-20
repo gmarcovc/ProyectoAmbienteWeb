@@ -493,7 +493,7 @@ BEGIN
                            `correo`, `telefono`)
     VALUES (pCedula, pNombre, pApellido1, pApellido2, pContrasena, 1, 2, NOW(), 
             pProvinciaID, pCantonID, pDistritoID, pOtrasSenas, pCodigoPostal, pCorreo, pTelefono);
-END
+END$$
 DELIMITER ;
 
 DELIMITER $$
@@ -530,6 +530,36 @@ BEGIN
 	UPDATE 	tiendaambienteproyectowebb.clientes
     SET 	Contrasena = pCodigo
     WHERE	clienteID = pClienteID;
+
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarCliente`(pClienteID int(11))
+BEGIN
+
+	SELECT	C.ClienteID,
+			cedula,
+			Nombre,
+            apellido1,
+            apellido2,
+            contrasena,
+            estadoID,
+            E.nombreEstado,
+            rolID,
+            R.nombreRol,
+            fechaRegistro,
+            provinciaID,
+            cantonID,
+            distritoID,
+            otrasSenas,
+            codigoPostal,
+            correo,
+            telefono
+	FROM 	tiendaambienteproyectowebb.Clientes C
+    INNER JOIN tiendaambienteproyectowebb.Roles R ON C.rolID = R.rolID
+    INNER JOIN tiendaambienteproyectowebb.Estados E ON C.estadoID = E.estadoID
+	WHERE 	C.ClienteID = pClienteID;
 
 END$$
 DELIMITER ;
