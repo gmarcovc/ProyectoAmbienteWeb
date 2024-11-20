@@ -597,45 +597,20 @@ BEGIN
 
 END$$
 DELIMITER ;
+
 CREATE TABLE ConsultasSoporte (
     consultaID INT PRIMARY KEY AUTO_INCREMENT,
     clienteID INT NULL,
-    nombre VARCHAR(50) NOT NULL,
     correo VARCHAR(50) NOT NULL,
     mensaje TEXT NOT NULL,
     fecha DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     estadoID INT DEFAULT 1,
+    FOREIGN KEY (clienteID) REFERENCES Clientes(clienteID)
+    FOREIGN KEY (correo) REFERENCES Clientes(correo)
     FOREIGN KEY (estadoID) REFERENCES Estados(estadoID)
 );
 
-CREATE TABLE HistorialEstadosConsultas (
-    historialID INT PRIMARY KEY AUTO_INCREMENT,
-    consultaID INT NOT NULL,
-    estadoAnteriorID INT NOT NULL,
-    estadoNuevoID INT NOT NULL,
-    fechaCambio DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (consultaID) REFERENCES ConsultasSoporte(consultaID),
-    FOREIGN KEY (estadoAnteriorID) REFERENCES Estados(estadoID),
-    FOREIGN KEY (estadoNuevoID) REFERENCES Estados(estadoID)
-);
-
-CREATE TABLE TiposConsultas (
-    tipoID INT PRIMARY KEY AUTO_INCREMENT,
-    nombreTipo VARCHAR(50) NOT NULL
-);
-
-ALTER TABLE ConsultasSoporte
-ADD tipoID INT,
-ADD FOREIGN KEY (tipoID) REFERENCES TiposConsultas(tipoID);
-
-CREATE TABLE NotasSoporte (
-    notaID INT PRIMARY KEY AUTO_INCREMENT,
-    consultaID INT NOT NULL,
-    nota TEXT NOT NULL,
-    fecha DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (consultaID) REFERENCES ConsultasSoporte(consultaID)
-);
-
+/*Borrador
 DELIMITER $$
 CREATE PROCEDURE RegistrarConsultaSoporte(
     pNombre VARCHAR(50),
@@ -679,6 +654,6 @@ CREATE TABLE Calificaciones (
     FOREIGN KEY (clienteID) REFERENCES Clientes(clienteID)
 );
 ALTER TABLE Productos ADD descuento DECIMAL(5,2) DEFAULT 0;
-
+*/
 
 

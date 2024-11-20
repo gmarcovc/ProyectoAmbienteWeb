@@ -19,6 +19,25 @@
         }
     }
 
+    #********************Hace falta vista y PA********************
+    function ClientesModel($consecutivo)
+    {
+        try
+        {
+            $enlace = AbrirBD();
+
+            $sentencia = "CALL ConsultarClientes('$clienteID')";
+            $resultado = $enlace -> query($sentencia);
+
+            CerrarBD($enlace);
+            return $resultado;
+        }
+        catch(Exception $ex)
+        {
+            return null;
+        }
+    }
+    #********************Hace falta vista********************
     function ActualizarPerfilModel($clienteID, $cedula, $nombre, $apellido1, $apellido2, 
     $provinciaID, $cantonID, $distritoID, $otrasSenas, $codigoPostal, $correo, $telefono)
     {
@@ -36,6 +55,44 @@
         catch(Exception $ex)
         {
             return false;
+        }
+    }
+
+    #********************Hace falta vista y PA********************
+    function CambiarEstadoClienteModel($clienteID)
+    {
+        try
+        {
+            $enlace = AbrirBD();
+
+            $sentencia = "CALL CambiarEstadoCliente('$clienteID')";
+            $resultado = $enlace -> query($sentencia);
+
+            CerrarBD($enlace);
+            return $resultado;
+        }
+        catch(Exception $ex)
+        {
+            return false;
+        }
+    }
+
+    #********************Hace falta vista y PA********************
+    function ConsultarRolesModel()
+    {
+        try
+        {
+            $enlace = AbrirBD();
+
+            $sentencia = "CALL ConsultarRoles()";
+            $resultado = $enlace -> query($sentencia);
+
+            CerrarBD($enlace);
+            return $resultado;
+        }
+        catch(Exception $ex)
+        {
+            return null;
         }
     }
 
