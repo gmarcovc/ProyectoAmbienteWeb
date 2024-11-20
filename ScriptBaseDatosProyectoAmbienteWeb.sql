@@ -597,3 +597,51 @@ BEGIN
 
 END$$
 DELIMITER ;
+-- Crear la tabla de Consultas de Soporte
+CREATE TABLE ConsultasSoporte (
+    consultaID INT PRIMARY KEY AUTO_INCREMENT,
+    clienteID INT NULL, -- Opcional, si quieres vincular la consulta a un cliente registrado
+    nombre VARCHAR(50) NOT NULL,
+    correo VARCHAR(50) NOT NULL,
+    mensaje TEXT NOT NULL,
+    fecha DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    estadoID INT DEFAULT 1, -- 1: Pendiente, 2: En proceso, 3: Resuelto
+    FOREIGN KEY (estadoID) REFERENCES Estados(estadoID)
+);
+
+-- Procedimiento para registrar una nueva consulta de soporte
+DELIMITER $$
+CREATE PROCEDURE RegistrarConsultaSoporte(
+    pNombre VARCHAR(50),
+    pCorreo VARCHAR(50),
+    pMensaje TEXT
+)
+BEGIN
+    INSERT INTO ConsultasSoporte (nombre, correo, mensaje, estadoID)
+    VALUES (pNombre, pCorreo, pMensaje, 1); -- Estado "Pendiente"
+END$$
+DELIMITER ;
+
+-- Procedimiento para consultar todas las consultas de soporte
+DELIMITER $$
+CREATE PROCEDURE ConsultarConsultasSoporte()
+BEGIN
+    SELECT consultaID, nombre, correo, mensaje, fecha, estadoID
+    FROM ConsultasSoporte
+    ORDER BY fecha DESC;
+END$$
+DELIMITER ;
+
+-- Procedimiento para actualizar el estado de una consulta
+DELIMITER $$
+CREATE PROCEDURE ActualizarEstadoConsulta(
+    pConsultaID INT,
+    pEstadoID INT
+)
+BEGIN
+    UPDATE ConsultasSoporte
+    SET estadoID = pEstadoID
+    WHERE consultaID = pConsultaID;
+END$$
+DELIMITER ;
+
