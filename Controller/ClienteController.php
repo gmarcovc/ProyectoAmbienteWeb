@@ -1,58 +1,11 @@
 <?php
-    include_once $_SERVER["DOCUMENT_ROOT"] . '/Model/LoginModel.php';
-    include_once $_SERVER["DOCUMENT_ROOT"] . '/Model/ClienteModel.php';
+    include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Model/LoginModel.php';
+    include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Model/ClienteModel.php';
 
     if(session_status() == PHP_SESSION_NONE) {
         session_start();
     }
 
-
-    #********************Hace falta vista********************
-    function ConsultarCliente($clienteID)
-    {
-        $resultado = ConsultarUsuarioModel($clienteID);
-
-        if($resultado != null && $resultado -> num_rows > 0)
-        {
-            return mysqli_fetch_array($resultado);
-        }
-        else
-        {
-            $_POST["txtMensaje"] = "Su información no se ha obtenido correctamente";
-            header('location: ../../View/Login/home.php');
-        }
-
-    }
-    #********************Hace falta vista********************
-    if(isset($_POST["btnActualizarPerfil"]))
-    {
-
-        $cedula = $_POST["txtCedula"];
-        $nombre = $_POST["txtNombre"];
-        $apellido1 = $_POST["txtApellido1"]; 
-        $apellido2 = $_POST["txtApellido2"]; 
-        $provinciaID = $_POST["txtProvinciaID"]; 
-        $cantonID = $_POST["txtCantonID"];
-        $distritoID = $_POST["txtDistritoID"]; 
-        $otrasSenas = $_POST["txtOtrasSenas"];
-        $codigoPostal = $_POST["txtCodigoPostal"]; 
-        $correo = $_POST["txtCorreo"];
-        $telefono = $_POST["txtTelefono"];
-
-        $resultado = ActualizarPerfilModel($_SESSION["ConsecutivoUsuario"],$identificacion,$nombre,$correo,0);
-        
-        if($resultado == true)
-        {
-            $_SESSION["NombreUsuario"] = $nombre;
-            header('location: ../../View/Login/home.php');
-        }
-        else
-        {
-            $_POST["txtMensaje"] = "Su información no se ha actualizado correctamente";
-        }
-    }
-
-    
     #********************Hace falta vista, modelo y PA********************
     if(isset($_POST["btnActualizarAcceso"]))
     {
@@ -83,14 +36,55 @@
         }
     }
 
-    #********************Hace falta vista y PA********************
-    function ConsultarClientes()
+    #********************Hace falta vista********************
+    function ConsultarCliente($clienteID)
     {
-        $resultado = ConsultarClientesModel($_SESSION["ClienteID"]);
+        $resultado = ConsultarClienteModel($clienteID);
 
         if($resultado != null && $resultado -> num_rows > 0)
         {
-            return $resultado;
+            return mysqli_fetch_array($resultado);
+        }
+        else
+        {
+            $_POST["txtMensaje"] = "Su información no se ha obtenido correctamente";
+            header('location: ../../View/Login/home.php');
+        }
+
+    }
+
+    #********************Hace falta vista y PA********************
+    function ConsultarClientes()
+    {
+        return ConsultarClientesModel($_SESSION["ClienteID"]);
+    }
+
+    #********************Hace falta vista********************
+    if(isset($_POST["btnActualizarPerfil"]))
+    {
+
+        $cedula = $_POST["txtCedula"];
+        $nombre = $_POST["txtNombre"];
+        $apellido1 = $_POST["txtApellido1"]; 
+        $apellido2 = $_POST["txtApellido2"]; 
+        $provinciaID = $_POST["txtProvinciaID"]; 
+        $cantonID = $_POST["txtCantonID"];
+        $distritoID = $_POST["txtDistritoID"]; 
+        $otrasSenas = $_POST["txtOtrasSenas"];
+        $codigoPostal = $_POST["txtCodigoPostal"]; 
+        $correo = $_POST["txtCorreo"];
+        $telefono = $_POST["txtTelefono"];
+
+        $resultado = ActualizarPerfilModel($_SESSION["ConsecutivoUsuario"],$identificacion,$nombre,$correo,0);
+        
+        if($resultado == true)
+        {
+            $_SESSION["NombreUsuario"] = $nombre;
+            header('location: ../../View/Login/home.php');
+        }
+        else
+        {
+            $_POST["txtMensaje"] = "Su información no se ha actualizado correctamente";
         }
     }
 

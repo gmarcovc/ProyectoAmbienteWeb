@@ -19,8 +19,8 @@
         }
     }
 
-    #********************Hace falta vista y PA********************
-    function ClientesModel($consecutivo)
+    #********************Hace falta vista********************
+    function ConsultarClientesModel($consecutivo)
     {
         try
         {

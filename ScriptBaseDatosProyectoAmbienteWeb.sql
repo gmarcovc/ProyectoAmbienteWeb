@@ -598,6 +598,63 @@ BEGIN
 END$$
 DELIMITER ;
 
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarClientes`()
+BEGIN
+
+	SELECT	C.ClienteID,
+			cedula,
+			Nombre,
+            apellido1,
+            apellido2,
+            contrasena,
+			CASE WHEN E.estadoID = 1 THEN 'Activo' WHEN E.estadoID = 2 THEN 'Inactivo' END AS 'DescripcionActivo',
+			rolID,
+            R.nombreRol,
+            fechaRegistro,
+            provinciaID,
+            cantonID,
+            distritoID,
+            otrasSenas,
+            codigoPostal,
+            correo,
+            telefono
+	FROM 	tiendaambienteproyectowebb.Clientes C
+    INNER JOIN tiendaambienteproyectowebb.Roles R ON C.rolID = R.rolID
+    INNER JOIN tiendaambienteproyectowebb.Estados E ON C.estadoID = E.estadoID;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `IniciarSesion`(pCorreo varchar(50),
+															pContrasena varchar(20))
+BEGIN
+
+	SELECT	clienteID
+			cedula,
+			Nombre,
+            apellido1,
+            apellido2,
+            contrasena,
+            estadoID,
+			rolID,
+            fechaRegistro,
+            provinciaID,
+            cantonID,
+            distritoID,
+            otrasSenas,
+            codigoPostal,
+            correo,
+            telefono
+	FROM 	tiendaambienteproyectowebb.clientes
+	WHERE 	Correo = pCorreo
+		AND Contrasena = pContrasena
+        AND estadoID = 1;
+
+END
+$$
+DELIMITER ;
+
 CREATE TABLE ConsultasSoporte (
     consultaID INT PRIMARY KEY AUTO_INCREMENT,
     clienteID INT NULL,
