@@ -7,34 +7,51 @@
 
     function MostrarMenu()
     {
-        if(isset($_SESSION["NombreCliente"]) && $_SESSION["ClienteRolID"] == "1")
+        if(isset($_SESSION["NombreCliente"]) && $_SESSION["RolID"] == "1")
             {
                 echo '		
-                    <!-- Header desktop -->
+                    <!-- para admins -->
 		            <div class="container-menu-desktop">
 			            <div class="top-bar">
 				            <div class="content-topbar flex-sb-m h-full container">
 				                <div class="left-top-bar">
-					                Mejora cualquier ambiente con tu estilo...
+					                Vista Administrador: ' . $_SESSION["NombreCliente"] . '
 				                </div>
 
 				            <div class="right-top-bar flex-w h-full">
 
-					            <a href="#" class="flex-c-m trans-04 p-lr-25">
-                                    Preguntas frecuentes
+                                <a href="../Cliente/consultarPerfil.php" class="flex-c-m trans-04 p-lr-25">
+							        Mi Perfil
 						        </a>
 
-						        <a href="#" class="flex-c-m trans-04 p-lr-25">
-							        Mi cuenta
+					            <a href="../Cliente/consultarClientes.php" class="flex-c-m trans-04 p-lr-25">
+							        Clientes
 						        </a>
 
-					            <a href="#" class="flex-c-m trans-04 p-lr-25">
-						            Costa Rica
-					            </a>
+						        <a href="../Producto/consultarArticulos.php" class="flex-c-m trans-04 p-lr-25">
+							        Artículos
+						        </a>
+
+                                <!-- Aca el admin puede ver las solicitudes de los clientes  -->
+                                <a href="../Producto/consultarSolicitudes.php" class="flex-c-m trans-04 p-lr-25">
+							        Solicitudes  
+						        </a>
 
 				            </div>
 			            </div>
 		            </div>';
+                } else if (isset($_SESSION["NombreCliente"]) && $_SESSION["RolID"] == "2") {
+                echo '		
+                <!-- para clientes -->
+                <div class="container-menu-desktop">
+                    <div class="top-bar">
+                        <div class="content-topbar flex-sb-m h-full container">
+                            <div class="left-top-bar">
+                                Bienvenido/a: ' . $_SESSION["NombreCliente"] . '
+                            </div>
+                        </div>
+                    </div>
+                </div>';
             }
     }
 
@@ -64,7 +81,7 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">';
 
-                        if(isset($_SESSION["NombreUsuario"]))
+                        if(isset($_SESSION["NombreCliente"]))
                             {
 
                                 echo '
@@ -74,6 +91,10 @@
 
                                     <li>
                                         <a href="../Usuario/cambiarAcceso.php">Seguridad</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="../Login/Resenas.php">Reseñas</a>
                                     </li>
 
                                     <li>
@@ -87,7 +108,8 @@
                             {
                                 echo '
                                     <li>
-                                        <a href="../Login/inicioSesion.php">Iniciar Sesión</a>
+                                        <a href="../Login/inicioSesion.php" style="width:150px"
+                                                    class="btn btn-outline-primary mx-3 mt-2 d-block">Iniciar Sesión</a>
                                     </li>';
                             }
 
@@ -98,11 +120,8 @@
 
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-							<i class="zmdi zmdi-search"></i>
-						</div>
 
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="1">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 

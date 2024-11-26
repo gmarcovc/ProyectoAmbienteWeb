@@ -625,13 +625,13 @@ BEGIN
 END$$
 DELIMITER ;
 
-DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `IniciarSesion`(pCorreo varchar(50),
 															pContrasena varchar(20))
 BEGIN
 
-	SELECT	clienteID
-			cedula,
+	SELECT	
+			clienteID as ClienteID, --Habia un problema donde cliente ID aparecia en el valor donde tenia que estar cedula, esto lo soluciono
+            cedula as Cedula,
 			Nombre,
             apellido1,
             apellido2,
@@ -650,10 +650,6 @@ BEGIN
 	WHERE 	Correo = pCorreo
 		AND Contrasena = pContrasena
         AND estadoID = 1;
-
-END
-$$
-DELIMITER ;
 
 CREATE TABLE ConsultasSoporte (
     consultaID INT PRIMARY KEY AUTO_INCREMENT,

@@ -75,11 +75,11 @@
         $correo = $_POST["txtCorreo"];
         $telefono = $_POST["txtTelefono"];
 
-        $resultado = ActualizarPerfilModel($_SESSION["ConsecutivoUsuario"],$identificacion,$nombre,$correo,0);
+        $resultado = ActualizarPerfilModel($_SESSION["ClienteID"],$identificacion,$nombre,$correo,0);
         
         if($resultado == true)
         {
-            $_SESSION["NombreUsuario"] = $nombre;
+            $_SESSION["NombreCliente"] = $nombre;
             header('location: ../../View/Login/home.php');
         }
         else

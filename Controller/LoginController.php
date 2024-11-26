@@ -44,11 +44,14 @@
         if($resultado != null && $resultado -> num_rows > 0)
         {
             $datos = mysqli_fetch_array($resultado);
-            $_SESSION["NombreCliente"] = $datos["nombre"];
-            $_SESSION["ClienteID"] = $datos["clienteID"];
-            $_SESSION["ClienteRolID"] = $datos["rolID"];
+            $_SESSION["NombreCliente"] = $datos["Nombre"];
+            $_SESSION["ClienteID"] = $datos["ClienteID"];
+            $_SESSION["RolID"] = $datos["rolID"];
+
+            $_POST["txtMensaje"] = "Su información se ha validado correctamente";
 
             header('location: ../../View/Login/home.php');
+
         }
         else
         {
