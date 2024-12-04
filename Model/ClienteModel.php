@@ -20,7 +20,7 @@
     }
 
     #********************Hace falta vista********************
-    function ConsultarClientesModel($consecutivo)
+    function ConsultarClientesModel($clienteID)
     {
         try
         {

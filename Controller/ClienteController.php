@@ -53,7 +53,7 @@
 
     }
 
-    #********************Hace falta vista y PA********************
+    #********************Hace falta vista********************
     function ConsultarClientes()
     {
         return ConsultarClientesModel($_SESSION["ClienteID"]);
@@ -75,7 +75,7 @@
         $correo = $_POST["txtCorreo"];
         $telefono = $_POST["txtTelefono"];
 
-        $resultado = ActualizarPerfilModel($_SESSION["ClienteID"],$identificacion,$nombre,$correo,0);
+        $resultado = ActualizarPerfilModel($_SESSION["ClienteID"],$cedula,$nombre,$correo,0);
         
         if($resultado == true)
         {
