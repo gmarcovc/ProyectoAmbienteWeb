@@ -14,16 +14,19 @@
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
 
+        <?php
+            MostrarMenu();
+        ?>
+
         <div class="body-wrapper">
-
-            <?php
+            
+        <?php
                 MostrarHeader();
-            ?> 
-
+        ?> 
             <div class="container-fluid">
                 <div class="row">
 
-                    <div class="card">
+                    <div id="consultas" class="card">
                         <div class="card-body">
 
                             <h5 class="card-title">Consulta de Clientes</h5>
@@ -59,14 +62,14 @@
                                                 echo "<td>" . $fila["clienteID"] . "</td>";
                                                 echo "<td>" . $fila["cedula"] . "</td>";
                                                 echo "<td>" . $fila["nombre"] . "</td>";
-                                                echo "<td>" . $fila["apellido"] . "</td>";
+                                                echo "<td>" . $fila["apellido1"] . "</td>";
                                                 echo "<td>" . $fila["apellido2"] . "</td>";
                                                 echo "<td>" . $fila["estadoID"] . "</td>";
                                                 echo "<td>" . $fila["nombreRol"] . "</td>";
                                                 echo "<td>" . $fila["fechaRegistro"] . "</td>";
-                                                echo "<td>" . $fila["provinciaID"] . "</td>";
-                                                echo "<td>" . $fila["cantonID"] . "</td>";
-                                                echo "<td>" . $fila["distritoID"] . "</td>";
+                                                echo "<td>" . $fila["nombreProvincia"] . "</td>";
+                                                echo "<td>" . $fila["nombreCanton"] . "</td>";
+                                                echo "<td>" . $fila["nombreDistrito"] . "</td>";
                                                 echo "<td>" . $fila["otrasSenas"] . "</td>";
                                                 echo "<td>" . $fila["codigoPostal"] . "</td>";
                                                 echo "<td>" . $fila["correo"] . "</td>";

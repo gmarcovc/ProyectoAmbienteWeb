@@ -23,10 +23,6 @@
 
         <div class="body-wrapper">
 
-            <?php
-                MostrarHeader();
-            ?>
-
             <div class="container-fluid">
                 <div class="row">
 

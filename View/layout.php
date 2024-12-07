@@ -20,10 +20,6 @@
 
 				            <div class="right-top-bar flex-w h-full">
 
-                                <a href="../Cliente/consultarPerfil.php" class="flex-c-m trans-04 p-lr-25">
-							        Mi Perfil
-						        </a>
-
 					            <a href="../Cliente/consultarClientes.php" class="flex-c-m trans-04 p-lr-25">
 							        Clientes
 						        </a>
@@ -74,7 +70,7 @@
 			<div class="wrap-menu-desktop">
 				<nav class="limiter-menu-desktop container">
 					<!-- Logo desktop -->
-					<a href="#" class="logo">
+					<a href="../Login/Home.php" class="logo">
 						<img src="../images/logo-01.jpeg" alt="IMG-LOGO">
 					</a>
 					<!-- Menu desktop -->
@@ -152,10 +148,25 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1">
                 <title>Tienda Ambiente</title>
                 <link rel="shortcut icon" type="image/png" href="../images/logo-01.jpeg" />
-                <link rel="stylesheet" href="../css/styles.min.css" />
                 <link rel="stylesheet" href="../css/proyecto.css" />
+                <link rel="stylesheet" href="../css/styles.min.css" />
                 <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css" />
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.min.css" />
+                <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+                <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+                <link rel="stylesheet" type="text/css" href="../css/material-design-iconic-font.min.css">
+                <link rel="stylesheet" type="text/css" href="../css/icon-font.min.css">
+                <link rel="stylesheet" type="text/css" href="../css/animate.css">
+                <link rel="stylesheet" type="text/css" href="../css/hamburgers.min.css">
+                <link rel="stylesheet" type="text/css" href="../css/animsition.min.css">
+                <link rel="stylesheet" type="text/css" href="../css/select2.min.css">
+                <link rel="stylesheet" type="text/css" href="../css/daterangepicker.css">
+                <link rel="stylesheet" type="text/css" href="../css/slick.css">
+                <link rel="stylesheet" type="text/css" href="../css/magnific-popup.css">
+                <link rel="stylesheet" type="text/css" href="../css/perfect-scrollbar.css">
+                <link rel="stylesheet" type="text/css" href="../css/util.css">
+                <link rel="stylesheet" type="text/css" href="../css/main.css">
             </head>';
     }
 
@@ -170,7 +181,7 @@
             <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
             <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
             <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
-            <script src="../js/ConsultarClientes.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.all.min.js"></script>
         ';
     }
         

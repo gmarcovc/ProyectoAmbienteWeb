@@ -13,11 +13,11 @@
         $contrasenaNueva = $_POST["txtContrasenaNueva"];
         $contrasenaConfirmar = $_POST["txtContrasenaConfirmar"];
 
-        if($contrasennaActual == $contrasenaNueva)
+        if($contrasenaActual == $contrasenaNueva)
         {
             $_POST["txtMensaje"] = "Debe ingresar una contraseña nueva";
         }
-        else if($contrasennaNueva != $contrasenaConfirmar)
+        else if($contrasenaNueva != $contrasenaConfirmar)
         {
             $_POST["txtMensaje"] = "Las nuevas contraseñas no coinciden";
         }
@@ -123,7 +123,7 @@
         {
             $clienteID = $_POST["txtClienteID"];
     
-            $resultado = CambiarEstadoUsuarioModel($clienteID);
+            $resultado = CambiarEstadoClienteModel($clienteID);
             
             if($resultado == true)
             {
