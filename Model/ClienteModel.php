@@ -18,7 +18,7 @@
             return null;
         }
     }
-
+ 
     #********************Hace falta vista********************
     function ConsultarClientesModel($clienteID)
     {

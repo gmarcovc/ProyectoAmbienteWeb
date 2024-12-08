@@ -18,6 +18,38 @@ USE `tiendaambienteproyectowebb`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `articulos`
+--
+
+DROP TABLE IF EXISTS `articulos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `articulos` (
+  `articuloID` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) NOT NULL,
+  `descripcion` varchar(500) DEFAULT NULL,
+  `precio` decimal(18,3) NOT NULL,
+  `categoriaID` int(11) NOT NULL,
+  `stock` int(11) NOT NULL,
+  `estadoID` int(11) NOT NULL,
+  PRIMARY KEY (`articuloID`),
+  KEY `categoriaID` (`categoriaID`),
+  KEY `estadoID` (`estadoID`),
+  CONSTRAINT `articulos_ibfk_1` FOREIGN KEY (`categoriaID`) REFERENCES `categorias` (`categoriaID`),
+  CONSTRAINT `articulos_ibfk_2` FOREIGN KEY (`estadoID`) REFERENCES `estados` (`estadoID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `articulos`
+--
+
+LOCK TABLES `articulos` WRITE;
+/*!40000 ALTER TABLE `articulos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `articulos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `cantones`
 --
 
@@ -105,7 +137,7 @@ CREATE TABLE `clientes` (
   CONSTRAINT `clientes_ibfk_3` FOREIGN KEY (`distritoID`) REFERENCES `distritos` (`distritoID`) ON DELETE NO ACTION,
   CONSTRAINT `clientes_ibfk_4` FOREIGN KEY (`cantonID`) REFERENCES `cantones` (`cantonID`) ON DELETE NO ACTION,
   CONSTRAINT `clientes_ibfk_5` FOREIGN KEY (`provinciaID`) REFERENCES `provincias` (`provinciaID`) ON DELETE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -114,7 +146,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (1,'11111111','Gian','Vasquez','Carrillo','1234',1,1,'2024-12-06 20:02:07',1,1,1,'XXX','20110','gmarcovc@gmail.com','84168055'),(2,'22222222','Fernando','Arias','Perez','1234',1,2,'2024-12-06 20:39:19',2,2,2,'XXX','2','fac@email.com','22220202');
+INSERT INTO `clientes` VALUES (1,'11111111','Gian','Vasquez','Carrillo','1234',1,1,'2024-12-06 20:02:07',1,1,1,'XXX','20110','gmarcovc@gmail.com','84168055'),(2,'22222222','Fernando','Arias','Perez','1234',1,2,'2024-12-06 20:39:19',2,2,2,'XXX','2','fac@email.com','22220202'),(3,'4532635','uidshfuisf','xhhjfnjh','cjhjhjgj','1234',1,2,'2024-12-07 13:41:18',1,1,1,'SGFfzdg','1111','zzz@email.com','498390');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,7 +167,7 @@ CREATE TABLE `detallespedido` (
   KEY `pedidoID` (`pedidoID`),
   KEY `productoID` (`productoID`),
   CONSTRAINT `detallespedido_ibfk_1` FOREIGN KEY (`pedidoID`) REFERENCES `pedidos` (`pedidoID`),
-  CONSTRAINT `detallespedido_ibfk_2` FOREIGN KEY (`productoID`) REFERENCES `productos` (`productoID`)
+  CONSTRAINT `detallespedido_ibfk_2` FOREIGN KEY (`productoID`) REFERENCES `articulos` (`articuloID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -255,38 +287,6 @@ CREATE TABLE `pedidos` (
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `productos`
---
-
-DROP TABLE IF EXISTS `productos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `productos` (
-  `productoID` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) NOT NULL,
-  `descripcion` varchar(500) DEFAULT NULL,
-  `precio` decimal(18,3) NOT NULL,
-  `categoriaID` int(11) NOT NULL,
-  `stock` int(11) NOT NULL,
-  `estadoID` int(11) NOT NULL,
-  PRIMARY KEY (`productoID`),
-  KEY `categoriaID` (`categoriaID`),
-  KEY `estadoID` (`estadoID`),
-  CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`categoriaID`) REFERENCES `categorias` (`categoriaID`),
-  CONSTRAINT `productos_ibfk_2` FOREIGN KEY (`estadoID`) REFERENCES `estados` (`estadoID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `productos`
---
-
-LOCK TABLES `productos` WRITE;
-/*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -621,4 +621,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-06 21:34:39
+-- Dump completed on 2024-12-08 17:32:13

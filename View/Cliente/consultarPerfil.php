@@ -22,7 +22,10 @@
         ?>
 
         <div class="body-wrapper">
-
+            
+        <?php
+                MostrarHeader();
+        ?> 
             <div class="container-fluid">
                 <div class="row">
 
@@ -79,6 +82,9 @@
     <?php
         ReferenciasJS();
     ?>
+<script src="../js/RegistrarClientes.js"></script>
+
+
 </body>
 
 </html>
