@@ -101,29 +101,26 @@
     <script src="../js/ConsultarClientes.js"></script>
 
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content" style="width: 700px;">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Confirmación</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <form action="" method="POST">
-                    <div class="modal-body">
-                    
-                        <input type="hidden" id="txtConsecutivo" name="txtConsecutivo">
-                        ¿Desea cambiar el estado del usuario <label id="lblNombre"></label> ?
-
-                    </div>
-                    <div class="modal-footer">
-                    <input type="submit" class="btn btn-primary" value="Procesar"
-                        id="btnCambiarEstadoUsuario" name="btnCambiarEstadoUsuario">
-                    </div>
-                </form>
-                
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="width: 700px;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Confirmación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+
+            <form action="" method="POST">
+                <div class="modal-body">
+                    <input type="hidden" id="txtClienteID" name="txtClienteID">
+                    ¿Desea cambiar el estado del cliente <label id="lblNombre"></label>?
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" value="Procesar"
+                        id="btnCambiarEstadoCliente" name="btnCambiarEstadoCliente">
+                </div>
+            </form>
         </div>
     </div>
+</div>
 
 </body>
 

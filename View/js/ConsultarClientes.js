@@ -11,7 +11,7 @@ $(document).ready(function() {
 
 $(document).on("click", "#btnOpenModal", function(){
 
-    $("#txtClientID").val($(this).attr('data-id'));
+    $("#txtClienteID").val($(this).attr('data-id'));
     $("#lblNombre").text($(this).attr('data-name'));
 
 });

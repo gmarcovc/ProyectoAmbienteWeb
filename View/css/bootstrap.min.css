@@ -1768,7 +1768,7 @@ pre code {
     background-color: whitesmoke;
     background-image: none;
     background-clip: padding-box;
-    border: 1px solid #94a9ff;
+    border: 1px solid black; /* Borde negro por defecto */
     border-radius: 0.5rem;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
@@ -5012,9 +5012,8 @@ button.close {
 }
 
 .modal-dialog {
-    position: relative;
-    width: auto;
-    margin: 10px
+    max-height: 90vh;
+    overflow-y: auto; 
 }
 
 .modal-content {
@@ -5068,7 +5067,9 @@ button.close {
     position: relative;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
-    padding: 15px
+    padding: 15px;
+    max-height: 60vh;
+    overflow-y: auto; 
 }
 
 .modal-footer {
