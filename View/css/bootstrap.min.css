@@ -1768,7 +1768,7 @@ pre code {
     background-color: whitesmoke;
     background-image: none;
     background-clip: padding-box;
-    border: 1px solid black; /* Borde negro por defecto */
+    border: 1px solid black; 
     border-radius: 0.5rem;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
@@ -1781,9 +1781,9 @@ pre code {
 .form-control:focus {
     color: #495057;
     background-color: #fff;
-    border-color: #80bdff; /* Borde azul al hacer foco */
+    border-color: #80bdff; 
     outline: 0;
-    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25); /* Efecto sombra azul opcional */
+    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25); 
 }
 
 .form-control::-webkit-input-placeholder {
