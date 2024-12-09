@@ -55,13 +55,13 @@
         }
     }
 
-    function ActualizarContrasenaModel($Consecutivo, $Codigo)
+    function ActualizarContrasenaModel($ClienteID, $Codigo)
     {
         try
         {
             $enlace = AbrirBD();
 
-            $sentencia = "CALL ActualizarContrasena('$Consecutivo','$Codigo')";
+            $sentencia = "CALL ActualizarContrasena('$ClienteID','$Codigo')";
             $resultado = $enlace -> query($sentencia);
 
             CerrarBD($enlace);

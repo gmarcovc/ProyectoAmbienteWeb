@@ -131,6 +131,10 @@
             $mail -> MsgHTML($contenido);   
             $mail -> AddAddress($destinatario);
     
-            $mail -> send();
+            try {
+                $mail->send();
+            } catch (Exception $e) {
+                echo "El mensaje no pudo ser enviado. Error: {$mail->ErrorInfo}";
+            }
         }
     ?>
