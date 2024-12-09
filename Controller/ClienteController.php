@@ -68,8 +68,6 @@
         $apellido2 = $_POST["txtApellido2"]; 
         $rolID = $_POST["txtRol"];
         $provinciaID = $_POST["ddlProvincias"]; 
-        $cantonID = $_POST["ddlCantones"];
-        $distritoID = $_POST["ddlDistritos"]; 
         $otrasSenas = $_POST["txtOtrasSenas"];
         $codigoPostal = $_POST["txtCodigoPostal"]; 
         $correo = $_POST["txtCorreo"];
@@ -146,24 +144,6 @@
         function ConsultarProvincias()
         {
             $resultado = ConsultarProvinciasModel();
-            
-            if ($resultado != null && $resultado->num_rows > 0) {
-                return $resultado;
-            }
-        }
-
-        function ConsultarCantones($provinciaID)
-        {
-            $resultado = ConsultarCantonesModel($provinciaID);
-            
-            if ($resultado != null && $resultado->num_rows > 0) {
-                return $resultado;
-            }
-        }
-
-        function ConsultarDistritos($provinciaID, $cantonID)
-        {
-            $resultado = ConsultarDistritosModel($provinciaID, $cantonID);
             
             if ($resultado != null && $resultado->num_rows > 0) {
                 return $resultado;
