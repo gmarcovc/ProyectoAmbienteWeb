@@ -2544,6 +2544,7 @@ progress {
     -webkit-overflow-scrolling: touch;
   }
 }
+
 .form-label {
   margin-bottom: 0.5rem;
   color: #3a4752;
@@ -2584,12 +2585,9 @@ progress {
   font-weight: 400;
   line-height: 1.5;
   color: var(--bs-body-color);
-  background-color: transparent;
+  background-color: whitesmoke;
   background-clip: padding-box;
-  border: var(--bs-border-width) solid #dbe1e6;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  border: 1px solid #94a9ff; 
   border-radius: 0.5rem;
   -webkit-box-shadow: unset;
           box-shadow: unset;
@@ -16796,7 +16794,7 @@ textarea.form-control-lg {
 }
 .page-wrapper {
   position: relative;
-  background-color: #f6f8fa;
+  background-color: #78a176
 }
 
 .body-wrapper {

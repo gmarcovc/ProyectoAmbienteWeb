@@ -36,7 +36,6 @@
         }
     }
 
-    #********************Hace falta vista********************
     function ConsultarCliente($clienteID)
     {
         $resultado = ConsultarClienteModel($clienteID);

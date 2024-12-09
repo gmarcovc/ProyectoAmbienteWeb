@@ -103,7 +103,7 @@
     <?php
         ReferenciasJS();
     ?>
-    <script src="../js/ConsultarUsuarios.js"></script>
+    <script src="../js/ConsultarClientes.js"></script>
 
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
