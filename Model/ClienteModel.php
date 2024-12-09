@@ -19,7 +19,6 @@
         }
     }
  
-    #********************Hace falta vista********************
     function ConsultarClientesModel($clienteID)
     {
         try
@@ -37,7 +36,6 @@
             return null;
         }
     }
-    #********************Hace falta vista********************
     function ActualizarPerfilModel($clienteID, $cedula, $nombre, $apellido1, $apellido2, $rolID, 
     $provinciaID, $otrasSenas, $codigoPostal, $correo, $telefono)
     {
@@ -59,7 +57,6 @@
         }
     }
 
-    #********************Hace falta vista y PA********************
     function CambiarEstadoClienteModel($clienteID)
     {
         try

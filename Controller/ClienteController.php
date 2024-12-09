@@ -6,7 +6,6 @@
         session_start();
     }
 
-    #********************Hace falta vista, modelo y PA********************
     if(isset($_POST["btnActualizarAcceso"]))
     {
         $contrasenaActual = $_POST["txtContrasenaActual"];
@@ -52,13 +51,11 @@
 
     }
 
-    #********************Hace falta vista********************
     function ConsultarClientes()
     {
         return ConsultarClientesModel($_SESSION["ClienteID"]);
     }
 
-    #********************Hace falta vista********************
     if(isset($_POST["btnActualizarPerfil"]))
     {
 
@@ -114,7 +111,6 @@
             }
         }
 
-        #********************Hace falta vista, modelo y PA********************
         if(isset($_POST["btnCambiarEstadoCliente"]))
         {
             $clienteID = $_POST["txtClienteID"];
