@@ -14,9 +14,9 @@
     ReferenciasCSS();
 ?>
 
-<body class="page-wrapper">
+<body class="page-wrapper radial-gradient">
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-        data-sidebar-position="fixed" data-header-position="fixed">
+        data-sidebar-position="fixed" data-header-position="fixed" 
 
         <?php
             MostrarMenu();
@@ -70,14 +70,14 @@
                                 <div class="mb-4">
                                     <label class="form-label">Rol</label>
                                     <input type="text" class="form-control" id="txtRol" name="txtRol" readOnly="true"
-                                    style="background-color:#f1f1f1"
+                                    style="background-color: #B0C4DE"
                                     value="<?php echo $datos["nombreRol"] ?>">
                                 </div>
 
                                 <div class="mb-4">
                                     <label class="form-label">Fecha de Registro</label>
                                     <input type="text" class="form-control" id="txtFechaRegistro" name="txtFechaRegistro" readOnly="true"
-                                    style="background-color:#f1f1f1"
+                                    style="background-color: #B0C4DE"
                                     value="<?php echo $datos["fechaRegistro"] ?>">
                                 </div>
 
@@ -137,7 +137,6 @@
             </div>
         </div>
     </div>
-    
     <?php
         ReferenciasJS();
     ?>

@@ -10,9 +10,9 @@
     ReferenciasCSS();
 ?>
 
-<body class="page-wrapper">
+<body class="page-wrapper radial-gradient">
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-        data-sidebar-position="fixed" data-header-position="fixed">
+        data-sidebar-position="fixed" data-header-position="fixed" 
 
         <?php
             MostrarMenu();
@@ -90,7 +90,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
