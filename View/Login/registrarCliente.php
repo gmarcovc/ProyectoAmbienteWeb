@@ -1,5 +1,7 @@
 <?php
     include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/LoginController.php';
+    include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/ClienteController.php';
+
 ?>
 
 <!doctype html>
@@ -70,28 +72,33 @@
                                             name="txtContrasena" required>
                                     </div>
 
-                                    <div class="mb-3">
-                                        <label class="form-label">Provincia</label>
-                                        <input type="text" class="form-control" id="txtProvinciaID"
-                                            name="txtProvinciaID" required>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label class="form-label">Cantón</label>
-                                        <input type="text" class="form-control" id="txtCantonID" name="txtCantonID"
-                                            required>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label class="form-label">Distrito</label>
-                                        <input type="text" class="form-control" id="txtDistritoID" name="txtDistritoID"
-                                            required>
-                                    </div>
+                                    <div class="mb-4">
+                                    <label class="form-label">Provincia</label>
+                                    <select id="ddlProvincias" name="ddlProvincias" class="form-control">
+                                        <?php
+                                            $provincias = ConsultarProvincias();
+                                            echo "<option value=''> Seleccione </option>";
+                                            while($fila = mysqli_fetch_array($provincias)) 
+                                            {
+                                                if($fila["provinciaID"] == $datos["provinciaID"]) 
+                                                {
+                                                    echo "<option selected value=" . $fila["provinciaID"] . ">" . $fila["provincia"] . "</option>";
+                                                } 
+                                                else 
+                                                {
+                                                    echo "<option value=" . $fila["provinciaID"] . ">" . $fila["provincia"] . "</option>";
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
 
                                     <div class="mb-3">
                                         <label class="form-label">Otras Señas</label>
-                                        <input type="text" class="form-control" id="txtOtrasSenas" name="txtOtrasSenas"
-                                            required>
+                                        <input type="text" class="form-control" id="txtOtrasSenas" name="txtOtrasSenas"required>
+                                        <small class="form-text" style="color: darkblue; font-weight: bold;">Por favor, ingrese su direccion en este formato: ¨Cantón, Distrito, Otras Señas¨</small> 
+                                        <br>
+                                        <small class="form-text" style="color: darkblue; font-weight: bold;">Ejemplo: "Alajuela, Carrizal, frente a Pali"</small> 
                                     </div>
 
                                     <div class="mb-3">

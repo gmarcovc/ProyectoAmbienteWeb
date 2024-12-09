@@ -39,14 +39,14 @@
     }
     #********************Hace falta vista********************
     function ActualizarPerfilModel($clienteID, $cedula, $nombre, $apellido1, $apellido2, $rolID, 
-    $provinciaID, $cantonID, $distritoID, $otrasSenas, $codigoPostal, $correo, $telefono)
+    $provinciaID, $otrasSenas, $codigoPostal, $correo, $telefono)
     {
         try
         {
             $enlace = AbrirBD();
 
             $sentencia = "CALL ActualizarPerfil('$clienteID', '$cedula', '$nombre', '$apellido1', '$apellido2', '$rolID', 
-            '$provinciaID', '$cantonID', '$distritoID', '$otrasSenas', '$codigoPostal', '$correo', '$telefono')";
+            '$provinciaID', '$otrasSenas', '$codigoPostal', '$correo', '$telefono')";
             $resultado = $enlace -> query($sentencia);
 
             CerrarBD($enlace);
@@ -110,37 +110,5 @@
             return null;
         }
     }
-
-    function ConsultarCantonesModel($provinciaID)
-{
-    try {
-        $enlace = AbrirBD();
-        
-        $sentencia = "CALL ConsultarCantones($provinciaID)";
-        $resultado = $enlace->query($sentencia);
-        
-        CerrarBD($enlace);
-        return $resultado;
-    } catch (Exception $ex) {
-        return null;
-    }
-}
-
-function ConsultarDistritosModel($provinciaID, $cantonID)
-{
-    try {
-        $enlace = AbrirBD();
-        
-        $sentencia = "CALL ConsultarDistritos($provinciaID, $cantonID)";
-        $resultado = $enlace->query($sentencia);
-        
-        CerrarBD($enlace);
-        return $resultado;
-    } catch (Exception $ex) {
-        return null;
-    }
-}
-
-
 
     ?>

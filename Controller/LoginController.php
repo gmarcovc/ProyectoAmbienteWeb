@@ -12,9 +12,7 @@
         $apellido1 = $_POST["txtApellido1"];
         $apellido2 = $_POST["txtApellido2"];
         $contrasena = $_POST["txtContrasena"];
-        $provinciaID = $_POST["txtProvinciaID"];
-        $cantonID = $_POST["txtCantonID"];
-        $distritoID = $_POST["txtDistritoID"];
+        $provinciaID = $_POST["ddlProvincias"];
         $otrasSenas = $_POST["txtOtrasSenas"];
         $codigoPostal = $_POST["txtCodigoPostal"];
         $telefono = $_POST["txtTelefono"];
@@ -22,7 +20,7 @@
         
 
         $resultado = RegistrarClienteModel($cedula, $nombre, $apellido1, $apellido2, $contrasena, 
-        $provinciaID, $cantonID, $distritoID, $otrasSenas, $codigoPostal, $correo, $telefono);
+        $provinciaID, $otrasSenas, $codigoPostal, $correo, $telefono);
 
         if($resultado == true)
         {

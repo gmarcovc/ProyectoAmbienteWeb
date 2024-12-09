@@ -43,8 +43,6 @@
                                             <th scope="col">Rol</th>
                                             <th scope="col">Fecha Registro</th>
                                             <th scope="col">Provincia</th>
-                                            <th scope="col">Cantón</th>
-                                            <th scope="col">Distrito</th>
                                             <th scope="col">Otras Señas</th>
                                             <th scope="col">Código Postal</th>
                                             <th scope="col">Correo</th>
@@ -68,8 +66,6 @@
                                                 echo "<td>" . $fila["nombreRol"] . "</td>";
                                                 echo "<td>" . $fila["fechaRegistro"] . "</td>";
                                                 echo "<td>" . $fila["nombreProvincia"] . "</td>";
-                                                echo "<td>" . $fila["nombreCanton"] . "</td>";
-                                                echo "<td>" . $fila["nombreDistrito"] . "</td>";
                                                 echo "<td>" . $fila["otrasSenas"] . "</td>";
                                                 echo "<td>" . $fila["codigoPostal"] . "</td>";
                                                 echo "<td>" . $fila["correo"] . "</td>";

@@ -94,7 +94,6 @@
 
                                 </div>
 
-
                                 <div class="mb-4">
                                     <label class="form-label">Provincia</label>
                                     <select id="ddlProvincias" name="ddlProvincias" class="form-control">
@@ -110,48 +109,6 @@
                                                 else 
                                                 {
                                                     echo "<option value=" . $fila["provinciaID"] . ">" . $fila["provincia"] . "</option>";
-                                                }
-                                            }
-                                        ?>
-                                    </select>
-                                </div>
-                                
-                                <div class="mb-4">
-                                    <label class="form-label">Cantón</label>
-                                    <select id="ddlCantones" name="ddlCantones" class="form-control">
-                                        <?php
-                                            $cantones = ConsultarCantones($datos['provinciaID']);
-                                            echo "<option value=''>Seleccione </option>";
-                                            while($fila = mysqli_fetch_array($cantones)) 
-                                            {
-                                                if($fila["cantonID"] == $datos["cantonID"]) 
-                                                {
-                                                    echo "<option selected value=" . $fila["cantonID"] . ">" . $fila["canton"] . "</option>";
-                                                } 
-                                                else 
-                                                {
-                                                    echo "<option value=" . $fila["cantonID"] . ">" . $fila["canton"] . "</option>";
-                                                }
-                                            }
-                                        ?>
-                                    </select>
-                                </div>
-
-                                <div class="mb-4">
-                                    <label class="form-label">Distrito</label>
-                                    <select id="ddlDistritos" name="ddlDistritos" class="form-control">
-                                        <?php
-                                            $distritos = ConsultarDistritos($datos['provinciaID'], $datos['cantonID']);
-                                            echo "<option value=''> Seleccione </option>";
-                                            while($fila = mysqli_fetch_array($distritos)) 
-                                            {
-                                                if($fila["distritoID"] == $datos["distritoID"]) 
-                                                {
-                                                    echo "<option selected value=" . $fila["distritoID"] . ">" . $fila["distrito"] . "</option>";
-                                                } 
-                                                else 
-                                                {
-                                                    echo "<option value=" . $fila["distritoID"] . ">" . $fila["distrito"] . "</option>";
                                                 }
                                             }
                                         ?>

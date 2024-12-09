@@ -83,20 +83,23 @@
 
                                 <div class="mb-4">
                                     <label class="form-label">Provincia</label>
-                                    <input type="text" class="form-control" id="txtProvincia" name="txtProvinciaID"
-                                    value="<?php echo $datos["nombreProvincia"] ?>">
-                                </div>
-
-                                <div class="mb-4">
-                                    <label class="form-label">Cantón</label>
-                                    <input type="text" class="form-control" id="txtCanton" name="txtCantonID"
-                                    value="<?php echo $datos["nombreCanton"] ?>">
-                                </div>
-
-                                <div class="mb-4">
-                                    <label class="form-label">Distrito</label>
-                                    <input type="text" class="form-control" id="txtDistrito" name="txtDistritoID"
-                                    value="<?php echo $datos["nombreDistrito"] ?>">
+                                    <select id="ddlProvincias" name="ddlProvincias" class="form-control">
+                                        <?php
+                                            $provincias = ConsultarProvincias();
+                                            echo "<option value=''> Seleccione </option>";
+                                            while($fila = mysqli_fetch_array($provincias)) 
+                                            {
+                                                if($fila["provinciaID"] == $datos["provinciaID"]) 
+                                                {
+                                                    echo "<option selected value=" . $fila["provinciaID"] . ">" . $fila["provincia"] . "</option>";
+                                                } 
+                                                else 
+                                                {
+                                                    echo "<option value=" . $fila["provinciaID"] . ">" . $fila["provincia"] . "</option>";
+                                                }
+                                            }
+                                        ?>
+                                    </select>
                                 </div>
 
                                 <div class="mb-4">
