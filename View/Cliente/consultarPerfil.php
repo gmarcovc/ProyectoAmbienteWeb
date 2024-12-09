@@ -4,6 +4,7 @@
 
     $id = $_SESSION["ClienteID"];
     $datos = ConsultarCliente($id);
+
 ?>
 
 <!doctype html>
@@ -44,27 +45,82 @@
 
                                 <div class="mb-3">
                                     <label class="form-label">Cédula</label>
-                                    <input type="text" class="form-control" id="txtCedula"
-                                        name="txtCedula" value="<?php echo $datos["txtCedula"] ?>">
+                                    <input type="text" class="form-control" id="txtCedula"name="txtCedula" 
+                                    value="<?php echo $datos["cedula"] ?>">
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="form-label">Nombre</label>
                                     <input type="text" class="form-control" id="txtNombre" name="txtNombre"
-                                    value="<?php echo $datos["Nombre"] ?>">
+                                    value="<?php echo $datos["nombre"] ?>">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">Correo Electrónico</label>
-                                    <input type="email" class="form-control" id="txtCorreo" name="txtCorreo"
-                                    value="<?php echo $datos["Correo"] ?>">
+                                    <label class="form-label">Primer Apellido</label>
+                                    <input type="text" class="form-control" id="txtApellido1" name="txtApellido1"
+                                    value="<?php echo $datos["apellido1"] ?>">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Segundo Apellido</label>
+                                    <input type="text" class="form-control" id="txtApellido2" name="txtApellido2"
+                                    value="<?php echo $datos["apellido2"] ?>">
                                 </div>
 
                                 <div class="mb-4">
                                     <label class="form-label">Rol</label>
                                     <input type="text" class="form-control" id="txtRol" name="txtRol" readOnly="true"
                                     style="background-color:#f1f1f1"
-                                    value="<?php echo $datos["NombreRol"] ?>">
+                                    value="<?php echo $datos["nombreRol"] ?>">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label">Fecha de Registro</label>
+                                    <input type="text" class="form-control" id="txtFechaRegistro" name="txtFechaRegistro" readOnly="true"
+                                    style="background-color:#f1f1f1"
+                                    value="<?php echo $datos["fechaRegistro"] ?>">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label">Provincia</label>
+                                    <input type="text" class="form-control" id="txtProvincia" name="txtProvincia"
+                                    value="<?php echo $datos["nombreProvincia"] ?>">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label">Cantón</label>
+                                    <input type="text" class="form-control" id="txtCanton" name="txtCanton"
+                                    value="<?php echo $datos["nombreCanton"] ?>">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label">Distrito</label>
+                                    <input type="text" class="form-control" id="txtDistrito" name="txtDistrito"
+                                    value="<?php echo $datos["nombreDistrito"] ?>">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label">Otras Señas</label>
+                                    <input type="text" class="form-control" id="txtOtrasSenas" name="txtOtrasSenas"
+                                    value="<?php echo $datos["otrasSenas"] ?>">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label">Código Postal</label>
+                                    <input type="text" class="form-control" id="txtCodigoPostal" name="txtCodigoPostal"
+                                    value="<?php echo $datos["codigoPostal"] ?>">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Correo Electrónico</label>
+                                    <input type="email" class="form-control" id="txtCorreo" name="txtCorreo"
+                                    value="<?php echo $datos["correo"] ?>">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label">Número de Teléfono</label>
+                                    <input type="text" class="form-control" id="txtTelefono" name="txtTelefono"
+                                    value="<?php echo $datos["telefono"] ?>">
                                 </div>
 
                                 <input type="submit" class="btn btn-primary" value="Procesar" id="btnActualizarPerfil"
@@ -82,8 +138,6 @@
     <?php
         ReferenciasJS();
     ?>
-<script src="../js/RegistrarClientes.js"></script>
-
 
 </body>
 

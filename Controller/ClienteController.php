@@ -48,7 +48,7 @@
         else
         {
             $_POST["txtMensaje"] = "Su información no se ha obtenido correctamente";
-            header('location: ../../View/Login/home.php');
+            #header('location: ../../View/Login/home.php');
         }
 
     }
