@@ -66,6 +66,7 @@
         $nombre = $_POST["txtNombre"];
         $apellido1 = $_POST["txtApellido1"]; 
         $apellido2 = $_POST["txtApellido2"]; 
+        $rolID = $_POST["txtRolID"];
         $provinciaID = $_POST["txtProvinciaID"]; 
         $cantonID = $_POST["txtCantonID"];
         $distritoID = $_POST["txtDistritoID"]; 
@@ -74,7 +75,8 @@
         $correo = $_POST["txtCorreo"];
         $telefono = $_POST["txtTelefono"];
 
-        $resultado = ActualizarPerfilModel($_SESSION["ClienteID"],$cedula,$nombre,$correo,0);
+        $resultado = ActualizarPerfilModel($_SESSION["ClienteID"],$cedula,$nombre,$apellido1,$apellido2,$rolID,
+        $provinciaID,$cantonID,$distritoID,$otrasSenas,$codigoPostal,$correo,$telefono);
         
         if($resultado == true)
         {
@@ -87,7 +89,6 @@
         }
     }
 
-    #********************Hace falta vista, modelo y PA********************
         if(isset($_POST["btnActualizarCliente"]))
         {
             $clienteID = $_POST["txtClienteID"];
@@ -95,8 +96,8 @@
             $nombre = $_POST["txtNombre"];
             $apellido1 = $_POST["txtApellido1"]; 
             $apellido2 = $_POST["txtApellido2"]; 
-            $rolID = $_POST["txtRolID"];
-            $provinciaID = $_POST["txtProvinciaID"]; 
+            $rolID = $_POST["ddlRoles"];
+            $provinciaID = $_POST["ddlProvincias"]; 
             $cantonID = $_POST["txtCantonID"];
             $distritoID = $_POST["txtDistritoID"]; 
             $otrasSenas = $_POST["txtOtrasSenas"];
@@ -113,7 +114,7 @@
             }
             else
             {
-                $_POST["txtMensaje"] = "No fue posible actualizar la información del usuario";
+                $_POST["txtMensaje"] = "No fue posible actualizar la información del cliente";
             }
         }
 
@@ -134,13 +135,39 @@
             }
         }
 
-        #********************Hace falta vista, modelo y PA********************
         function ConsultarRoles()
         {
             $resultado = ConsultarRolesModel();
     
             if($resultado != null && $resultado -> num_rows > 0)
             {
+                return $resultado;
+            }
+        }
+
+        function ConsultarProvincias()
+        {
+            $resultado = ConsultarProvinciasModel();
+            
+            if ($resultado != null && $resultado->num_rows > 0) {
+                return $resultado;
+            }
+        }
+
+        function ConsultarCantones($provinciaID)
+        {
+            $resultado = ConsultarCantonesModel($provinciaID);
+            
+            if ($resultado != null && $resultado->num_rows > 0) {
+                return $resultado;
+            }
+        }
+
+        function ConsultarDistritos($provinciaID, $cantonID)
+        {
+            $resultado = ConsultarDistritosModel($provinciaID, $cantonID);
+            
+            if ($resultado != null && $resultado->num_rows > 0) {
                 return $resultado;
             }
         }

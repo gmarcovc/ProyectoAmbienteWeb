@@ -83,19 +83,19 @@
 
                                 <div class="mb-4">
                                     <label class="form-label">Provincia</label>
-                                    <input type="text" class="form-control" id="txtProvincia" name="txtProvincia"
+                                    <input type="text" class="form-control" id="txtProvincia" name="txtProvinciaID"
                                     value="<?php echo $datos["nombreProvincia"] ?>">
                                 </div>
 
                                 <div class="mb-4">
                                     <label class="form-label">Cantón</label>
-                                    <input type="text" class="form-control" id="txtCanton" name="txtCanton"
+                                    <input type="text" class="form-control" id="txtCanton" name="txtCantonID"
                                     value="<?php echo $datos["nombreCanton"] ?>">
                                 </div>
 
                                 <div class="mb-4">
                                     <label class="form-label">Distrito</label>
-                                    <input type="text" class="form-control" id="txtDistrito" name="txtDistrito"
+                                    <input type="text" class="form-control" id="txtDistrito" name="txtDistritoID"
                                     value="<?php echo $datos["nombreDistrito"] ?>">
                                 </div>
 
