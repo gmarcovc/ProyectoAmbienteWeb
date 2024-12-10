@@ -394,7 +394,6 @@ BEGIN
             fechaRegistro,
             C.provinciaID as provinciaID,
             P.provincia AS nombreProvincia,
-            C.cantonID as cantonID,
             otrasSenas,
             codigoPostal,
             correo,
@@ -612,4 +611,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-09 20:13:06
+-- Dump completed on 2024-12-09 20:31:15
