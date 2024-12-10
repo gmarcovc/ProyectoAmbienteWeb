@@ -24,12 +24,11 @@
 							        Clientes
 						        </a>
 
-						        <a href="../Producto/consultarArticulos.php" class="flex-c-m trans-04 p-lr-25">
+						        <a href="../Articulos/consultarArticulos.php" class="flex-c-m trans-04 p-lr-25">
 							        Artículos
 						        </a>
 
-                                <!-- Aca el admin puede ver las solicitudes de los clientes  -->
-                                <a href="../Producto/consultarSolicitudes.php" class="flex-c-m trans-04 p-lr-25">
+                                <a href="../Soporte/consultarSolicitudes.php" class="flex-c-m trans-04 p-lr-25">
 							        Solicitudes  
 						        </a>
 
@@ -53,10 +52,10 @@
 
     function MostrarHeader()
     {
-        $usuario = "Invitado";
+        $cliente = "Invitado";
         if(isset($_SESSION["NombreCliente"]))
         {
-            $usuario = $_SESSION["NombreCliente"];
+            $cliente = $_SESSION["NombreCliente"];
         }
 
         echo '
@@ -86,11 +85,15 @@
                                     </li>
 
                                     <li>
-                                        <a href="../Usuario/cambiarAcceso.php">Seguridad</a>
+                                        <a href="../Cliente/cambiarAcceso.php">Seguridad</a>
                                     </li>
 
                                     <li>
-                                        <a href="../Login/Resenas.php">Reseñas</a>
+                                        <a href="../Soporte/crearSolicitud.php">Servicio al Cliente</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="../Resenas/Resenas.php">Reseñas</a>
                                     </li>
 
                                     <li>

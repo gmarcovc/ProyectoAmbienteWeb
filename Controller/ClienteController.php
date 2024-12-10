@@ -123,7 +123,7 @@
             }
             else
             {
-                $_POST["txtMensaje"] = "No fue posible actualizar el estado del usuario";
+                $_POST["txtMensaje"] = "No fue posible actualizar el estado del cliente";
             }
         }
 

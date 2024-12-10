@@ -695,7 +695,7 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="../Login/soporte.php" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="../Soporte/crearSolicitud.php" class="stext-107 cl7 hov-cl1 trans-04">
 								Servicio al cliente
 							</a>
 						</li>
