@@ -117,8 +117,8 @@ CREATE TABLE `clientes` (
   `rolID` int(11) NOT NULL,
   `fechaRegistro` datetime NOT NULL,
   `provinciaID` int(11) NOT NULL,
-  `cantonID` int(11) NOT NULL,
-  `distritoID` int(11) NOT NULL,
+  `cantonID` int(11) DEFAULT NULL,
+  `distritoID` int(11) DEFAULT NULL,
   `otrasSenas` varchar(200) NOT NULL,
   `codigoPostal` varchar(10) DEFAULT NULL,
   `correo` varchar(50) NOT NULL,
@@ -129,15 +129,11 @@ CREATE TABLE `clientes` (
   UNIQUE KEY `telefono` (`telefono`),
   KEY `estadoID` (`estadoID`),
   KEY `rolID` (`rolID`),
-  KEY `distritoID` (`distritoID`),
-  KEY `cantonID` (`cantonID`),
   KEY `provinciaID` (`provinciaID`),
   CONSTRAINT `clientes_ibfk_1` FOREIGN KEY (`estadoID`) REFERENCES `estados` (`estadoID`) ON DELETE CASCADE,
   CONSTRAINT `clientes_ibfk_2` FOREIGN KEY (`rolID`) REFERENCES `roles` (`rolID`) ON DELETE CASCADE,
-  CONSTRAINT `clientes_ibfk_3` FOREIGN KEY (`distritoID`) REFERENCES `distritos` (`distritoID`) ON DELETE NO ACTION,
-  CONSTRAINT `clientes_ibfk_4` FOREIGN KEY (`cantonID`) REFERENCES `cantones` (`cantonID`) ON DELETE NO ACTION,
   CONSTRAINT `clientes_ibfk_5` FOREIGN KEY (`provinciaID`) REFERENCES `provincias` (`provinciaID`) ON DELETE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -146,7 +142,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (1,'11111111','Gian','Vasquez','Carrillo','1234',1,1,'2024-12-06 20:02:07',1,1,1,'XXX','20110','gmarcovc@gmail.com','84168055'),(2,'22222222','Fernando','Arias','Perez','1234',1,2,'2024-12-06 20:39:19',2,2,2,'XXX','2','fac@email.com','22220202'),(3,'4532635','uidshfuisf','xhhjfnjh','cjhjhjgj','1234',1,2,'2024-12-07 13:41:18',1,1,1,'SGFfzdg','1111','zzz@email.com','498390');
+INSERT INTO `clientes` VALUES (1,'11111111','Gian','Vasquez','Carrillo','1234',1,1,'2024-12-06 20:02:07',4,15,70,'XXX','20110','gmarcovc@gmail.com','84168055'),(2,'123456789','Perez','1234','22222','1234',1,2,'2024-12-06 20:39:19',1,1,2,'XXX','2','fac@email.com','22220202'),(3,'4532635','uidshfuisf','xhhjfnjh','cjhjhjgj','1234',1,2,'2024-12-07 13:41:18',1,1,1,'SGFfzdg','1111','zzz@email.com','498390'),(5,'1234','Prueba','Prueba','Prueba','1234',1,2,'2024-12-09 16:12:48',2,NULL,NULL,'Alajuela, Carrizal, XXX','2000','prueba@mail.com','000000');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -333,7 +329,7 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` VALUES (1,'Admin'),(2,'Cliente'),(3,'Admin'),(4,'Cliente');
+INSERT INTO `roles` VALUES (1,'Admin'),(2,'Cliente');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -350,7 +346,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarContrasena`(pCedula VARCHAR(9),
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarContrasena`(pClienteID VARCHAR(9),
 																	pCodigo varchar(10))
 BEGIN
 
@@ -375,34 +371,56 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarPerfil`(
-	pClienteID int(11),
+    pClienteID INT(11),
     pCedula VARCHAR(9),
     pNombre VARCHAR(50),
     pApellido1 VARCHAR(50),
     pApellido2 VARCHAR(50),
-    pProvinciaID INT,
-    pCantonID INT,
-    pDistritoID INT,
+    pRolID INT(11),
+    pProvinciaID INT(11),
     pOtrasSenas VARCHAR(200),
     pCodigoPostal VARCHAR(10),
     pCorreo VARCHAR(50),
-    pTelefono VARCHAR(15))
+    pTelefono VARCHAR(15)
+)
 BEGIN
-
-	UPDATE 	tiendaambienteproyectowebb.Clientes
-    SET 	Cedula = pCedula.
-			Nombre = pNombre.
-            Apellido1 = pApellido1.
-            Apellido2 = pApellido2.
-            ProvinciaID = pProvinciaID.
-            CantonID = pCantonID.
-            DistritoID = pDistritoID.
-            OtrasSenas = pOtrasSenas.
-            CodigoPostal = pCodigoPostal.
-            Correo = pCorreo.
-            pTelefono = pTelefono
-    WHERE	ClienteID = pClienteID;
-
+    UPDATE tiendaambienteproyectowebb.Clientes
+    SET 
+        Cedula = pCedula,
+        Nombre = pNombre,
+        Apellido1 = pApellido1,
+        Apellido2 = pApellido2,
+        RolID = CASE WHEN pRolID != 0 THEN pRolID ELSE RolID END,
+        ProvinciaID = pProvinciaID,
+        OtrasSenas = pOtrasSenas,
+        CodigoPostal = pCodigoPostal,
+        Correo = pCorreo,
+        Telefono = pTelefono
+    WHERE ClienteID = pClienteID;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `CambiarEstadoCliente` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `CambiarEstadoCliente`(pClienteID INT)
+BEGIN
+    UPDATE tiendaambienteproyectowebb.clientes
+    SET estadoID = CASE 
+                       WHEN estadoID = 1 THEN 2  
+                       ELSE 1                   
+                   END
+    WHERE clienteID = pClienteID;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -422,25 +440,26 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarCliente`(pClienteID int(11))
 BEGIN
 
-	SELECT	C.ClienteID,
+	SELECT	C.clienteID,
 			cedula,
-			Nombre,
+			nombre,
             apellido1,
             apellido2,
             contrasena,
-            estadoID,
+            C.estadoID,
             E.nombreEstado,
-            rolID,
+            C.rolID,
             R.nombreRol,
             fechaRegistro,
-            provinciaID,
-            cantonID,
-            distritoID,
+            C.provinciaID as provinciaID,
+            P.provincia AS nombreProvincia,
+            C.cantonID as cantonID,
             otrasSenas,
             codigoPostal,
             correo,
             telefono
 	FROM 	tiendaambienteproyectowebb.Clientes C
+	INNER JOIN tiendaambienteproyectowebb.Provincias P ON C.provinciaID = P.provinciaID
     INNER JOIN tiendaambienteproyectowebb.Roles R ON C.rolID = R.rolID
     INNER JOIN tiendaambienteproyectowebb.Estados E ON C.estadoID = E.estadoID
 	WHERE 	C.ClienteID = pClienteID;
@@ -476,20 +495,57 @@ BEGIN
             fechaRegistro,
             C.provinciaID as provinciaID,
             P.provincia AS nombreProvincia,
-            C.cantonID as cantonID,
-            CN.canton AS nombreCanton,
-            C.distritoID as distritoID,
-            D.distrito AS nombreDistrito,
             otrasSenas,
             codigoPostal,
             correo,
             telefono
 	FROM 	tiendaambienteproyectowebb.Clientes C
     INNER JOIN tiendaambienteproyectowebb.Provincias P ON C.provinciaID = P.provinciaID
-    INNER JOIN tiendaambienteproyectowebb.Cantones CN ON C.cantonID = CN.cantonID
-    INNER JOIN tiendaambienteproyectowebb.Distritos D ON C.distritoID = D.distritoID
     INNER JOIN tiendaambienteproyectowebb.Roles R ON C.rolID = R.rolID
     INNER JOIN tiendaambienteproyectowebb.Estados E ON C.estadoID = E.estadoID;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `ConsultarProvincias` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarProvincias`()
+BEGIN
+    SELECT provinciaID, provincia
+    FROM provincias
+    ORDER BY provinciaID;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `ConsultarRoles` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarRoles`()
+BEGIN
+
+	SELECT	rolID, nombreRol
+	FROM 	roles;
+
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -592,8 +648,6 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `RegistrarCliente`(
     pApellido2 VARCHAR(50),
     pContrasena VARCHAR(20),
     pProvinciaID INT,
-    pCantonID INT,
-    pDistritoID INT,
     pOtrasSenas VARCHAR(200),
     pCodigoPostal VARCHAR(10),
     pCorreo VARCHAR(50),
@@ -601,10 +655,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `RegistrarCliente`(
 )
 BEGIN
     INSERT INTO `tiendaambienteproyectowebb`.`clientes`(`cedula`, `nombre`, `apellido1`, `apellido2`, `contrasena`, `estadoID`, `rolID`, 
-                           `fechaRegistro`, `provinciaID`, `cantonID`, `distritoID`, `otrasSenas`, `codigoPostal`, 
+                           `fechaRegistro`, `provinciaID`, `otrasSenas`, `codigoPostal`, 
                            `correo`, `telefono`)
     VALUES (pCedula, pNombre, pApellido1, pApellido2, pContrasena, 1, 2, NOW(), 
-            pProvinciaID, pCantonID, pDistritoID, pOtrasSenas, pCodigoPostal, pCorreo, pTelefono);
+            pProvinciaID, pOtrasSenas, pCodigoPostal, pCorreo, pTelefono);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -621,4 +675,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-08 17:32:13
+-- Dump completed on 2024-12-09 20:01:52
