@@ -1,15 +1,14 @@
 <?php
-    include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/LoginController.php';
+include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/LoginController.php';
 
-    if(session_status() == PHP_SESSION_NONE) {
-        session_start();
-    }
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
-    function MostrarMenu()
-    {
-        if(isset($_SESSION["NombreCliente"]) && $_SESSION["RolID"] == "1")
-            {
-                echo '		
+function MostrarMenu()
+{
+    if (isset($_SESSION["NombreCliente"]) && $_SESSION["RolID"] == "1") {
+        echo '		
                     <!-- para admins -->
 		            <div class="container-menu-desktop">
 			            <div class="top-bar">
@@ -23,8 +22,8 @@
 					            <a href="../Cliente/consultarClientes.php" class="flex-c-m trans-04 p-lr-25">
 							        Clientes
 						        </a>
-
-						        <a href="../Articulos/consultarArticulos.php" class="flex-c-m trans-04 p-lr-25">
+                                <!-- Botón Artículos -->
+						        <a href="../Articulos/registrarArticulos.php" class="flex-c-m trans-04 p-lr-25">
 							        Artículos
 						        </a>
 
@@ -35,8 +34,8 @@
 				            </div>
 			            </div>
 		            </div>';
-                } else if (isset($_SESSION["NombreCliente"]) && $_SESSION["RolID"] == "2") {
-                echo '		
+    } else if (isset($_SESSION["NombreCliente"]) && $_SESSION["RolID"] == "2") {
+        echo '		
                 <!-- para clientes -->
                 <div class="container-menu-desktop">
                     <div class="top-bar">
@@ -47,24 +46,22 @@
                         </div>
                     </div>
                 </div>';
-            }
+    }
+}
+
+function MostrarHeader()
+{
+    $cliente = "Invitado";
+    if (isset($_SESSION["NombreCliente"])) {
+        $cliente = $_SESSION["NombreCliente"];
     }
 
-    function MostrarHeader()
-    {
-        $cliente = "Invitado";
-        if(isset($_SESSION["NombreCliente"]))
-        {
-            $cliente = $_SESSION["NombreCliente"];
-        }
-
-        echo '
+    echo '
         	<!-- Header -->
 	<header>
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
 			<!-- Topbar -->
-			<!-- Importante!! -->
 			
 			<div class="wrap-menu-desktop">
 				<nav class="limiter-menu-desktop container">
@@ -76,10 +73,9 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">';
 
-                        if(isset($_SESSION["NombreCliente"]))
-                            {
+    if (isset($_SESSION["NombreCliente"])) {
 
-                                echo '
+        echo '
                                     <li>
                                         <a href="../Cliente/consultarPerfil.php">Mi Perfil</a>
                                     </li>
@@ -102,17 +98,15 @@
                                             class="btn btn-outline-primary mx-3 mt-2 d-block">Cerrar Sesión</button>
                                         </form>
                                     </li>';
-                            }
-                            else
-                            {
-                                echo '
+    } else {
+        echo '
                                     <li>
                                         <a href="../Login/inicioSesion.php" style="width:150px"
                                                     class="btn btn-outline-primary mx-3 mt-2 d-block">Iniciar Sesión</a>
                                     </li>';
-                            }
+    }
 
-							echo'
+    echo '
 
 						</ul>
 					</div>
@@ -141,11 +135,11 @@
 				</div>
 		</div>
 	</header>';
-    }
+}
 
-    function ReferenciasCSS()
-    {
-        echo '
+function ReferenciasCSS()
+{
+    echo '
             <head>
 	            <meta charset="UTF-8">
 	            <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -172,11 +166,11 @@
                 <link rel="stylesheet" type="text/css" href="../css/util.css">
                 <link rel="stylesheet" type="text/css" href="../css/main.css">
             </head>';
-    }
+}
 
-    function ReferenciasJS()
-    {
-        echo '
+function ReferenciasJS()
+{
+    echo '
             <script src="../js/jquery.min.js"></script>
             <script src="../js/bootstrap.bundle.min.js"></script>
             <script src="../js/simplebar.js"></script>
@@ -187,6 +181,4 @@
             <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.all.min.js"></script>
         ';
-    }
-        
-?>
+}
