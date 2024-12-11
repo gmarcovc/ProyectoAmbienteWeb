@@ -1,6 +1,21 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Model/BaseDatos.php';
 
+function RegistrarArticuloModel($nombre, $precio, $cantidad, $imagen, $categoriaID, $estadoID)
+{
+    try {
+        $enlace = AbrirBD();
+
+        $sentencia = "CALL RegistrarArticulo('$nombre', $precio, $cantidad, '$imagen', $categoriaID, $estadoID)";
+        $resultado = $enlace->query($sentencia);
+
+        CerrarBD($enlace);
+        return $resultado;
+    } catch (Exception $ex) {
+        return false;
+    }
+}
+
 function ConsultarCategoriasModel() {
     try {
         $enlace = AbrirBD();
