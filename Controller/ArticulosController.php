@@ -1,6 +1,27 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Model/ArticulosModel.php';
 
+if (isset($_POST["btnRegistrarArticulo"])) {
+    $nombre = $_POST["txtNombre"];
+    $precio = $_POST["txtPrecio"];
+    $cantidad = $_POST["txtCantidad"];
+    $imagen = '/View/products_images/' . $_FILES["txtImagen"]["name"];
+    $categoriaID = $_POST["ddlCategorias"];
+    $estadoID = $_POST["ddlEstados"];
+
+    $origen = $_FILES["txtImagen"]["tmp_name"];
+    $destino = $_SERVER["DOCUMENT_ROOT"] . $imagen;
+    copy($origen, $destino);
+
+    $resultado = RegistrarArticuloModel($nombre, $precio, $cantidad, $imagen, $categoriaID, $estadoID);
+
+    if ($resultado == true) {
+        header('location: ../../View/Articulos/consultarArticulos.php');
+    } else {
+        $_POST["txtMensaje"] = "El artículo no se ha registrado correctamente.";
+    }
+}
+
 function ConsultarCategorias() {
     $resultado = ConsultarCategoriasModel();
     if ($resultado != null && $resultado->num_rows > 0) {
@@ -36,5 +57,6 @@ function ConsultarArticulo($consecutivo)
         header('location: ../../View/Articulo/consultarArticulos.php');
     }
 }
+
 
 ?>
