@@ -1,5 +1,6 @@
 <?php
-    include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/soporteController.php';
+    include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/View/layout.php';
+    include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/SoporteController.php';
 ?>
 
 <!doctype html>
@@ -8,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Soporte</title>
+    <title>Sugerencias</title>
     <link rel="shortcut icon" type="image/png" href="../images/logo-01.jpeg" />
     <link rel="stylesheet" href="../css/styles.min.css" />
     <link rel="stylesheet" href="../css/proyecto.css" />
@@ -24,11 +25,11 @@
                     <div class="col-md-8 col-lg-6 col-xxl-4">
                         <div class="card mb-0">
                             <div class="card-body">
-                                <a href="home.php" class="logo-container">
+                                <a href="../Login/home.php" class="logo-container">
                                     <img src="../images/logo-01.jpeg" alt="Logo">
                                 </a>
                                 
-                                <h3 class="text-center mb-4">Soporte</h3>
+                                <h3 class="text-center mb-4">Nos encanta escucharte</h3>
                                 <p class="text-center">Envíanos tus sugerencias</p>
 
                                 <?php
@@ -38,13 +39,8 @@
                                 ?>
 
                                 <form action="" method="POST">
-                                    <div class="mb-3">
-                                        <label class="form-label">Correo Electrónico</label>
-                                        <input type="email" class="form-control" id="txtCorreo" name="txtCorreo" required>
-                                    </div>
 
                                     <div class="mb-3">
-                                        <label class="form-label">Sugerencia</label>
                                         <textarea class="form-control" id="txtSugerencia" name="txtSugerencia" rows="5" required></textarea>
                                     </div>
 
@@ -52,7 +48,8 @@
                                 </form>
                                 
                                 <div class="mt-3 text-center">
-                                    <a href="home.php" class="text-primary fw-bold">Regresar al Inicio</a>
+                                <a href="../Login/home.php" class="text-primary fw-bold">Regresar al Inicio</a>
+
                                 </div>
                             </div>
                         </div>
