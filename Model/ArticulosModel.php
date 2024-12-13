@@ -73,4 +73,21 @@ function ConsultarArticuloModel()
             return null;
         }
     }
+
+    function EliminarArticuloModel($articuloID)
+    {
+        try 
+        {
+            $enlace = AbrirBD();
+            $sentencia = "CALL EliminarArticulo('$articuloID')";
+            $resultado = $enlace->query($sentencia);
+            CerrarBD($enlace);
+            return $resultado;
+        } 
+        catch (Exception $ex) 
+        {
+            return false;
+        }
+    }
+    
 ?>

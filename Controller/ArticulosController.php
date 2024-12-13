@@ -58,5 +58,18 @@ function ConsultarArticulo($consecutivo)
     }
 }
 
+function EliminarArticulo($articuloID)
+{
+    $resultado = EliminarArticuloModel($articuloID); // Llama al modelo para eliminar
+
+    if ($resultado) 
+    {
+        header('location: ../../View/Articulos/ConsultarArticulos.php');
+    } 
+    else 
+    {
+        $_POST["txtMensaje"] = "El artículo no se pudo eliminar correctamente";
+    }
+}
 
 ?>
