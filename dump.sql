@@ -37,7 +37,7 @@ CREATE TABLE `articulos` (
   KEY `estadoID` (`estadoID`),
   CONSTRAINT `articulos_ibfk_1` FOREIGN KEY (`categoriaID`) REFERENCES `categorias` (`categoriaID`),
   CONSTRAINT `articulos_ibfk_2` FOREIGN KEY (`estadoID`) REFERENCES `estados` (`estadoID`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,7 @@ CREATE TABLE `articulos` (
 
 LOCK TABLES `articulos` WRITE;
 /*!40000 ALTER TABLE `articulos` DISABLE KEYS */;
-INSERT INTO `articulos` VALUES (11,'Tennis',80.00,10,'htdocs\\ProyectoAmbienteWeb\\View\\images\\product-12.jpg',1,1),(12,'Camisa',15.00,10,'htdocs\\ProyectoAmbienteWeb\\View\\images\\product-08.jpg',2,1);
+INSERT INTO `articulos` VALUES (16,'ge212444',122222.00,12,'/ProyectoAmbienteWeb/View/images/products/product-11.jpg',1,2),(17,'Tennis 2',12.00,12,'/ProyectoAmbienteWeb/View/images/products/product-10.jpg',1,2),(18,'Tennis 2',12.00,12,'/ProyectoAmbienteWeb/View/images/products/product-12.jpg',1,2),(19,'Tennis 2',12.00,12,'/ProyectoAmbienteWeb/View/images/products/product-09.jpg',1,2),(20,'Test',1.00,1,'/ProyectoAmbienteWeb/View/images/products/banner-01.jpg',1,1);
 /*!40000 ALTER TABLE `articulos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -168,7 +168,7 @@ CREATE TABLE `estados` (
 
 LOCK TABLES `estados` WRITE;
 /*!40000 ALTER TABLE `estados` DISABLE KEYS */;
-INSERT INTO `estados` VALUES (1,'Activo'),(2,'Inactivo'),(3,'En proceso'),(4,'Enviado'),(5,'Cancelado'),(6,'Activo'),(7,'Inactivo'),(8,'En proceso'),(9,'Enviado'),(10,'Cancelado');
+INSERT INTO `estados` VALUES (1,'Activo'),(2,'Inactivo'),(3,'En proceso'),(4,'Enviado'),(5,'Cancelado');
 /*!40000 ALTER TABLE `estados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -444,6 +444,26 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `ConsultarCategorias` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarCategorias`()
+BEGIN
+    SELECT categoriaID, nombre 
+    FROM categorias;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `ConsultarCliente` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -519,6 +539,26 @@ BEGIN
     INNER JOIN tiendaambienteproyectowebb.Provincias P ON C.provinciaID = P.provinciaID
     INNER JOIN tiendaambienteproyectowebb.Roles R ON C.rolID = R.rolID
     INNER JOIN tiendaambienteproyectowebb.Estados E ON C.estadoID = E.estadoID;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `ConsultarEstados` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarEstados`()
+BEGIN
+    SELECT estadoID, nombreEstado 
+    FROM estados;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -734,4 +774,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-10 10:25:45
+-- Dump completed on 2024-12-15 13:13:51
