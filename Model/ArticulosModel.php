@@ -1,93 +1,59 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Model/BaseDatos.php';
 
-function RegistrarArticuloModel($nombre, $precio, $cantidad, $imagen, $categoriaID, $estadoID)
-{
+function RegistrarArticuloModel($nombre, $precio, $cantidad, $imagen, $categoriaID, $estadoID) {
     try {
         $enlace = AbrirBD();
-
         $sentencia = "CALL RegistrarArticulo('$nombre', $precio, $cantidad, '$imagen', $categoriaID, $estadoID)";
         $resultado = $enlace->query($sentencia);
 
-        CerrarBD($enlace);
-        return $resultado;
+        if ($resultado === false) {
+            throw new Exception("Error en la consulta: " . $enlace->error);
+        }
+
+        return true;
     } catch (Exception $ex) {
+        error_log("Error en RegistrarArticuloModel: " . $ex->getMessage());
         return false;
+    } finally {
+        CerrarBD($enlace);
     }
 }
 
 function ConsultarCategoriasModel() {
     try {
         $enlace = AbrirBD();
-        $sentencia = "SELECT categoriaID, nombre FROM categorias";
+        $sentencia = "CALL ConsultarCategorias()";
         $resultado = $enlace->query($sentencia);
-        CerrarBD($enlace);
+
+        if ($resultado === false) {
+            throw new Exception("Error en la consulta: " . $enlace->error);
+        }
+
         return $resultado;
     } catch (Exception $ex) {
-        error_log($ex->getMessage());
+        error_log("Error en ConsultarCategoriasModel: " . $ex->getMessage());
         return null;
+    } finally {
+        CerrarBD($enlace);
     }
 }
 
 function ConsultarEstadosModel() {
     try {
         $enlace = AbrirBD();
-        $sentencia = "SELECT estadoID, nombreEstado FROM estados";
+        $sentencia = "CALL ConsultarEstados()";
         $resultado = $enlace->query($sentencia);
-        CerrarBD($enlace);
+
+        if ($resultado === false) {
+            throw new Exception("Error en la consulta: " . $enlace->error);
+        }
+
         return $resultado;
     } catch (Exception $ex) {
-        error_log($ex->getMessage());
+        error_log("Error en ConsultarEstadosModel: " . $ex->getMessage());
         return null;
+    } finally {
+        CerrarBD($enlace);
     }
 }
-
-function ConsultarArticulosModel()
-{
-    try
-    {
-        $enlace = AbrirBD();
-        $sentencia = "CALL ConsultarArticulos()";
-        $resultado = $enlace->query($sentencia);
-        CerrarBD($enlace); 
-        return $resultado; 
-    }
-    catch(Exception $ex)
-    {
-        return null;  
-    }
-}
-
-function ConsultarArticuloModel()
-    {
-        try
-        {
-            $enlace = AbrirBD(); 
-            $sentencia = "CALL ConsultarArticulos()";
-            $resultado = $enlace->query($sentencia);
-            CerrarBD($enlace);
-            return $resultado;
-        }
-        catch(Exception $ex)
-        {
-            return null;
-        }
-    }
-
-    function EliminarArticuloModel($articuloID)
-    {
-        try 
-        {
-            $enlace = AbrirBD();
-            $sentencia = "CALL EliminarArticulo('$articuloID')";
-            $resultado = $enlace->query($sentencia);
-            CerrarBD($enlace);
-            return $resultado;
-        } 
-        catch (Exception $ex) 
-        {
-            return false;
-        }
-    }
-    
-?>
