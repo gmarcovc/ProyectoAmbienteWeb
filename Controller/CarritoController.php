@@ -11,7 +11,7 @@ if (isset($_POST["btnRegistrarCarrito"]))
         $cantidad = $_POST["CANTIDAD"];
     
     
-        $resultado = RegistrarCarritoModel($SESSION["clienteID"], $consecutivoArticulo, $cantidad );
+        $resultado = RegistrarCarritoModel($SESSION["clienteID"], $ArticuloID, $cantidad );
     
         if ($resultado == true) 
         {
