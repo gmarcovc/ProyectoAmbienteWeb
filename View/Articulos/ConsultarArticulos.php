@@ -1,28 +1,22 @@
 <?php
-    include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/View/layout.php';
-    include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/ArticulosController.php';
+include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/View/layout.php';
+include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/ArticulosController.php';
 ?>
 
 <!doctype html>
 <html lang="en">
 
-<?php
-    ReferenciasCSS();
-?>
+<?php ReferenciasCSS(); ?>
 
 <body class="page-wrapper">
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
 
-        <?php
-            MostrarMenu();
-        ?>
+        <?php MostrarMenu(); ?>
 
         <div class="body-wrapper">
 
-            <?php
-                MostrarHeader();
-            ?>
+            <?php MostrarHeader(); ?>
 
             <div class="container-fluid">
                 <div class="row">
@@ -34,7 +28,7 @@
 
                             <br />
 
-                            <a href="registrarArticulo.php" class="btn btn-primary">
+                            <a href="RegistrarArticulos.php" class="btn btn-primary">
                                 <i class="fa fa-plus" style="margin-right:5px;"></i>
                                 Registrar Artículo
                             </a>
@@ -55,28 +49,28 @@
                                         </tr>
                                     </thead>
                                     <tbody class="table-group-divider">
-
                                         <?php
-                                            $datos = ConsultarArticulos();
-                                            While($fila = mysqli_fetch_array($datos))
-                                            {
-                                                echo "<tr>";
-                                                echo "<td>" . $fila["Consecutivo"] . "</td>";
-                                                echo "<td title='" . $fila["Descripcion"] . "'>" . $fila["Nombre"] . "</td>";
-                                                echo "<td>₡ " . number_format($fila["Precio"],2) . "</td>";
-                                                echo "<td>" . $fila["Cantidad"] . "</td>";
-                                                echo "<td><img width='125' height='100' src='" . $fila["Imagen"] . "'></img></td>";
-                                                echo '<td>
+                                        $datos = ConsultarArticulos();
 
-                                                        <a href="actualizarArticulo.php?id=' . $fila["Consecutivo"] . '" class="btn">
+                                        if (!empty($datos) && mysqli_num_rows($datos) > 0) {
+                                            while ($fila = $datos->fetch_assoc()) {
+                                                echo "<tr>";
+                                                echo "<td>" . $fila["articuloID"] . "</td>";
+                                                echo "<td>" . $fila["nombre"] . "</td>";
+                                                echo "<td>₡ " . number_format($fila["precio"], 2) . "</td>";
+                                                echo "<td>" . $fila["cantidad"] . "</td>";
+                                                echo "<td><img width='125' height='100' src='" . $fila["imagen"] . "'></img></td>";
+                                                echo '<td>
+                                                        <a href="ActualizarArticulo.php?id=' . $fila["articuloID"] . '" class="btn">
                                                             <i class="fa fa-edit" style="color:blue; font-size: 1.6em;"></i>
                                                         </a>
-
                                                       </td>';
-                                                echo "</tr>";   
+                                                echo "</tr>";
                                             }
+                                        } else {
+                                            echo "<tr><td colspan='6'>No se encontraron artículos.</td></tr>";
+                                        }
                                         ?>
-
                                     </tbody>
                                 </table>
                             </div>
@@ -87,10 +81,8 @@
             </div>
         </div>
     </div>
-    
-    <?php
-        ReferenciasJS();
-    ?>
+
+    <?php ReferenciasJS(); ?>
     <script src="../js/ConsultarArticulos.js"></script>
 
 </body>

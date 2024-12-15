@@ -57,3 +57,42 @@ function ConsultarEstadosModel() {
         CerrarBD($enlace);
     }
 }
+
+function ConsultarArticulosModel() {
+    try {
+        $enlace = AbrirBD();
+        $sentencia = "CALL ConsultarArticulos()"; // Llamada al SP para obtener todos los artículos
+        $resultado = $enlace->query($sentencia);
+
+        if ($resultado === false) {
+            throw new Exception("Error en la consulta: " . $enlace->error);
+        }
+
+        return $resultado;
+    } catch (Exception $ex) {
+        error_log("Error en ConsultarArticulosModel: " . $ex->getMessage());
+        return null;
+    } finally {
+        CerrarBD($enlace);
+    }
+}
+
+function ConsultarArticuloModel($articuloID) {
+    try {
+        $enlace = AbrirBD();
+        $sentencia = "CALL ConsultarArticulo($articuloID)"; // Llamada al SP para obtener un artículo por ID
+        $resultado = $enlace->query($sentencia);
+
+        if ($resultado === false) {
+            throw new Exception("Error en la consulta: " . $enlace->error);
+        }
+
+        return $resultado->fetch_assoc(); // Retorna una fila única
+    } catch (Exception $ex) {
+        error_log("Error en ConsultarArticuloModel: " . $ex->getMessage());
+        return null;
+    } finally {
+        CerrarBD($enlace);
+    }
+}
+

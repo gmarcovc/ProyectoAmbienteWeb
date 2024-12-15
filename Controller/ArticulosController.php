@@ -53,3 +53,13 @@ function ConsultarEstados() {
     $resultado = ConsultarEstadosModel();
     return ($resultado != null) ? $resultado : null;
 }
+
+function ConsultarArticulos() {
+    $resultado = ConsultarArticulosModel();
+    return ($resultado != null) ? $resultado : [];
+}
+
+function ConsultarArticulo($articuloID) {
+    $resultado = ConsultarArticuloModel($articuloID);
+    return ($resultado != null) ? $resultado : null;
+}
