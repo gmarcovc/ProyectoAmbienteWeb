@@ -1,6 +1,7 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Model/ArticulosModel.php';
 
+// Registrar un nuevo artículo
 if (isset($_POST["btnRegistrarArticulo"])) {
     if (empty($_POST["txtNombre"]) || empty($_POST["txtPrecio"]) || 
         empty($_POST["ddlCategorias"]) || empty($_FILES["txtImagen"]["name"])) {
@@ -16,13 +17,13 @@ if (isset($_POST["btnRegistrarArticulo"])) {
     $estadoID = intval($_POST["ddlEstados"]);
     $imagen = '/ProyectoAmbienteWeb/View/images/products/' . basename($_FILES["txtImagen"]["name"]);
 
-    // Verificar si el directorio de imágenes existe
+    // Crear directorio si no existe
     $directorioImagenes = $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/View/images/products/';
     if (!is_dir($directorioImagenes)) {
         mkdir($directorioImagenes, 0777, true);
     }
 
-    // Mover el archivo subido
+    // Mover la imagen subida
     $origen = $_FILES["txtImagen"]["tmp_name"];
     $destino = $directorioImagenes . basename($_FILES["txtImagen"]["name"]);
 
@@ -36,7 +37,7 @@ if (isset($_POST["btnRegistrarArticulo"])) {
     $resultado = RegistrarArticuloModel($nombre, $precio, $cantidad, $imagen, $categoriaID, $estadoID);
 
     if ($resultado === true) {
-        header('Location: /ProyectoAmbienteWeb/View/Articulos/ConsultarArticulos.php');
+        header('Location: /ProyectoAmbienteWeb/View/Articulos/ConsultarArticulos.php?mensaje=Artículo registrado correctamente');
         exit;
     } else {
         $mensajeError = "El artículo no se ha registrado correctamente.";
@@ -44,22 +45,66 @@ if (isset($_POST["btnRegistrarArticulo"])) {
     }
 }
 
-function ConsultarCategorias() {
-    $resultado = ConsultarCategoriasModel();
-    return ($resultado != null) ? $resultado : null;
+// Actualizar un artículo existente
+if (isset($_POST["btnActualizarArticulo"])) {
+    $articuloID = intval($_POST["txtConsecutivo"]);
+    $nombre = $_POST["txtNombre"];
+    $descripcion = $_POST["txtDescripcion"];
+    $precio = floatval($_POST["txtPrecio"]);
+    $cantidad = intval($_POST["txtCantidad"]);
+    $categoriaID = intval($_POST["ddlCategoria"]);
+    $estadoID = intval($_POST["ddlEstado"]);
+
+    // Manejo de la imagen (opcional)
+    $imagen = '';
+    if (!empty($_FILES["txtImagen"]["name"])) {
+        $nombreImagen = basename($_FILES["txtImagen"]["name"]);
+        $rutaImagen = '/ProyectoAmbienteWeb/View/images/products/' . $nombreImagen;
+        $destino = $_SERVER["DOCUMENT_ROOT"] . $rutaImagen;
+
+        // Crear el directorio si no existe
+        if (!is_dir(dirname($destino))) {
+            mkdir(dirname($destino), 0777, true);
+        }
+
+        // Mover el archivo al directorio de destino
+        if (!move_uploaded_file($_FILES["txtImagen"]["tmp_name"], $destino)) {
+            header("Location: /ProyectoAmbienteWeb/View/Articulos/ActualizarArticulos.php?id=$articuloID&mensaje=Error al subir la imagen");
+            exit;
+        }
+
+        $imagen = $rutaImagen;
+    }
+
+    // Llamar al modelo para actualizar el artículo
+    $resultado = ActualizarArticuloModel($articuloID, $nombre, $descripcion, $precio, $cantidad, $imagen, $categoriaID, $estadoID);
+
+    if ($resultado) {
+        header("Location: /ProyectoAmbienteWeb/View/Articulos/ConsultarArticulos.php?mensaje=Artículo actualizado correctamente");
+        exit;
+    } else {
+        header("Location: /ProyectoAmbienteWeb/View/Articulos/ActualizarArticulos.php?id=$articuloID&mensaje=Error al actualizar el artículo");
+        exit;
+    }
 }
 
-function ConsultarEstados() {
-    $resultado = ConsultarEstadosModel();
-    return ($resultado != null) ? $resultado : null;
-}
-
-function ConsultarArticulos() {
-    $resultado = ConsultarArticulosModel();
-    return ($resultado != null) ? $resultado : [];
-}
-
+// Función para consultar un artículo por ID
 function ConsultarArticulo($articuloID) {
-    $resultado = ConsultarArticuloModel($articuloID);
-    return ($resultado != null) ? $resultado : null;
+    return ConsultarArticuloModel($articuloID);
 }
+
+// Función para obtener categorías
+function ConsultarCategorias() {
+    return ConsultarCategoriasModel();
+}
+
+// Función para obtener estados
+function ConsultarEstados() {
+    return ConsultarEstadosModel();
+}
+
+// Función para consultar todos los artículos
+function ConsultarArticulos() {
+    return ConsultarArticulosModel();
+}
+?>

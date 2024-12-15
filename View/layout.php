@@ -89,10 +89,6 @@ function MostrarHeader()
                                     </li>
 
                                     <li>
-                                        <a href="../Resenas/Resenas.php">Reseñas</a>
-                                    </li>
-
-                                    <li>
                                         <form action="" method="POST">
                                             <button type="submit" style="width:150px" id="btnCerrarSesion" name="btnCerrarSesion"
                                             class="btn btn-outline-primary mx-3 mt-2 d-block">Cerrar Sesión</button>

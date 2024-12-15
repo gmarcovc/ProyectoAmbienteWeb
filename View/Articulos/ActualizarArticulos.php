@@ -1,102 +1,117 @@
 <?php
-    include_once $_SERVER["DOCUMENT_ROOT"] . '/View/layout.php';
-    include_once $_SERVER["DOCUMENT_ROOT"] . '/Controller/ArticuloController.php';
+include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/View/layout.php';
+include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/ArticulosController.php';
 
-    $id = $_GET["id"];
-    $datos = ConsultarArticulos($id);
+// Obtener el ID del artículo a actualizar
+$id = intval($_GET["id"]);
+$datos = ConsultarArticulo($id);
+
+if ($datos === null) {
+    die("No se encontró el artículo con ID $id.");
+}
+
+$categorias = ConsultarCategorias();
+$estados = ConsultarEstados();
 ?>
 
 <!doctype html>
 <html lang="en">
 
-<?php
-    ReferenciasCSS();
-?>
+<?php ReferenciasCSS(); ?>
 
-<body class="page-wrapper">
+<body class="page-wrapper radial-gradient">
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
 
-        <?php
-            MostrarMenu();
-        ?>
+        <?php MostrarMenu(); ?>
 
         <div class="body-wrapper">
-
-            <?php
-                MostrarHeader();
-            ?>
+            <?php MostrarHeader(); ?>
 
             <div class="container-fluid">
                 <div class="row">
-
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title fw-semibold mb-4">Actualizar Artículo</h5>
 
-                            <?php
-                                if(isset($_POST["txtMensaje"]))
-                                {
-                                    echo '<div class="alert alert-info Centrado">' . $_POST["txtMensaje"] . '</div>';
-                                }
-                            ?>
+                            <?php if (isset($_GET["mensaje"])): ?>
+                                <div class="alert alert-info text-center">
+                                    <?= htmlspecialchars($_GET["mensaje"]) ?>
+                                </div>
+                            <?php endif; ?>
 
-                            <form action="" method="POST" enctype="multipart/form-data">
-
-                                <input type="hidden" id="txtConsecutivo" name="txtConsecutivo" value="<?php echo $datos["Consecutivo"] ?>">
+                            <form action="/ProyectoAmbienteWeb/Controller/ArticulosController.php" method="POST" enctype="multipart/form-data">
+                                <input type="hidden" id="txtConsecutivo" name="txtConsecutivo" value="<?= htmlspecialchars($datos["articuloID"]) ?>">
 
                                 <div class="mb-3">
                                     <label class="form-label">Nombre</label>
-                                    <input type="text" class="form-control" id="txtNombre" name="txtNombre" value="<?php echo $datos["Nombre"] ?>">
+                                    <input type="text" class="form-control" id="txtNombre" name="txtNombre"
+                                           value="<?= htmlspecialchars($datos["nombre"]) ?>" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="form-label">Descripción</label>
-                                    <textarea class="form-control" id="txtDescripcion" name="txtDescripcion"><?php echo $datos["Descripcion"] ?></textarea>
+                                    <textarea class="form-control" id="txtDescripcion" name="txtDescripcion" required><?= htmlspecialchars($datos["descripcion"]) ?></textarea>
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="form-label">Precio</label>
-                                    <input type="text" class="form-control" id="txtPrecio" maxlength="8"
-                                    onkeypress="return SoloNumeros(event)"
-                                    name="txtPrecio" value="<?php echo $datos["Precio"] ?>">
+                                    <input type="number" step="0.01" class="form-control" id="txtPrecio" name="txtPrecio"
+                                           value="<?= htmlspecialchars($datos["precio"]) ?>" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Cantidad</label>
+                                    <input type="number" class="form-control" id="txtCantidad" name="txtCantidad"
+                                           value="<?= htmlspecialchars($datos["cantidad"]) ?>" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Categoría</label>
+                                    <select id="ddlCategoria" name="ddlCategoria" class="form-control" required>
+                                        <?php while ($categoria = $categorias->fetch_assoc()): ?>
+                                            <option value="<?= htmlspecialchars($categoria['categoriaID']) ?>" <?= ($datos['categoriaID'] == $categoria['categoriaID']) ? 'selected' : '' ?>>
+                                                <?= htmlspecialchars($categoria['nombre']) ?>
+                                            </option>
+                                        <?php endwhile; ?>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Estado</label>
+                                    <select id="ddlEstado" name="ddlEstado" class="form-control" required>
+                                        <?php while ($estado = $estados->fetch_assoc()): ?>
+                                            <option value="<?= htmlspecialchars($estado['estadoID']) ?>" <?= ($datos['estadoID'] == $estado['estadoID']) ? 'selected' : '' ?>>
+                                                <?= htmlspecialchars($estado['nombreEstado']) ?>
+                                            </option>
+                                        <?php endwhile; ?>
+                                    </select>
                                 </div>
 
                                 <div class="mb-4">
-                                    <label class="form-label">Cantidad</label>
-                                    <input type="text" class="form-control" id="txtCantidad" maxlength="3"
-                                    onkeypress="return SoloNumeros(event)"
-                                    name="txtCantidad" value="<?php echo $datos["Cantidad"] ?>">
-                                </div>
-
-                                <div class="mb-4 row">
-                                    <div class="col-10">
-                                        <label class="form-label">Imagen</label>
-                                        <input type="file" class="form-control" id="txtImagen" name="txtImagen"
-                                        accept="image/png, image/jpg, image/jpeg">
-                                    </div>
-                                    <div class="col-2">
-                                        <img width='175' height='150' src="<?php echo $datos["Imagen"] ?>"></img>
+                                    <label class="form-label">Imagen</label>
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <input type="file" class="form-control" id="txtImagen" name="txtImagen"
+                                                   accept="image/png, image/jpg, image/jpeg">
+                                        </div>
+                                        <div class="col-2">
+                                            <img width="175" height="150" src="<?= htmlspecialchars($datos["imagen"]) ?>" alt="Imagen actual">
+                                        </div>
                                     </div>
                                 </div>
 
-                                <input type="submit" class="btn btn-primary" value="Procesar" id="btnActualizarArticulo"
-                                    name="btnActualizarArticulo">
-
+                                <button type="submit" class="btn btn-primary" id="btnActualizarArticulo" name="btnActualizarArticulo">
+                                    Actualizar Artículo
+                                </button>
                             </form>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-    
-    <?php
-        ReferenciasJS();
-    ?>
-    <script src="../js/Comunes.js"></script>
 
+    <?php ReferenciasJS(); ?>
 </body>
-
 </html>

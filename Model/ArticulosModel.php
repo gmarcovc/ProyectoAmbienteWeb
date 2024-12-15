@@ -1,6 +1,7 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Model/BaseDatos.php';
 
+// Registrar un nuevo artículo
 function RegistrarArticuloModel($nombre, $precio, $cantidad, $imagen, $categoriaID, $estadoID) {
     try {
         $enlace = AbrirBD();
@@ -20,6 +21,7 @@ function RegistrarArticuloModel($nombre, $precio, $cantidad, $imagen, $categoria
     }
 }
 
+// Consultar todas las categorías
 function ConsultarCategoriasModel() {
     try {
         $enlace = AbrirBD();
@@ -39,6 +41,7 @@ function ConsultarCategoriasModel() {
     }
 }
 
+// Consultar todos los estados
 function ConsultarEstadosModel() {
     try {
         $enlace = AbrirBD();
@@ -58,10 +61,11 @@ function ConsultarEstadosModel() {
     }
 }
 
+// Consultar todos los artículos
 function ConsultarArticulosModel() {
     try {
         $enlace = AbrirBD();
-        $sentencia = "CALL ConsultarArticulos()"; // Llamada al SP para obtener todos los artículos
+        $sentencia = "CALL ConsultarArticulos()"; 
         $resultado = $enlace->query($sentencia);
 
         if ($resultado === false) {
@@ -77,17 +81,18 @@ function ConsultarArticulosModel() {
     }
 }
 
+// Consultar un artículo específico por su ID
 function ConsultarArticuloModel($articuloID) {
     try {
         $enlace = AbrirBD();
-        $sentencia = "CALL ConsultarArticulo($articuloID)"; // Llamada al SP para obtener un artículo por ID
+        $sentencia = "CALL ConsultarArticulo($articuloID)"; 
         $resultado = $enlace->query($sentencia);
 
         if ($resultado === false) {
             throw new Exception("Error en la consulta: " . $enlace->error);
         }
 
-        return $resultado->fetch_assoc(); // Retorna una fila única
+        return $resultado->fetch_assoc(); 
     } catch (Exception $ex) {
         error_log("Error en ConsultarArticuloModel: " . $ex->getMessage());
         return null;
@@ -96,3 +101,28 @@ function ConsultarArticuloModel($articuloID) {
     }
 }
 
+// Actualizar un artículo existente
+function ActualizarArticuloModel($articuloID, $nombre, $descripcion, $precio, $cantidad, $imagen, $categoriaID, $estadoID) {
+    try {
+        $enlace = AbrirBD();
+
+        // Si no hay imagen nueva, se actualiza manteniendo la actual
+        $sentencia = $imagen
+            ? "CALL ActualizarArticulo($articuloID, '$nombre', '$descripcion', $precio, $cantidad, '$imagen', $categoriaID, $estadoID)"
+            : "CALL ActualizarArticulo($articuloID, '$nombre', '$descripcion', $precio, $cantidad, '', $categoriaID, $estadoID)";
+
+        $resultado = $enlace->query($sentencia);
+
+        if ($resultado === false) {
+            throw new Exception("Error en la consulta: " . $enlace->error);
+        }
+
+        return true; 
+    } catch (Exception $ex) {
+        error_log("Error en ActualizarArticuloModel: " . $ex->getMessage());
+        return false; 
+    } finally {
+        CerrarBD($enlace);
+    }
+}
+?>

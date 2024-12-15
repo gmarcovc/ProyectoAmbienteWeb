@@ -56,20 +56,23 @@ include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/Articu
                                             while ($fila = $datos->fetch_assoc()) {
                                                 echo "<tr>";
                                                 echo "<td>" . $fila["articuloID"] . "</td>";
-                                                echo "<td>" . $fila["nombre"] . "</td>";
+                                                echo "<td>" . htmlspecialchars($fila["nombre"]) . "</td>";
                                                 echo "<td>₡ " . number_format($fila["precio"], 2) . "</td>";
-                                                echo "<td>" . $fila["cantidad"] . "</td>";
-                                                echo "<td><img width='125' height='100' src='" . $fila["imagen"] . "'></img></td>";
-                                                echo '<td>
-                                                        <a href="ActualizarArticulo.php?id=' . $fila["articuloID"] . '" class="btn">
-                                                            <i class="fa fa-edit" style="color:blue; font-size: 1.6em;"></i>
-                                                        </a>
-                                                      </td>';
+                                                echo "<td>" . htmlspecialchars($fila["cantidad"]) . "</td>";
+                                                echo "<td><img width='125' height='100' src='" . htmlspecialchars($fila["imagen"]) . "' alt='Imagen'></td>";
+
+                                                echo "<td>
+                                                      <a href='/ProyectoAmbienteWeb/View/Articulos/ActualizarArticulo.php?id=" . $fila['articuloID'] . "' class='btn'>
+                                                          <i class='fa fa-edit' style='color:blue; font-size: 1.6em;'></i>
+                                                      </a>
+                                                      </td>";
+                                                      
                                                 echo "</tr>";
                                             }
                                         } else {
                                             echo "<tr><td colspan='6'>No se encontraron artículos.</td></tr>";
                                         }
+                                        
                                         ?>
                                     </tbody>
                                 </table>
