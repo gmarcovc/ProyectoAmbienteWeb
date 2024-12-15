@@ -29,15 +29,12 @@ CREATE TABLE `articulos` (
   `nombre` varchar(100) NOT NULL,
   `precio` decimal(10,2) NOT NULL,
   `cantidad` int(11) NOT NULL,
-  `imagen` varchar(1000) NOT NULL,
+  `imagen` varchar(1000) DEFAULT NULL,
   `categoriaID` int(11) NOT NULL,
-  `estadoID` int(11) NOT NULL,
   PRIMARY KEY (`articuloID`),
   KEY `categoriaID` (`categoriaID`),
-  KEY `estadoID` (`estadoID`),
-  CONSTRAINT `articulos_ibfk_1` FOREIGN KEY (`categoriaID`) REFERENCES `categorias` (`categoriaID`),
-  CONSTRAINT `articulos_ibfk_2` FOREIGN KEY (`estadoID`) REFERENCES `estados` (`estadoID`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  CONSTRAINT `articulos_ibfk_1` FOREIGN KEY (`categoriaID`) REFERENCES `categorias` (`categoriaID`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +43,7 @@ CREATE TABLE `articulos` (
 
 LOCK TABLES `articulos` WRITE;
 /*!40000 ALTER TABLE `articulos` DISABLE KEYS */;
-INSERT INTO `articulos` VALUES (16,'ge212444',122222.00,12,'/ProyectoAmbienteWeb/View/images/products/product-11.jpg',1,2),(17,'Tennis 2',12.00,12,'/ProyectoAmbienteWeb/View/images/products/product-10.jpg',1,2),(18,'Tennis 2',12.00,12,'/ProyectoAmbienteWeb/View/images/products/product-12.jpg',1,2),(19,'Tennis 2',12.00,12,'/ProyectoAmbienteWeb/View/images/products/product-09.jpg',1,2),(20,'Test',1.00,1,'/ProyectoAmbienteWeb/View/images/products/banner-01.jpg',1,1);
+INSERT INTO `articulos` VALUES (23,'PruebaActualizadaAhoraSi',2.00,1,'/ProyectoAmbienteWeb/View/images/articulos/banner-01.jpg',2);
 /*!40000 ALTER TABLE `articulos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -294,17 +291,14 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarArticulo`(
     pPrecio decimal(10,2),
     pCantidad int,
     pImagen varchar(1000),
-    pCategoriaID int,
-    pEstadoID int
-)
+    pCategoriaID int)
 BEGIN
     UPDATE `articulos`
     SET nombre = pNombre,
         precio = pPrecio,
         cantidad = pCantidad,
         imagen = CASE WHEN pImagen = '' THEN imagen ELSE pImagen END,
-        categoriaID = pCategoriaID,
-        estadoID = pEstadoID
+        categoriaID = pCategoriaID
     WHERE articuloID = pArticuloID;
 END ;;
 DELIMITER ;
@@ -415,7 +409,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarArticulo`(pArticuloID bigint)
 BEGIN
-    SELECT articuloID, nombre, precio, cantidad, imagen, categoriaID, estadoID
+    SELECT articuloID, nombre, precio, cantidad, imagen, categoriaID
     FROM `articulos`
     WHERE articuloID = pArticuloID;
 END ;;
@@ -436,8 +430,16 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarArticulos`()
 BEGIN
-    SELECT articuloID, nombre, precio, cantidad, imagen, categoriaID, estadoID
-    FROM `articulos`;
+    SELECT 
+    A.articuloID, 
+    A.nombre, 
+    precio, 
+    cantidad, 
+    imagen, 
+    A.categoriaID as categoriaID,
+	C.nombre AS nombreCategoria
+    FROM tiendaambienteproyectowebb.articulos A
+    INNER JOIN tiendaambienteproyectowebb.categorias C ON A.categoriaID = C.categoriaID;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -718,12 +720,11 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `RegistrarArticulo`(
     pPrecio decimal(10,2),
     pCantidad int,
     pImagen varchar(1000),
-    pCategoriaID int,
-    pEstadoID int
+    pCategoriaID int
 )
 BEGIN
-    INSERT INTO `articulos` (nombre, precio, cantidad, imagen, categoriaID, estadoID)
-    VALUES (pNombre, pPrecio, pCantidad, pImagen, pCategoriaID, pEstadoID);
+    INSERT INTO `articulos` (nombre, precio, cantidad, imagen, categoriaID)
+    VALUES (pNombre, pPrecio, pCantidad, pImagen, pCategoriaID);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -774,4 +775,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-15 13:13:51
+-- Dump completed on 2024-12-15 15:49:35

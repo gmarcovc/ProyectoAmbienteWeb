@@ -20,9 +20,9 @@
 
         <div class="body-wrapper">
 
-            <?php
-                MostrarHeader();
-            ?>
+        <?php
+            MostrarHeader();
+        ?>
 
             <div class="container-fluid">
                 <div class="row">
@@ -30,7 +30,7 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h5 class="card-title">Consulta de Artículos</h5>
+                            <h5 class="card-title fw-semibold mb-4">Consulta de Artículos</h5>
 
                             <br />
 
@@ -51,6 +51,8 @@
                                             <th scope="col">Precio</th>
                                             <th scope="col">Cantidad</th>
                                             <th scope="col">Imagen</th>
+                                            <th scope="col">Categoría</th>
+                                            <th scope="col">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody class="table-group-divider">
@@ -61,16 +63,22 @@
                                             {
                                                 echo "<tr>";
                                                 echo "<td>" . $fila["articuloID"] . "</td>";
-                                                echo "<td>" . htmlspecialchars($fila["nombre"]) . "</td>";
-                                                echo "<td>₡ " . number_format($fila["precio"], 2) . "</td>";
-                                                echo "<td>" . htmlspecialchars($fila["cantidad"]) . "</td>";
+                                                echo "<td>" . $fila["nombre"] . "</td>";
+                                                echo "<td>₡ " . number_format($fila["precio"],2) . "</td>";
+                                                echo "<td>" . $fila["cantidad"] . "</td>";
 
-                                                echo "<td><img width='125' height='100' src='" . htmlspecialchars($fila["imagen"]) . "' alt='Imagen'></img></td>";
+                                                echo "<td><img width='125' height='100' src='" . $fila["imagen"] . "' alt='Imagen'></img></td>";
+                                                echo "<td>" . $fila["nombreCategoria"] . "</td>";
                                                 echo '<td>
 
-                                                        <a href="/ProyectoAmbienteWeb/View/Articulos/ActualizarArticulo.php?id=' . $fila["articuloID"] . '" class="btn">
+                                                        <a href="ActualizarArticulo.php?id=' . $fila["articuloID"] . '" class="btn">
                                                             <i class="fa fa-edit" style="color:blue; font-size: 1.6em;"></i>
                                                         </a>
+
+                                                        <button id="btnOpenModal" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                                                            data-id=' . $fila["articuloID"] . ' data-name="' . $fila["nombre"] . '">
+                                                            <i class="fa fa-trash" style="color:red; font-size: 1.6em;"></i>
+                                                        </button>
 
                                                       </td>';
                                                 echo "</tr>";   
@@ -92,6 +100,28 @@
         ReferenciasJS();
     ?>
     <script src="../js/ConsultarArticulos.js"></script>
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="width: 700px;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Confirmación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form action="" method="POST">
+                <div class="modal-body">
+                    <input type="hidden" id="txtArticuloID" name="txtArticuloID">
+                    ¿Deseas eliminar este artículo?
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" value="Procesar"
+                        id="btnEliminarArticulo" name="btnEliminarArticulo">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 </body>
 

@@ -29,7 +29,7 @@
                     <div id="consultas" class="card">
                         <div class="card-body">
 
-                            <h5 class="card-title">Consulta de Clientes</h5>
+                            <h5 class="card-title fw-semibold mb-4">Consulta de Clientes</h5>
                             <div class="table-responsive">
                                 <table id="example" class="table text-nowrap align-middle mb-0">
                                     <thead>

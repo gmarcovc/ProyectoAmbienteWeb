@@ -15,7 +15,7 @@
 
 <body class="page-wrapper radial-gradient">
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-        data-sidebar-position="fixed" data-header-position="fixed" 
+        data-sidebar-position="fixed" data-header-position="fixed">
         
         <?php
             MostrarMenu();
@@ -43,8 +43,7 @@
 
                             <form action="" method="POST">
 
-                                <input type="hidden" id="txtClienteID" name="txtClienteID"
-                                    value="<?php echo $datos["clienteID"] ?>">
+                                <input type="hidden" id="txtClienteID" name="txtClienteID"value="<?php echo $datos["clienteID"] ?>">
 
                                 <div class="mb-3">
                                     <label class="form-label">Cédula</label>
@@ -150,7 +149,7 @@
             </div>
         </div>
     </div>
-    </div>
+</div>
 
     <?php
         ReferenciasJS();

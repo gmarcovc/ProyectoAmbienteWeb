@@ -1,6 +1,9 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/View/layout.php';
 include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/ArticulosController.php';
+
+    $id = $_GET["id"];
+    $datos = ConsultarArticulo($id);
 ?>
 
 <!doctype html>
@@ -12,33 +15,25 @@ include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/Articu
 
 <body class="page-wrapper radial-gradient">
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-        data-sidebar-position="fixed" data-header-position="fixed"  
+        data-sidebar-position="fixed" data-header-position="fixed">
 
         <?php
             MostrarMenu();
         ?>
 
         <div class="body-wrapper">
-            
-        <?php
-                MostrarHeader();
-        ?> 
 
-        <div class="container-fluid">
+        <?php
+            MostrarHeader();
+        ?>
+
+            <div class="container-fluid">
                 <div class="row">
 
                     <div class="card">
                         <div class="card-body">
 
-                            <h5 class="card-title fw-semibold mb-4">Registrar Artículo</h5>
-
-                            <a href="ConsultarArticulos.php" class="btn btn-primary">
-                                <i class="fa fa-plus" style="margin-right:5px;"></i>
-                                Consultar Artículos
-                            </a>
-
-                            <br />
-                            <br />
+                            <h5 class="card-title fw-semibold mb-4">Actualizar Artículo</h5>
 
                             <?php
                                 if(isset($_POST["txtMensaje"]))
@@ -47,29 +42,38 @@ include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/Articu
                                 }
                             ?>
 
-                                <form action="" method="POST" enctype="multipart/form-data">
+                            <form action="" method="POST" enctype="multipart/form-data">
+
+                                <input type="hidden" id="txtArticuloID" name="txtArticuloID" value="<?php echo $datos["articuloID"] ?>">
 
                                 <div class="mb-3">
                                     <label class="form-label">Nombre</label>
-                                    <input type="text" class="form-control" required id="txtNombre" name="txtNombre">
+                                    <input type="text" class="form-control" id="txtNombre" name="txtNombre" value="<?php echo $datos["nombre"] ?>">
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="form-label">Precio</label>
-                                    <input type="text" class="form-control" required id="txtPrecio" name="txtPrecio"
-                                    maxlength="8" onkeypress="return SoloNumeros(event)">
+                                    <input type="text" class="form-control" id="txtPrecio" maxlength="8"
+                                    onkeypress="return SoloNumeros(event)"
+                                    name="txtPrecio" value="<?php echo $datos["precio"] ?>">
                                 </div>
 
                                 <div class="mb-4">
                                     <label class="form-label">Cantidad</label>
-                                    <input type="text" class="form-control" required id="txtCantidad" name="txtCantidad"
-                                    maxlength="3" onkeypress="return SoloNumeros(event)">
+                                    <input type="text" class="form-control" id="txtCantidad" maxlength="3"
+                                    onkeypress="return SoloNumeros(event)"
+                                    name="txtCantidad" value="<?php echo $datos["cantidad"] ?>">
                                 </div>
 
-                                <div class="mb-4">
-                                    <label class="form-label">Imagen</label>
-                                    <input type="file" class="form-control" required id="txtImagen" name="txtImagen"
-                                    accept="image/png, image/jpg, image/jpeg">
+                                <div class="mb-4 row">
+                                    <div class="col-10">
+                                        <label class="form-label">Imagen</label>
+                                        <input type="file" class="form-control" id="txtImagen" name="txtImagen"
+                                        accept="image/png, image/jpg, image/jpeg">
+                                    </div>
+                                    <div class="col-2">
+                                        <img width='175' height='150' src="<?php echo $datos["imagen"] ?>"></img>
+                                    </div>
                                 </div>
 
                                 <div class="mb-4">
@@ -93,8 +97,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/Articu
                                     </select>
                                 </div>
 
-                                <input type="submit" class="btn btn-primary" value="Procesar" id="btnRegistrarArticulo"
-                                    name="btnRegistrarArticulo">
+                                <input type="submit" class="btn btn-primary" value="Procesar" id="btnActualizarArticulo"
+                                    name="btnActualizarArticulo">
 
                             </form>
                         </div>
