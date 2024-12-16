@@ -23,7 +23,7 @@ function MostrarMenu()
 							        Clientes
 						        </a>
                                 <!-- Botón Artículos -->
-						        <a href="../Articulos/registrarArticulos.php" class="flex-c-m trans-04 p-lr-25">
+						        <a href="../Articulos/ConsultarArticulos.php" class="flex-c-m trans-04 p-lr-25">
 							        Artículos
 						        </a>
                                 <a href="../Sugerencias/consultarSugerencia.php" class="flex-c-m trans-04 p-lr-25">

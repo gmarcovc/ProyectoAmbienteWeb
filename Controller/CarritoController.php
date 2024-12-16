@@ -1,5 +1,5 @@
 <?php
-    include_once $_SERVER["DOCUMENT_ROOT"] . '/Model/CarritoModel.php';
+    include_once $_SERVER["DOCUMENT_ROOT"] . 'ProyectoAmbienteWeb/Model/CarritoModel.php';
 
     if(session_status() == PHP_SESSION_NONE) {
         session_start();
@@ -7,10 +7,10 @@
 
     if(isset($_POST["btnRegistrarCarrito"]))
     {
-        $ArticuloID = $_POST["ID_PRODUCTO"];
+        $ArticuloID = $_POST["ID_ARTICULO"];
         $cantidad = $_POST["CANTIDAD"];
         
-        $resultado = RegistrarCarritoModel($_SESSION["ClienteID"], $ArticuloID, $cantidad);
+        $resultado = RegistrarCarritoModel($_SESSION["ClienteID"], $articuloID, $cantidad);
 
         if($resultado == true)
         {
@@ -46,9 +46,9 @@
 
     if(isset($_POST["btnRemoverProductoCarrito"]))
     {
-        $ArticuloID = $_POST["txtConsecutivoProducto"];
+        $ArticuloID = $_POST["txtArticuloID"];
 
-        $resultado = RemoverProductoCarritoModel($_SESSION["ClienteID"], $ArticuloID);
+        $resultado = RemoverProductoCarritoModel($_SESSION["ClienteID"], $articuloID);
         
         if($resultado == true)
         {
@@ -56,7 +56,7 @@
         }
         else
         {
-            $_POST["txtMensaje"] = "No fue posible remover el producto de su carrito";
+            $_POST["txtMensaje"] = "No fue posible remover el artículo de su carrito";
         }
     }  
     

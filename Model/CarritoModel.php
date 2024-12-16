@@ -1,13 +1,13 @@
 <?php
-    include_once $_SERVER["DOCUMENT_ROOT"] . '/Model/BaseDatos.php';
+    include_once $_SERVER["DOCUMENT_ROOT"] . 'ProyectoAmbienteWeb/Model/BaseDatos.php';
 
-    function RegistrarCarritoModel($ClienteID, $ArticuloID, $cantidad)
+    function RegistrarCarritoModel($clienteID, $articuloID, $cantidad)
     {
         try
         {
             $enlace = AbrirBD();
 
-            $sentencia = "CALL RegistrarCarrito('$ClienteID', '$ArticuloID', '$cantidad')";
+            $sentencia = "CALL RegistrarCarrito('$clienteID', '$articuloID', '$cantidad')";
             $resultado = $enlace -> query($sentencia);
 
             CerrarBD($enlace);
@@ -19,13 +19,13 @@
         }
     }
 
-    function ConsultarCarritoModel($ClienteID)
+    function ConsultarCarritoModel($clienteID)
     {
         try
         {
             $enlace = AbrirBD();
 
-            $sentencia = "CALL ConsultarCarrito('$ClienteID')";
+            $sentencia = "CALL ConsultarCarrito('$clienteID')";
             $resultado = $enlace -> query($sentencia);
 
             CerrarBD($enlace);
@@ -37,13 +37,13 @@
         }
     }
 
-    function ConsultarResumenCarritoModel($ClienteID)
+    function ConsultarResumenCarritoModel($clienteID)
     {
         try
         {
             $enlace = AbrirBD();
 
-            $sentencia = "CALL ConsultarResumenCarrito('$ClienteID')";
+            $sentencia = "CALL ConsultarResumenCarrito('$clienteID')";
             $resultado = $enlace -> query($sentencia);
 
             CerrarBD($enlace);
@@ -55,13 +55,13 @@
         }
     }
 
-    function RemoverProductoCarritoModel($ClienteID, $ArticuloID)
+    function RemoverProductoCarritoModel($clienteID, $articuloID)
     {
         try
         {
             $enlace = AbrirBD();
 
-            $sentencia = "CALL RemoverProductoCarrito('$ClienteID', '$ArticuloID')";
+            $sentencia = "CALL RemoverProductoCarrito('$clienteID', '$articuloID')";
             $resultado = $enlace -> query($sentencia);
 
             CerrarBD($enlace);
@@ -73,13 +73,13 @@
         }
     }
 
-    function PagarCarritoModel($ClienteID)
+    function PagarCarritoModel($clienteID)
     {
         try
         {
             $enlace = AbrirBD();
 
-            $sentencia = "CALL PagarCarrito('$ClienteID')";
+            $sentencia = "CALL PagarCarrito('$clienteID')";
             $resultado = $enlace -> query($sentencia);
 
             CerrarBD($enlace);
@@ -91,13 +91,13 @@
         }
     }
 
-    function ConsultarFacturasModel($ClienteID)
+    function ConsultarFacturasModel($clienteID)
     {
         try
         {
             $enlace = AbrirBD();
 
-            $sentencia = "CALL ConsultarFacturas('$ClienteID')";
+            $sentencia = "CALL ConsultarFacturas('$clienteID')";
             $resultado = $enlace -> query($sentencia);
 
             CerrarBD($enlace);

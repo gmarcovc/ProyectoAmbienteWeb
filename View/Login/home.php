@@ -1,6 +1,6 @@
 <?php
     include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/View/layout.php';
-    #include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/ProductoController.php';
+    include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/ProductoController.php';
 ?>
 
 <!DOCTYPE html>
@@ -121,77 +121,65 @@
 		</div>
 	</section>
 
-	<!-- ARTICULOS -->
-	<section class="bg0 p-t-23 p-b-140">
-		<div class="container">
-			<div class="p-b-10">
-			<h3 class="ltext-103 cl5" style="text-align: center;">
-					NUESTROS PRODUCTOS
-				</h3>
-			</div>
-		</div>
+<!-- ARTICULOS -->
+<section class="bg0 p-t-23 p-b-140">
+    <div class="container">
+        <div class="p-b-10">
+            <h3 class="ltext-103 cl5" style="text-align: center;">
+                NUESTROS ARTÍCULOS
+            </h3>
+        </div>
 
-		<!-- Productos -->
-		<div class="row isotope-grid">
-			<!-- Productos dinámicos aquí -->
-		</div>
-	</section>
+		<br/><br/>
 
-	<!-- Footer -->
-	<footer class="bg3 p-t-75 p-b-32">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						Soporte
-					</h4>
+        <div class="row"> 
+            <?php
+                $articulos = ConsultarArticulos();
+                while ($fila = mysqli_fetch_array($articulos)) {
+                    echo '
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="card">
+                            <div style="text-align:center">
+                                <img class="card-img-top" src="' . $fila["imagen"] . '" style="width:175px; height:150px; margin-top:20px">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">' . $fila["nombre"] . '</h5>
+                                
+                                Unidades: ' . $fila["cantidad"] . ' <br/>
+                                Precio: ¢ ' . number_format($fila["precio"], 2) . '
 
-					<ul>
-						<li class="p-b-10">
-							<a href="../Sugerencias/crearSugerencia.php" class="stext-107 cl7 hov-cl1 trans-04">
-							Sugerencias
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</footer>
+                                <br/>';
 
-	<!-- Back to top -->
-	<div class="btn-back-to-top" id="myBtn">
-		<span class="symbol-btn-back-to-top">
-			<i class="zmdi zmdi-chevron-up"></i>
-		</span>
-	</div>
+                                if (isset($_SESSION["NombreCliente"])) {
+                                    if ($fila["cantidad"] > 0) {
+                                        echo '
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <input id="' . $fila["articuloID"] . '" type="number" class="form-control" style="text-align:center" 
+                                                onkeypress="return false;" value="0" min="1" max="' . $fila["cantidad"] . '">
+                                            </div>
+                                            <div class="col-6">
+                                                <a onclick="RegistrarCarritoJS(' . $fila["articuloID"] . ', ' . $fila["cantidad"] . ');" style="width:100%" class="btn btn-primary">+ Añadir</a>
+                                            </div>
+                                        </div>';
+                                    } else {
+                                        echo '
+                                        <div class="row">
+                                            <div class="col-12 text-center">
+                                                <p style="color:red; font-weight:bold;">AGOTADO</p>
+                                            </div>
+                                        </div>';
+                                    }
+                                }
 
-	<!-- Modal1 -->
-	<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
-		<div class="overlay-modal1 js-hide-modal1"></div>
-
-		<div class="container">
-			<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
-				<button class="how-pos3 hov3 trans-04 js-hide-modal1">
-					<img src="../images/icon-close.png" alt="CLOSE">
-				</button>
-
-				<div class="row">
-					<div class="col-md-6 col-lg-7 p-b-30">
-						<div class="p-l-25 p-r-30 p-lr-0-lg">
-							<div class="wrap-slick3 flex-sb flex-w">
-								<div class="wrap-slick3-dots"></div>
-								<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-
-								<div class="slick3 gallery-lb">
-									<!-- Imágenes de productos para la galería -->
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                                echo '</div>
+                        </div>
+                    </div>';
+                }
+            ?>
+        </div>
+    </div>
+</section> 
 
 	<!--===============================================================================================-->
 	<script src="../js/jquery-3.2.1.min.js"></script>
@@ -209,6 +197,9 @@
 	<script src="../js/sweetalert.min.js"></script>
 	<script src="../js/perfect-scrollbar.min.js"></script>
 	<script src="../js/main.js"></script>
+
+	<script src="../js/Comunes.js"></script>
+    <script src="../js/RegistrarCarrito.js"></script>
 
 </body>
 

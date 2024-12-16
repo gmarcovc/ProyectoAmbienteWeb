@@ -10,7 +10,7 @@
     ReferenciasCSS();
 ?>
 
-<body class="page-wrapper">
+<body class="page-wrapper radial-gradient">
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
 
@@ -27,21 +27,17 @@
             <div class="container-fluid">
                 <div class="row">
 
-                    <div class="card">
+                    <div id="consultas" class="card">
                         <div class="card-body">
 
                             <h5 class="card-title fw-semibold mb-4">Consulta de Artículos</h5>
-
-                            <br />
-
+                            <br/>
                             <a href="RegistrarArticulos.php" class="btn btn-primary">
                                 <i class="fa fa-plus" style="margin-right:5px;"></i>
                                 Registrar Artículo
                             </a>
-
                             <br />
                             <br />
-
                             <div class="table-responsive">
                                 <table id="example" class="table text-nowrap align-middle mb-0">
                                     <thead>
