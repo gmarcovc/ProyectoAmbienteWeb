@@ -7,10 +7,10 @@
 
     if(isset($_POST["btnRegistrarCarrito"]))
     {
-        $consecutivoProducto = $_POST["ID_PRODUCTO"];
+        $ArticuloID = $_POST["ID_PRODUCTO"];
         $cantidad = $_POST["CANTIDAD"];
         
-        $resultado = RegistrarCarritoModel($_SESSION["ConsecutivoArticulo"], $consecutivoProducto, $cantidad);
+        $resultado = RegistrarCarritoModel($_SESSION["ClienteID"], $ArticuloID, $cantidad);
 
         if($resultado == true)
         {
@@ -24,12 +24,12 @@
 
     function ConsultarCarrito()
     {
-        return ConsultarCarritoModel($_SESSION["ConsecutivoArticulo"]);
+        return ConsultarCarritoModel($_SESSION["ClienteID"]);
     }
 
     function ConsultarResumenCarrito()
     {
-        $resultado = ConsultarResumenCarritoModel($_SESSION["ConsecutivoArticulo"]);
+        $resultado = ConsultarResumenCarritoModel($_SESSION["ClienteID"]);
         
         if($resultado != null && $resultado -> num_rows > 0)
         {
@@ -46,9 +46,9 @@
 
     if(isset($_POST["btnRemoverProductoCarrito"]))
     {
-        $consecutivoProducto = $_POST["txtConsecutivoProducto"];
+        $ArticuloID = $_POST["txtConsecutivoProducto"];
 
-        $resultado = RemoverProductoCarritoModel($_SESSION["ConsecutivoArticulo"], $consecutivoProducto);
+        $resultado = RemoverProductoCarritoModel($_SESSION["ClienteID"], $ArticuloID);
         
         if($resultado == true)
         {
@@ -62,7 +62,7 @@
     
     if(isset($_POST["btnPagarCarrito"]))
     {
-        $respuesta = PagarCarritoModel($_SESSION["ConsecutivoArticulo"]);
+        $respuesta = PagarCarritoModel($_SESSION["ClienteID"]);
 
         if($respuesta == true)
         {
@@ -76,7 +76,7 @@
 
     function ConsultarFacturas()
     {
-        return ConsultarFacturasModel($_SESSION["ConsecutivoArticulo"]);
+        return ConsultarFacturasModel($_SESSION["ClienteID"]);
     }
 
     function ConsultarDetalleFactura($id)
@@ -85,3 +85,4 @@
     }    
     
 ?>
+
