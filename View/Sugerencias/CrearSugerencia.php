@@ -1,6 +1,6 @@
 <?php
     include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/View/layout.php';
-    include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/SoporteController.php';
+    include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/SugerenciaController.php';
 ?>
 
 <!doctype html>
@@ -31,12 +31,6 @@
                                 
                                 <h3 class="text-center mb-4">Nos encanta escucharte</h3>
                                 <p class="text-center">Envíanos tus sugerencias</p>
-
-                                <?php
-                                    if (isset($_POST["txtSugerencia"])) {
-                                        echo '<div class="alert alert-success text-center">¡Sugerencia enviada exitosamente!</div>';
-                                    }
-                                ?>
 
                                 <form action="" method="POST">
 

@@ -148,8 +148,8 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="../Soporte/crearSolicitud.php" class="stext-107 cl7 hov-cl1 trans-04">
-								Servicio al cliente
+							<a href="../Sugerencias/crearSugerencia.php" class="stext-107 cl7 hov-cl1 trans-04">
+							Sugerencias
 							</a>
 						</li>
 					</ul>

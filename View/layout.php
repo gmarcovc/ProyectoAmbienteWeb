@@ -26,9 +26,8 @@ function MostrarMenu()
 						        <a href="../Articulos/registrarArticulos.php" class="flex-c-m trans-04 p-lr-25">
 							        Artículos
 						        </a>
-
-                                <a href="../Soporte/consultarSolicitudes.php" class="flex-c-m trans-04 p-lr-25">
-							        Solicitudes  
+                                <a href="../Sugerencias/consultarSugerencia.php" class="flex-c-m trans-04 p-lr-25">
+							        Sugerencias
 						        </a>
 
 				            </div>
