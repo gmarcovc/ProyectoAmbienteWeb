@@ -1,6 +1,6 @@
 <?php
     include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/View/layout.php';
-    include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/ProductoController.php';
+    include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/ArticulosController.php';
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +69,7 @@
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-									Colección de mujer 2025
+									Colección 2025
 								</span>
 							</div>
 
@@ -93,7 +93,7 @@
 
 							<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									Jackets
+									Unisex
 								</h2>
 							</div>
 						</div>
@@ -105,13 +105,13 @@
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-									Colección de hombre 2025
+									Colección 2025
 								</span>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									Nuevos Productos
+									Nuevos Artículos
 								</h2>
 							</div>
 						</div>
@@ -180,6 +180,27 @@
         </div>
     </div>
 </section> 
+
+	<!-- Footer -->
+	<footer class="bg3 p-t-75 p-b-32">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-lg-3 p-b-50">
+                <h4 class="stext-301 cl0 p-b-30">
+                    Grupo 4
+                </h4>
+                <ul>
+                    <li class="p-b-10">Vasquez Carrillo Gian Marco</li>
+                    <li class="p-b-10">Bustos Araya Amber Natasha</li>
+                    <li class="p-b-10">Rodriguez Perez Joshua Andrey</li>
+                    <li class="p-b-10">Aguilar Villalobos Erick Esteban</li>
+                    <li class="p-b-10">Kevin Joel Madrigal Vega</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
 
 	<!--===============================================================================================-->
 	<script src="../js/jquery-3.2.1.min.js"></script>
