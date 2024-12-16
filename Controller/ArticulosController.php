@@ -82,23 +82,14 @@ function ConsultarCategorias() {
     return ConsultarCategoriasModel();
 }
 
-include_once $_SERVER["DOCUMENT_ROOT"] . '/Model/ArticulosModel.php';
-
-function EliminarArticulo($articuloID) {
+if (isset($_POST["btnEliminarArticulo"])) {
+    $articuloID = $_POST["txtArticuloID"];
     $resultado = EliminarArticuloModel($articuloID);
-
-    if ($resultado) {
-        $_POST["txtMensaje"] = "El artículo se ha eliminado correctamente.";
+    if ($resultado == true) {
+        header('location: ../../View/Articulos/ConsultarArticulos.php');
     } else {
-        $_POST["txtMensaje"] = "No se pudo eliminar el artículo.";
+        $_POST["txtMensaje"] = "No fue posible eliminar el artículo";
     }
-
-    header('location: ../../View/Articulo/consultarArticulos.php');
-}
-
-if (isset($_GET['accion']) && $_GET['accion'] === 'eliminar') {
-    $id = intval($_GET['id']);
-    EliminarArticulo($id);
 }
 
 ?>

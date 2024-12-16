@@ -8,3 +8,8 @@ $(document).ready(function() {
     });
 
 });
+
+$(document).on("click", "#btnOpenModal", function() {
+    $("#txtArticuloID").val($(this).attr('data-id')); 
+    $("#lblNombre").text($(this).attr('data-name')); 
+});

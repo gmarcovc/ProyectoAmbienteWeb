@@ -109,19 +109,19 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-                <form action="" method="POST">
-                    <div class="modal-body">
-                        <input type="hidden" id="txtArticuloID" name="txtArticuloID">
-                        ¿Deseas eliminar este artículo?
-                    </div>
-                    <div class="modal-footer">
-                        <input type="submit" class="btn btn-primary" value="Procesar"
-                            id="btnEliminarArticulo" name="btnEliminarArticulo">
-                    </div>
-                </form>
-            </div>
+            <form action="" method="POST">
+                <div class="modal-body">
+                    <input type="hidden" id="txtArticuloID" name="txtArticuloID">
+                    ¿Desea eliminar el artículo:<label id="lblNombre"></label>?
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" value="Procesar"
+                        id="btnEliminarArticulo" name="btnEliminarArticulo">
+                </div>
+            </form>
         </div>
     </div>
+</div>
 
 </body>
 
