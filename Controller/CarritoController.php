@@ -7,7 +7,7 @@
 
 if (isset($_POST["btnRegistrarCarrito"])) 
 {
-        $consecutivoArticulo = $_POST["ID_ARTICULO"];
+        $ID_Articulo = $_POST["ID_ARTICULO"];
         $cantidad = $_POST["CANTIDAD"];
     
     
