@@ -1,6 +1,6 @@
 <?php
-    include_once $_SERVER["DOCUMENT_ROOT"] . '/View/layout.php';
-    include_once $_SERVER["DOCUMENT_ROOT"] . '/Controller/CarritoController.php';
+    include_once $_SERVER["DOCUMENT_ROOT"] . 'ProyectoAmbienteWeb/View/layout.php';
+    include_once $_SERVER["DOCUMENT_ROOT"] . 'ProyectoAmbienteWeb/Controller/CarritoController.php';
 
     $id = $_GET["id"];
 ?>
