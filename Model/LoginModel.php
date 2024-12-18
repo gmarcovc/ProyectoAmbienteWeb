@@ -1,6 +1,7 @@
   <?php
     include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Model/BaseDatos.php';
 
+
     function RegistrarClienteModel($cedula, $nombre, $apellido1, $apellido2, $contrasena, $provinciaID, $otrasSenas, $codigoPostal, $correo, $telefono) 
     {
         try 
