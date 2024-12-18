@@ -2,9 +2,15 @@
 (function ($) {
     "use strict";
 
+    document.body.style.overflowY = "auto"; // Habilita el scroll vertical
+document.documentElement.style.overflowY = "auto";
+
+
     /*[ Load page ]
     ===========================================================*/
+    
     $(".animsition").animsition({
+        
         inClass: 'fade-in',
         outClass: 'fade-out',
         inDuration: 1500,

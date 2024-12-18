@@ -643,6 +643,8 @@ pre code {
 }
 
 .container {
+    overflow-y: auto; /* Habilita el scroll vertical */
+
     margin-right: auto;
     margin-left: auto;
     padding-right: 15px;

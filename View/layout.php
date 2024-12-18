@@ -8,35 +8,35 @@ if (session_status() == PHP_SESSION_NONE) {
 function MostrarMenu()
 {
     if (isset($_SESSION["NombreCliente"]) && $_SESSION["RolID"] == "1") {
-        echo '		
+        echo '       
                     <!-- para admins -->
-		            <div class="container-menu-desktop">
-			            <div class="top-bar">
-				            <div class="content-topbar flex-sb-m h-full container">
-				                <div class="left-top-bar">
-					                Vista Administrador: ' . $_SESSION["NombreCliente"] . '
-				                </div>
+                    <div class="container-menu-desktop" style="overflow-y: auto; max-height: 100vh;">
+                        <div class="top-bar">
+                            <div class="content-topbar flex-sb-m h-full container">
+                                <div class="left-top-bar">
+                                    Vista Administrador: ' . $_SESSION["NombreCliente"] . '
+                                </div>
 
-				            <div class="right-top-bar flex-w h-full">
+                            <div class="right-top-bar flex-w h-full">
 
-					            <a href="../Cliente/consultarClientes.php" class="flex-c-m trans-04 p-lr-25">
-							        Clientes
-						        </a>
+                                <a href="../Cliente/consultarClientes.php" class="flex-c-m trans-04 p-lr-25">
+                                    Clientes
+                                </a>
                                 <!-- Botón Artículos -->
-						        <a href="../Articulos/ConsultarArticulos.php" class="flex-c-m trans-04 p-lr-25">
-							        Artículos
-						        </a>
+                                <a href="../Articulos/ConsultarArticulos.php" class="flex-c-m trans-04 p-lr-25">
+                                    Artículos
+                                </a>
                                 <a href="../Sugerencias/consultarSugerencia.php" class="flex-c-m trans-04 p-lr-25">
-							        Sugerencias
-						        </a>
+                                    Sugerencias
+                                </a>
 
-				            </div>
-			            </div>
-		            </div>';
+                            </div>
+                        </div>
+                    </div>';
     } else if (isset($_SESSION["NombreCliente"]) && $_SESSION["RolID"] == "2") {
-        echo '		
+        echo '       
                 <!-- para clientes -->
-                <div class="container-menu-desktop">
+                <div class="container-menu-desktop" style="overflow-y: auto; max-height: 100vh;">
                     <div class="top-bar">
                         <div class="content-topbar flex-sb-m h-full container">
                             <div class="left-top-bar">
@@ -48,6 +48,7 @@ function MostrarMenu()
     }
 }
 
+
 function MostrarHeader()
 {
     $cliente = "Invitado";
@@ -56,21 +57,21 @@ function MostrarHeader()
     }
 
     echo '
-        	<!-- Header -->
-	<header>
-		<!-- Header desktop -->
-		<div class="container-menu-desktop">
-			<!-- Topbar -->
-			
-			<div class="wrap-menu-desktop">
-				<nav class="limiter-menu-desktop container">
-					<!-- Logo desktop -->
-					<a href="../Login/Home.php" class="logo">
-						<img src="../images/logo-01.jpeg" alt="IMG-LOGO">
-					</a>
-					<!-- Menu desktop -->
-					<div class="menu-desktop">
-						<ul class="main-menu">';
+        <!-- Header -->
+        <header style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background-color: #fff; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+            <!-- Header desktop -->
+            <div class="container-menu-desktop">
+                <!-- Topbar -->
+                
+                <div class="wrap-menu-desktop">
+                    <nav class="limiter-menu-desktop container">
+                        <!-- Logo desktop -->
+                        <a href="../Login/Home.php" class="logo">
+                            <img src="../images/logo-01.jpeg" alt="IMG-LOGO">
+                        </a>
+                        <!-- Menu desktop -->
+                        <div class="menu-desktop">
+                            <ul class="main-menu">';
 
     if (isset($_SESSION["NombreCliente"])) {
 
@@ -103,34 +104,36 @@ function MostrarHeader()
 
     echo '
 
-						</ul>
-					</div>
+                            </ul>
+                        </div>
 
-					<!-- Icon header -->
-					<div class="wrap-icon-header flex-w flex-r-m">
+                        <!-- Icon header -->
+                        <div class="wrap-icon-header flex-w flex-r-m">
 
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="1">
-							<i class="zmdi zmdi-shopping-cart"></i>
-						</div>
+                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="1">
+                                <i class="zmdi zmdi-shopping-cart"></i>
+                            </div>
 
-					</div>
-				</nav>
-			</div>
-		</div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
 
-		<!-- Header Mobile -->
-		<div class="wrap-header-mobile">
-			<!-- Logo moblie -->
-			<div class="logo-mobile">
-			</div>
+            <!-- Header Mobile -->
+            <div class="wrap-header-mobile">
+                <!-- Logo moblie -->
+                <div class="logo-mobile">
+                </div>
 
-			<!-- Icon header -->
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
-					<i class="zmdi zmdi-shopping-cart"></i>
-				</div>
-		</div>
-	</header>';
+                <!-- Icon header -->
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
+                        <i class="zmdi zmdi-shopping-cart"></i>
+                    </div>
+            </div>
+        </header>
+        <div style="margin-top: 80px;"></div>'; // Espacio para compensar la altura del header fijo
 }
+
 
 function ReferenciasCSS()
 {

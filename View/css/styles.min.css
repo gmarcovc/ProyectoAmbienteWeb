@@ -16794,11 +16794,15 @@ textarea.form-control-lg {
 }
 .page-wrapper {
   position: relative;
-  background-color: #78a176
+  background-color: #78a176;
+    overflow-y: auto; /* Habilita el scroll vertical */
+
 }
 
 .body-wrapper {
   position: relative;
+  overflow-y: auto; /* Habilita el scroll vertical */
+
 }
 .body-wrapper > .container-fluid, .body-wrapper > .container-sm, .body-wrapper > .container-md, .body-wrapper > .container-lg, .body-wrapper > .container-xl, .body-wrapper > .container-xxl {
   max-width: 1300px;
@@ -16806,6 +16810,8 @@ textarea.form-control-lg {
   padding: 30px;
   -webkit-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
+  overflow-y: auto; /* Habilita el scroll vertical */
+
 }
 
 @media (max-width: 767.98px) {

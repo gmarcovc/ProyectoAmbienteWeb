@@ -198,8 +198,11 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 [ Header Desktop ]*/
 
+
 .container-menu-desktop {
-  position: fixed;
+  overflow-y: auto !important;
+  position: relative !important; /* Evita 'fixed' si está causando problemas */
+  overflow: visible !important;
   height: auto;
   width: 100%;
   -webkit-transition: all 0.3s;
