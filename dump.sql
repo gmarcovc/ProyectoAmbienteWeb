@@ -31,12 +31,9 @@ CREATE TABLE `articulos` (
   `cantidad` int(11) NOT NULL,
   `imagen` varchar(1000) NOT NULL,
   `categoriaID` int(11) NOT NULL,
-  `estadoID` int(11) NOT NULL,
   PRIMARY KEY (`articuloID`),
   KEY `categoriaID` (`categoriaID`),
-  KEY `estadoID` (`estadoID`),
-  CONSTRAINT `articulos_ibfk_1` FOREIGN KEY (`categoriaID`) REFERENCES `categorias` (`categoriaID`),
-  CONSTRAINT `articulos_ibfk_2` FOREIGN KEY (`estadoID`) REFERENCES `estados` (`estadoID`)
+  CONSTRAINT `articulos_ibfk_1` FOREIGN KEY (`categoriaID`) REFERENCES `categorias` (`categoriaID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -46,7 +43,7 @@ CREATE TABLE `articulos` (
 
 LOCK TABLES `articulos` WRITE;
 /*!40000 ALTER TABLE `articulos` DISABLE KEYS */;
-INSERT INTO `articulos` VALUES (11,'Tennis',80.00,10,'htdocs\\ProyectoAmbienteWeb\\View\\images\\product-12.jpg',1,1),(12,'Camisa',15.00,10,'htdocs\\ProyectoAmbienteWeb\\View\\images\\product-08.jpg',2,1);
+INSERT INTO `articulos` VALUES (0,'Prueba',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/product-12.jpg',1);
 /*!40000 ALTER TABLE `articulos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -377,13 +374,12 @@ UNLOCK TABLES;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarArticulo`(
-    pArticuloID bigint,
+    pArticuloID int,
     pNombre varchar(100),
     pPrecio decimal(10,2),
     pCantidad int,
     pImagen varchar(1000),
-    pCategoriaID int,
-    pEstadoID int
+    pCategoriaID int
 )
 BEGIN
     UPDATE `articulos`
@@ -391,8 +387,7 @@ BEGIN
         precio = pPrecio,
         cantidad = pCantidad,
         imagen = CASE WHEN pImagen = '' THEN imagen ELSE pImagen END,
-        categoriaID = pCategoriaID,
-        estadoID = pEstadoID
+        categoriaID = pCategoriaID
     WHERE articuloID = pArticuloID;
 END ;;
 DELIMITER ;
@@ -501,9 +496,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarArticulo`(pArticuloID bigint)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarArticulo`(pArticuloID int)
 BEGIN
-    SELECT articuloID, nombre, precio, cantidad, imagen, categoriaID, estadoID
+    SELECT articuloID, nombre, precio, cantidad, imagen, categoriaID
     FROM `articulos`
     WHERE articuloID = pArticuloID;
 END ;;
@@ -524,8 +519,17 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarArticulos`()
 BEGIN
-    SELECT articuloID, nombre, precio, cantidad, imagen, categoriaID, estadoID
-    FROM `articulos`;
+    SELECT 
+        A.articuloID, 
+        A.nombre, 
+        A.precio, 
+        A.cantidad, 
+        A.imagen, 
+        A.categoriaID,
+        C.nombre AS nombreCategoria
+    FROM tiendaambienteproyectowebb.articulos A
+    INNER JOIN tiendaambienteproyectowebb.categorias C 
+    ON A.categoriaID = C.categoriaID;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -559,6 +563,27 @@ INNER JOIN
     ON C.articuloID = P.articuloID
 WHERE 
     C.ClienteID = pClienteID;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `ConsultarCategorias` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarCategorias`()
+BEGIN
+    SELECT categoriaID, nombre
+    FROM categorias
+    ORDER BY categoriaID;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -786,7 +811,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `EliminarArticulo`(pArticuloID bigint)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `EliminarArticulo`(pArticuloID int)
 BEGIN
     DELETE FROM `articulos`
     WHERE articuloID = pArticuloID;
@@ -934,12 +959,11 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `RegistrarArticulo`(
     pPrecio decimal(10,2),
     pCantidad int,
     pImagen varchar(1000),
-    pCategoriaID int,
-    pEstadoID int
+    pCategoriaID int
 )
 BEGIN
-    INSERT INTO `articulos` (nombre, precio, cantidad, imagen, categoriaID, estadoID)
-    VALUES (pNombre, pPrecio, pCantidad, pImagen, pCategoriaID, pEstadoID);
+    INSERT INTO `articulos` (nombre, precio, cantidad, imagen, categoriaID)
+    VALUES (pNombre, pPrecio, pCantidad, pImagen, pCategoriaID);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1028,4 +1052,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-17 17:01:09
+-- Dump completed on 2024-12-17 18:29:51
