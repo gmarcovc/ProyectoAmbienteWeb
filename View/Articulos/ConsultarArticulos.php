@@ -99,23 +99,23 @@
 
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content" style="width: 700px;">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Confirmación</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+            <div class="modal-content" style="width: 700px;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Confirmación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
 
-            <form action="" method="POST">
-                <div class="modal-body">
-                    <input type="hidden" id="txtArticuloID" name="txtArticuloID">
-                    ¿Desea eliminar el artículo:<label id="lblNombre"></label>?
-                </div>
-                <div class="modal-footer">
-                    <input type="submit" class="btn btn-primary" value="Procesar"
-                        id="btnEliminarArticulo" name="btnEliminarArticulo">
-                </div>
-            </form>
-        </div>
+                <form action="" method="POST">
+                    <div class="modal-body">
+                        <input type="hidden" id="txtArticuloID" name="txtArticuloID">
+                        ¿Desea eliminar el artículo:<label id="lblNombre"></label>?
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-primary" value="Procesar"
+                            id="btnEliminarArticulo" name="btnEliminarArticulo">
+                    </div>
+                </form>
+            </div>
     </div>
 </div>
 

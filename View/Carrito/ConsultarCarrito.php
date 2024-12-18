@@ -28,7 +28,7 @@
             <div class="container-fluid">
                 <div class="row">
 
-                    <div class="card">
+                <div id="consultas" class="card">
                         <div class="card-body">
 
                         <h5 class="card-title fw-semibold mb-4">Mi Carrito</h5>
@@ -37,7 +37,7 @@
                                 <table id="example" class="table text-nowrap align-middle mb-0">
                                     <thead>
                                         <tr class="border-2 border-bottom border-primary border-0">
-                                            <th scope="col">Producto</th>
+                                            <th scope="col">Artículo</th>
                                             <th scope="col">Cantidad</th>
                                             <th scope="col">Precio Unitario</th>
                                             <th scope="col">Total</th>
@@ -58,9 +58,9 @@
                                                 echo '<td>
 
                                                     <button id="btnOpenModal" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                                                        data-id=' . $fila["articuloID"] . ' data-name="' . $fila["nombre"] . '">
-                                                        <i class="fa fa-trash" style="color:red; font-size: 1.6em;"></i>
-                                                    </button>
+                                                            data-id=' . $fila["articuloID"] . ' data-name="' . $fila["nombre"] . '">
+                                                            <i class="fa fa-trash" style="color:red; font-size: 1.6em;"></i>
+                                                        </button>
 
                                                     </td>';
                                                 echo "</tr>";   
@@ -105,7 +105,7 @@
     <script src="../js/ConsultarCarrito.js"></script>
 
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" style="width: 700px;">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">Confirmación</h5>
@@ -114,17 +114,14 @@
 
                 <form action="" method="POST">
                     <div class="modal-body">
-                    
                         <input type="hidden" id="txtArticuloID" name="txtArticuloID">
-                        ¿Desea eliminar el siguiente producto: <label id="lblNombreProducto"></label> de su carrito?
-
+                        ¿Desea eliminar el siguiente artículo:<label id="lblNombre"></label> de su carrito?
                     </div>
                     <div class="modal-footer">
                     <input type="submit" class="btn btn-primary" value="Eliminar"
-                        id="btnRemoverProductoCarrito" name="btnRemoverProductoCarrito">
+                        id="btnRemoverArticuloCarrito" name="btnRemoverArticuloCarrito">
                     </div>
                 </form>
-                
             </div>
         </div>
     </div>

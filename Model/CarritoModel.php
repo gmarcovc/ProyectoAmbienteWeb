@@ -55,13 +55,13 @@
         }
     }
 
-    function RemoverProductoCarritoModel($clienteID, $articuloID)
+    function RemoverArticuloCarritoModel($clienteID, $articuloID)
     {
         try
         {
             $enlace = AbrirBD();
 
-            $sentencia = "CALL RemoverProductoCarrito('$clienteID', '$articuloID')";
+            $sentencia = "CALL RemoverArticuloCarrito('$clienteID', '$articuloID')";
             $resultado = $enlace -> query($sentencia);
 
             CerrarBD($enlace);

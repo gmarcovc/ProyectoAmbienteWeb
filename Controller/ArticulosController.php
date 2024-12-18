@@ -19,7 +19,7 @@ function ConsultarArticulo($articuloID) {
     }
     else
     {
-        $_POST["txtMensaje"] = "La información del producto no se ha obtenido correctamente";
+        $_POST["txtMensaje"] = "La información del artículo no se ha obtenido correctamente";
         header('location: ../../View/Articulos/consultarArticulos.php');
     }
 }
@@ -73,7 +73,7 @@ if(isset($_POST["btnActualizarArticulo"]))
     }
     else
     {
-        $_POST["txtMensaje"] = "El producto no se ha actualizado correctamente";
+        $_POST["txtMensaje"] = "El artículo no se ha actualizado correctamente";
     }
     
 }

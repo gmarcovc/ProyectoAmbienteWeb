@@ -44,12 +44,11 @@
         }
     }
 
-    if(isset($_POST["btnRemoverProductoCarrito"]))
+    if(isset($_POST["btnRemoverArticuloCarrito"]))
     {
         $articuloID = $_POST["txtArticuloID"];
-
-        $resultado = RemoverProductoCarritoModel($_SESSION["ClienteID"], $articuloID);
-        
+        $resultado = RemoverArticuloCarritoModel($_SESSION["ClienteID"], $articuloID);
+    
         if($resultado == true)
         {
             header('location: ../../View/Carrito/consultarCarrito.php');
