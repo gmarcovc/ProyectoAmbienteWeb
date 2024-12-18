@@ -140,7 +140,6 @@
 
                                 <input type="submit" class="btn btn-primary" value="Procesar" id="btnActualizarCliente"
                                     name="btnActualizarCliente">
-
                             </form>
                         </div>
                     </div>

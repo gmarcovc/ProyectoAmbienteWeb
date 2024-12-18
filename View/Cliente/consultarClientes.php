@@ -62,7 +62,7 @@
                                                 echo "<td>" . $fila["nombre"] . "</td>";
                                                 echo "<td>" . $fila["apellido1"] . "</td>";
                                                 echo "<td>" . $fila["apellido2"] . "</td>";
-                                                echo "<td>" . $fila["estadoID"] . "</td>";
+                                                echo "<td>" . $fila["DescripcionActivo"] . "</td>";
                                                 echo "<td>" . $fila["nombreRol"] . "</td>";
                                                 echo "<td>" . $fila["fechaRegistro"] . "</td>";
                                                 echo "<td>" . $fila["nombreProvincia"] . "</td>";
