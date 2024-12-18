@@ -59,73 +59,14 @@
 		</div>
 	</div>
 
-	<!-- Slider -->
-	<section class="section-slide">
-		<div class="wrap-slick1">
-			<div class="slick1">
-				<!-- Aquí irían las imágenes dinámicas del slider -->
-				<div class="item-slick1" style="background-image: url(../images/slide-01.jpg);">
-					<div class="container h-full">
-						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
-								<span class="ltext-101 cl2 respon2">
-									Colección 2025
-								</span>
-							</div>
 
-							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
-								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									Nueva Temporada
-								</h2>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="item-slick1" style="background-image: url(../images/slide-02.jpg);">
-					<div class="container h-full">
-						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
-								<span class="ltext-101 cl2 respon2">
-									Nueva Temporada 2025
-								</span>
-							</div>
-
-							<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
-								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									Unisex
-								</h2>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="item-slick1" style="background-image: url(../images/slide-03.jpg);">
-					<div class="container h-full">
-						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
-								<span class="ltext-101 cl2 respon2">
-									Colección 2025
-								</span>
-							</div>
-
-							<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
-								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									Nuevos Artículos
-								</h2>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 
 <!-- ARTICULOS -->
 <section class="bg0 p-t-23 p-b-140">
     <div class="container">
         <div class="p-b-10">
             <h3 class="ltext-103 cl5" style="text-align: center;">
+			<br/><br/>
                 NUESTROS ARTÍCULOS
             </h3>
         </div>
@@ -184,18 +125,10 @@
 	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-lg-3 p-b-50">
                 <h4 class="stext-301 cl0 p-b-30">
                     Grupo 4
                 </h4>
-                <ul>
-                    <li class="p-b-10">Vasquez Carrillo Gian Marco</li>
-                    <li class="p-b-10">Bustos Araya Amber Natasha</li>
-                    <li class="p-b-10">Rodriguez Perez Joshua Andrey</li>
-                    <li class="p-b-10">Aguilar Villalobos Erick Esteban</li>
-                    <li class="p-b-10">Kevin Joel Madrigal Vega</li>
-                </ul>
+                    <p>Vasquez Carrillo Gian Marco - Bustos Araya Amber Natasha - Rodriguez Perez Joshua Andrey - Aguilar Villalobos Erick Esteban - Madrigal Vega Kevin Joel</p>
             </div>
         </div>
     </div>

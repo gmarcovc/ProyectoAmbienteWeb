@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `articulos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `articulos` (
-  `articuloID` int(11) NOT NULL,
+  `articuloID` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
   `precio` decimal(10,2) NOT NULL,
   `cantidad` int(11) NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE `articulos` (
   PRIMARY KEY (`articuloID`),
   KEY `categoriaID` (`categoriaID`),
   CONSTRAINT `articulos_ibfk_1` FOREIGN KEY (`categoriaID`) REFERENCES `categorias` (`categoriaID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `articulos` (
 
 LOCK TABLES `articulos` WRITE;
 /*!40000 ALTER TABLE `articulos` DISABLE KEYS */;
-INSERT INTO `articulos` VALUES (0,'Prueba',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/product-12.jpg',1);
+INSERT INTO `articulos` VALUES (1,'Prueba',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/product-12.jpg',1),(2,'PruebaActualizadaXXX',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/product-10.jpg',1);
 /*!40000 ALTER TABLE `articulos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1052,4 +1052,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-17 18:29:51
+-- Dump completed on 2024-12-17 19:42:28
