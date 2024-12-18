@@ -34,7 +34,7 @@ CREATE TABLE `articulos` (
   PRIMARY KEY (`articuloID`),
   KEY `categoriaID` (`categoriaID`),
   CONSTRAINT `articulos_ibfk_1` FOREIGN KEY (`categoriaID`) REFERENCES `categorias` (`categoriaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `articulos` (
 
 LOCK TABLES `articulos` WRITE;
 /*!40000 ALTER TABLE `articulos` DISABLE KEYS */;
-INSERT INTO `articulos` VALUES (1,'Prueba',1.00,0,'/ProyectoAmbienteWeb/View/images/articulos/product-12.jpg',1),(2,'PruebaActualizadaXXX',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/product-10.jpg',1),(3,'Zapatosx',1.00,0,'/ProyectoAmbienteWeb/View/images/articulos/product-12.jpg',1),(4,'Tela',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/banner-01.jpg',2),(5,'Fac',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/banner-02.jpg',2),(6,'fg',3.00,1,'/ProyectoAmbienteWeb/View/images/articulos/banner-03.jpg',1),(7,'g',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/product-16.jpg',1),(8,'Facundo',34.00,1,'/ProyectoAmbienteWeb/View/images/articulos/icon-pay-01.png',1);
+INSERT INTO `articulos` VALUES (9,'Blusa Adidas',10000.00,20,'/ProyectoAmbienteWeb/View/images/articulos/15b561a0245113d197eb465cb28df223.jpg',1),(10,'Blusa de manga larga a rayas',5000.00,10,'/ProyectoAmbienteWeb/View/images/articulos/1a03dbb488e0f8432f7f2dee10a904a4.jpg',1),(11,'Camisa Racing',8000.00,10,'/ProyectoAmbienteWeb/View/images/articulos/1ae3384084422f24e2c97b6ac1512a32.jpg',2),(12,'Shorts Adidas Deportivos',6000.00,10,'/ProyectoAmbienteWeb/View/images/articulos/3d69e408fabe231592568201a7835501.jpg',5),(13,'Pack 5 Camisas Colores Variados',20000.00,5,'/ProyectoAmbienteWeb/View/images/articulos/4c321bab5ce780c4682bb75f3bfe63ff.jpg',2),(14,'Camisa Conejo',3000.00,40,'/ProyectoAmbienteWeb/View/images/articulos/5b2eface9e160ed354eb559d14ef6291.jpg',2),(15,'Pantalón Deportivo Adidas',10000.00,10,'/ProyectoAmbienteWeb/View/images/articulos/5dcdcddce30cff6c89fc13a1f9ea80a4.jpg',5),(16,'Blusa manga larga blanco perla',10000.00,10,'/ProyectoAmbienteWeb/View/images/articulos/7ce3a66aba8ac53a89a78a9a4789de97.jpg',1),(17,'Reloj de hombre Plata/Negro',15000.00,10,'/ProyectoAmbienteWeb/View/images/articulos/7fc27e8035671baa453f74494ff8270d.jpg',9),(18,'Pantalón Ancho Negro',15000.00,10,'/ProyectoAmbienteWeb/View/images/articulos/9d4d46104f0707468972e759f1aeff23.jpg',4),(19,'Juego con Reloj Dorado',15000.00,5,'/ProyectoAmbienteWeb/View/images/articulos/17d7938d2cb08ae6edbb1652096d0532.jpg',9),(20,'Camisa Polo Navy ',10000.00,10,'/ProyectoAmbienteWeb/View/images/articulos/30f83b85ce6ce02a5b397c590796a154.jpg',2),(21,'Camisola Playera',5000.00,15,'/ProyectoAmbienteWeb/View/images/articulos/37f7e571012fd716e52a8d5cea8a3bbb.jpg',2),(22,'Pantalón Ancho Mezclilla',5000.00,5,'/ProyectoAmbienteWeb/View/images/articulos/44c277fe5a27683232a110327b2a37c0.jpg',5),(23,'Camisa de Gato',5000.00,5,'/ProyectoAmbienteWeb/View/images/articulos/75bc5263dbca3d996e8d8127f46258b5.jpg',1),(24,'Tennis Nike Blancas',45000.00,20,'/ProyectoAmbienteWeb/View/images/articulos/92c6ece26b10b49ad5439318dc0da64b.jpg',7),(25,'Pantalón Ancho Beige',10000.00,15,'/ProyectoAmbienteWeb/View/images/articulos/96d84ac9e653a8b7587b7fb7deb268ff.jpg',4),(26,'Camisa manga larga azul marino',10000.00,50,'/ProyectoAmbienteWeb/View/images/articulos/224da763284424eff24e429e8e6d42fc.jpg',2),(27,'Camisa de Botones negra',15000.00,5,'/ProyectoAmbienteWeb/View/images/articulos/3663a648d685fac7f6e839485270e264.jpg',2),(28,'Blusa manga larga celeste',7500.00,10,'/ProyectoAmbienteWeb/View/images/articulos/4558f4221e7d45789eabba479751b078.jpg',1),(29,'Blusa Mariposa Gris',5000.00,20,'/ProyectoAmbienteWeb/View/images/articulos/5492d5fa4e0d61a7a75ab232ed804d2f.jpg',1),(30,'Pantalón Ancho Mezclilla Clara',10000.00,20,'/ProyectoAmbienteWeb/View/images/articulos/8921e851e1f7e1954aefd7880d873627.jpg',4),(31,'Tennis Puma Negras',39000.00,10,'/ProyectoAmbienteWeb/View/images/articulos/9163d153b20eccbbbd1918516f7954c4.jpg',7),(32,'Camisa de compresión Negra ',10000.00,10,'/ProyectoAmbienteWeb/View/images/articulos/34013d92c406c19dbd677c7b2dae79e0.jpg',2),(33,'Air Force Nike Destellos Dorados',50000.00,10,'/ProyectoAmbienteWeb/View/images/articulos/94425ec79166e460814b59b23fb865a0.jpg',7),(34,'Tennis Runner Nike',60000.00,10,'/ProyectoAmbienteWeb/View/images/articulos/703604b718fc73e98b12989190fc4ea2.jpg',7),(35,'Tennis Nike Dunk Low Matices Grises',60000.00,10,'/ProyectoAmbienteWeb/View/images/articulos/5154456ae8f4e1b3e452b471840f56ce.jpg',6),(36,'New Balance Runner Virales ',70000.00,10,'/ProyectoAmbienteWeb/View/images/articulos/a4c6080e4b9f6f14806cc3f5c4552005.jpg',7),(37,'Adidas Campus ',30000.00,10,'/ProyectoAmbienteWeb/View/images/articulos/a78eba5caf5ac5b4c1a5613db11a4341.jpg',7),(38,'Tennis Puma Grises',30000.00,10,'/ProyectoAmbienteWeb/View/images/articulos/abd5b0d7fa05f0ee1a691b7a5fdfcce9.jpg',6),(39,'Pantalón Skinny Mezclilla ',10000.00,10,'/ProyectoAmbienteWeb/View/images/articulos/b580853e6a176b4f79b0d1a9201b43e1.jpg',5),(40,'Conjunto Gorra y Camisa',15000.00,2,'/ProyectoAmbienteWeb/View/images/articulos/banner-01.jpg',3),(41,'Camisa Azul ',15000.00,2,'/ProyectoAmbienteWeb/View/images/articulos/banner-02.jpg',2),(42,'Camisa Botones y Cuadros',10000.00,10,'/ProyectoAmbienteWeb/View/images/articulos/banner-03.jpg',2),(43,'Pantalón Ancho Mezclilla Clara',15000.00,5,'/ProyectoAmbienteWeb/View/images/articulos/dfc9c5b8e67a305e788ac62f65262c02.jpg',5),(44,'Pantalón Ancho Negro Fem',15000.00,5,'/ProyectoAmbienteWeb/View/images/articulos/e19d9f04155d87d6d676e9b07791cab7.jpg',5),(45,'Camisa Choize ',15000.00,5,'/ProyectoAmbienteWeb/View/images/articulos/ee2152054963790ad0615ba82ff61898.jpg',2),(46,'Reloj Femenino Dorado',15000.00,5,'/ProyectoAmbienteWeb/View/images/articulos/fb6e85045556eb24bc7f5d6fcb79a951.jpg',9),(47,'Jogger Adidas Masc',15000.00,5,'/ProyectoAmbienteWeb/View/images/articulos/ff8fecef2bc46e82372ad604eea2a77d (1).jpg',4),(48,'Pijama azul',4000.00,10,'/ProyectoAmbienteWeb/View/images/articulos/product-02.jpg',8),(49,'Pijama Rosado',4500.00,10,'/ProyectoAmbienteWeb/View/images/articulos/product-03.jpg',8),(50,'Jacket Dorada',15000.00,3,'/ProyectoAmbienteWeb/View/images/articulos/product-05.jpg',2),(51,'Clarks Cruz',15000.00,15,'/ProyectoAmbienteWeb/View/images/articulos/product-09.jpg',6),(52,'Botas Gucci',15000.00,15,'/ProyectoAmbienteWeb/View/images/articulos/product-10.jpg',6),(53,'Tennis',15000.00,15,'/ProyectoAmbienteWeb/View/images/articulos/product-12.jpg',6),(54,'Reloj Cuarzo',15000.00,15,'/ProyectoAmbienteWeb/View/images/articulos/product-14.jpg',9);
 /*!40000 ALTER TABLE `articulos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,7 +88,7 @@ CREATE TABLE `categorias` (
   `categoriaID` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
   PRIMARY KEY (`categoriaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +97,7 @@ CREATE TABLE `categorias` (
 
 LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
-INSERT INTO `categorias` VALUES (1,'Zapatos'),(2,'Relojes');
+INSERT INTO `categorias` VALUES (1,'Blusas'),(2,'Camisas'),(3,'Conjuntos completos'),(4,'Pantalón Masculino'),(5,'Pantalón Femenino'),(6,'Tennis de hombre'),(7,'Tennis de mujer'),(8,'Pijamas'),(9,'Accesorios');
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -156,11 +156,12 @@ DROP TABLE IF EXISTS `consultas`;
 CREATE TABLE `consultas` (
   `consultaID` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(500) NOT NULL,
-  `clienteID` int(11) NOT NULL,
+  `clienteID` int(11) DEFAULT NULL,
+  `nombreCliente` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`consultaID`),
   KEY `fk_clienteID` (`clienteID`),
   CONSTRAINT `fk_clienteID` FOREIGN KEY (`clienteID`) REFERENCES `clientes` (`clienteID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,69 +170,8 @@ CREATE TABLE `consultas` (
 
 LOCK TABLES `consultas` WRITE;
 /*!40000 ALTER TABLE `consultas` DISABLE KEYS */;
-INSERT INTO `consultas` VALUES (1,'Prueba de sugerencia',1),(2,'Test 1',1),(3,'test 11',1);
+INSERT INTO `consultas` VALUES (9,'jjefijif222',NULL,'Amber'),(15,'giaan ',NULL,'Gian'),(16,'me encantaa!',NULL,'Joshua');
 /*!40000 ALTER TABLE `consultas` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `detalle`
---
-
-DROP TABLE IF EXISTS `detalle`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `detalle` (
-  `detalleID` int(11) NOT NULL AUTO_INCREMENT,
-  `maestroID` int(11) DEFAULT NULL,
-  `articuloID` int(11) DEFAULT NULL,
-  `cantidad` int(11) DEFAULT NULL,
-  `precio` decimal(18,2) DEFAULT NULL,
-  `total` decimal(18,2) DEFAULT NULL,
-  PRIMARY KEY (`detalleID`),
-  KEY `FK_DetalleMaestro` (`maestroID`),
-  KEY `FK_DetalleArticulo` (`articuloID`),
-  CONSTRAINT `FK_DetalleArticulo` FOREIGN KEY (`articuloID`) REFERENCES `articulos` (`articuloID`),
-  CONSTRAINT `FK_DetalleMaestro` FOREIGN KEY (`maestroID`) REFERENCES `maestro` (`MaestroID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `detalle`
---
-
-LOCK TABLES `detalle` WRITE;
-/*!40000 ALTER TABLE `detalle` DISABLE KEYS */;
-INSERT INTO `detalle` VALUES (1,1,1,1,1.00,1.00),(2,1,3,1,1.00,1.00),(3,1,6,3,3.00,9.00),(4,1,7,2,1.00,2.00),(8,2,8,2,34.00,68.00);
-/*!40000 ALTER TABLE `detalle` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `detallespedido`
---
-
-DROP TABLE IF EXISTS `detallespedido`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `detallespedido` (
-  `detallePedidoID` int(11) NOT NULL AUTO_INCREMENT,
-  `pedidoID` int(11) NOT NULL,
-  `productoID` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `precioUnitario` decimal(10,2) NOT NULL,
-  PRIMARY KEY (`detallePedidoID`),
-  KEY `pedidoID` (`pedidoID`),
-  KEY `productoID` (`productoID`),
-  CONSTRAINT `detallespedido_ibfk_1` FOREIGN KEY (`pedidoID`) REFERENCES `pedidos` (`pedidoID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `detallespedido`
---
-
-LOCK TABLES `detallespedido` WRITE;
-/*!40000 ALTER TABLE `detallespedido` DISABLE KEYS */;
-/*!40000 ALTER TABLE `detallespedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -403,16 +343,17 @@ UNLOCK TABLES;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarArticulo`(
-    pArticuloID int,
-    pNombre varchar(100),
-    pPrecio decimal(10,2),
-    pCantidad int,
-    pImagen varchar(1000),
-    pCategoriaID int
+    IN pArticuloID INT,
+    IN pNombre VARCHAR(100),
+    IN pPrecio DECIMAL(10,2),
+    IN pCantidad INT,
+    IN pImagen VARCHAR(1000),
+    IN pCategoriaID INT
 )
 BEGIN
-    UPDATE `articulos`
-    SET nombre = pNombre,
+    UPDATE articulos
+    SET 
+        nombre = pNombre,
         precio = pPrecio,
         cantidad = pCantidad,
         imagen = CASE WHEN pImagen = '' THEN imagen ELSE pImagen END,
@@ -525,10 +466,18 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarArticulo`(pArticuloID int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarArticulo`(
+    IN pArticuloID INT
+)
 BEGIN
-    SELECT articuloID, nombre, precio, cantidad, imagen, categoriaID
-    FROM `articulos`
+    SELECT 
+        articuloID, 
+        nombre, 
+        precio, 
+        cantidad, 
+        imagen, 
+        categoriaID
+    FROM articulos
     WHERE articuloID = pArticuloID;
 END ;;
 DELIMITER ;
@@ -556,9 +505,9 @@ BEGIN
         A.imagen, 
         A.categoriaID,
         C.nombre AS nombreCategoria
-    FROM tiendaambienteproyectowebb.articulos A
-    INNER JOIN tiendaambienteproyectowebb.categorias C 
-    ON A.categoriaID = C.categoriaID;
+    FROM articulos A
+    INNER JOIN categorias C 
+        ON A.categoriaID = C.categoriaID;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -880,13 +829,14 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarSugerencias`(
-    IN p_clienteID INT
-)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarSugerencias`()
 BEGIN
-    SELECT consultaID, descripcion, clienteID
-    FROM consultas
-    WHERE clienteID = p_clienteID;
+    SELECT 
+        c.consultaID, 
+        c.descripcion, 
+        IFNULL(c.nombreCliente, 'Anónimo') AS nombreCliente
+    FROM 
+        consultas c;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -903,10 +853,33 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `EliminarArticulo`(pArticuloID int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `EliminarArticulo`(
+    IN pArticuloID INT
+)
 BEGIN
-    DELETE FROM `articulos`
+    DELETE FROM articulos
     WHERE articuloID = pArticuloID;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `EliminarSugerencia` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `EliminarSugerencia`(
+    IN p_consultaID INT
+)
+BEGIN
+    DELETE FROM consultas WHERE consultaID = p_consultaID;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -964,11 +937,12 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarSugerencia`(
     IN p_descripcion VARCHAR(500), 
-    IN p_clienteID INT
+    IN p_clienteID INT, 
+    IN p_nombreCliente VARCHAR(100)
 )
 BEGIN
-    INSERT INTO consultas (descripcion, clienteID) 
-    VALUES (p_descripcion, p_clienteID);
+    INSERT INTO consultas (descripcion, clienteID, nombreCliente) 
+    VALUES (p_descripcion, p_clienteID, p_nombreCliente);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1070,14 +1044,14 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `RegistrarArticulo`(
-    pNombre varchar(100),
-    pPrecio decimal(10,2),
-    pCantidad int,
-    pImagen varchar(1000),
-    pCategoriaID int
+    IN pNombre VARCHAR(100),
+    IN pPrecio DECIMAL(10,2),
+    IN pCantidad INT,
+    IN pImagen VARCHAR(1000),
+    IN pCategoriaID INT
 )
 BEGIN
-    INSERT INTO `articulos` (nombre, precio, cantidad, imagen, categoriaID)
+    INSERT INTO articulos (nombre, precio, cantidad, imagen, categoriaID)
     VALUES (pNombre, pPrecio, pCantidad, pImagen, pCategoriaID);
 END ;;
 DELIMITER ;
@@ -1189,4 +1163,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-18 12:31:40
+-- Dump completed on 2024-12-18 14:53:43

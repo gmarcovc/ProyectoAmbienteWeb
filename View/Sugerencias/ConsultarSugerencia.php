@@ -30,10 +30,10 @@ $resultado = ConsultarSugerencias();
                                 <table id="example" class="table text-nowrap align-middle mb-0">
                                     <thead>
                                         <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Comentario</th>
+                                            <th scope="col">ID de la sugerencia</th>
                                             <th scope="col">Nombre del Cliente</th>
-                                            <th scope="col">Acciones</th>
+                                            <th scope="col">Comentario sugerencia</th>                                          
+                                            <th scope="col">Eliminar sugerencia</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -43,8 +43,8 @@ $resultado = ConsultarSugerencias();
                                                 $nombreCliente = isset($fila['nombreCliente']) ? $fila['nombreCliente'] : 'Anónimo';
                                                 echo "<tr>";
                                                 echo "<td>{$fila['consultaID']}</td>";
-                                                echo "<td>{$fila['descripcion']}</td>";
                                                 echo "<td>{$nombreCliente}</td>";
+                                                echo "<td>{$fila['descripcion']}</td>";       
                                                 echo "<td>
                                                     <form action='' method='POST' onsubmit='return confirmarEliminacion()'>
                                                         <input type='hidden' name='eliminarID' value='{$fila['consultaID']}'>
