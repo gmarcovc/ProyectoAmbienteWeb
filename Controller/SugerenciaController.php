@@ -7,12 +7,22 @@ if (session_status() == PHP_SESSION_NONE) {
 
 if (isset($_POST["txtSugerencia"])) {
     $sugerencia = $_POST["txtSugerencia"];
-    $clienteID = 1; // Cambiar por el ID del cliente autenticado, si aplica
+    $anonimo = isset($_POST["chkAnonimo"]) && $_POST["chkAnonimo"] == 'on';
 
-    $resultado = RegistrarSugerenciaModel($sugerencia, $clienteID);
+    // Determinar si es anónimo o lleva el clienteID
+    $clienteID = $anonimo ? null : ($_SESSION['clienteID'] ?? null);
+
+    if ($anonimo) {
+        $nombreCliente = "Anónimo";
+    } else {
+        $nombreCliente = $_SESSION['NombreCliente'] ?? "Desconocido";
+    }
+
+    // Registrar la sugerencia
+    $resultado = RegistrarSugerenciaModel($sugerencia, $clienteID, $nombreCliente);
 
     if ($resultado) {
-        $mensaje = "¡Sugerencia enviada exitosamente!";
+        $mensaje = $anonimo ? "¡Sugerencia enviada de forma anónima!" : "¡Sugerencia enviada exitosamente!";
     } else {
         $mensaje = "Hubo un error al enviar la sugerencia.";
     }
@@ -20,12 +30,22 @@ if (isset($_POST["txtSugerencia"])) {
     echo '<div class="alert alert-' . ($resultado ? 'success' : 'danger') . ' text-center">' . $mensaje . '</div>';
 }
 
-function ConsultarSugerencias() {
-    if (!isset($_SESSION['clienteID'])) {
-        return null; // Si no hay cliente autenticado, retorna null.
+if (isset($_POST['eliminarID'])) {
+    $consultaID = $_POST['eliminarID'];
+
+    $resultado = EliminarSugerenciaModel($consultaID);
+
+    if ($resultado) {
+        $_SESSION['mensaje'] = "¡Sugerencia eliminada exitosamente!";
+    } else {
+        $_SESSION['mensaje'] = "Hubo un error al eliminar la sugerencia.";
     }
-    $clienteID = $_SESSION['clienteID'];
-    return ConsultarSugerenciasModel($clienteID);
+
+    header("Location: ConsultarSugerencia.php");
+    exit;
 }
 
+function ConsultarSugerencias() {
+    return ConsultarSugerenciasModel();
+}
 ?>
