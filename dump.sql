@@ -147,6 +147,33 @@ INSERT INTO `clientes` VALUES (1,'11111111','Gian','Vasquez','Carrillo','12345',
 UNLOCK TABLES;
 
 --
+-- Table structure for table `consultas`
+--
+
+DROP TABLE IF EXISTS `consultas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `consultas` (
+  `consultaID` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(500) NOT NULL,
+  `clienteID` int(11) NOT NULL,
+  PRIMARY KEY (`consultaID`),
+  KEY `fk_clienteID` (`clienteID`),
+  CONSTRAINT `fk_clienteID` FOREIGN KEY (`clienteID`) REFERENCES `clientes` (`clienteID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `consultas`
+--
+
+LOCK TABLES `consultas` WRITE;
+/*!40000 ALTER TABLE `consultas` DISABLE KEYS */;
+INSERT INTO `consultas` VALUES (1,'Prueba de sugerencia',1),(2,'Test 1',1),(3,'test 11',1);
+/*!40000 ALTER TABLE `consultas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `detalle`
 --
 
@@ -176,6 +203,35 @@ LOCK TABLES `detalle` WRITE;
 /*!40000 ALTER TABLE `detalle` DISABLE KEYS */;
 INSERT INTO `detalle` VALUES (1,1,1,1,1.00,1.00),(2,1,3,1,1.00,1.00),(3,1,6,3,3.00,9.00),(4,1,7,2,1.00,2.00),(8,2,8,2,34.00,68.00);
 /*!40000 ALTER TABLE `detalle` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `detallespedido`
+--
+
+DROP TABLE IF EXISTS `detallespedido`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `detallespedido` (
+  `detallePedidoID` int(11) NOT NULL AUTO_INCREMENT,
+  `pedidoID` int(11) NOT NULL,
+  `productoID` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `precioUnitario` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`detallePedidoID`),
+  KEY `pedidoID` (`pedidoID`),
+  KEY `productoID` (`productoID`),
+  CONSTRAINT `detallespedido_ibfk_1` FOREIGN KEY (`pedidoID`) REFERENCES `pedidos` (`pedidoID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `detallespedido`
+--
+
+LOCK TABLES `detallespedido` WRITE;
+/*!40000 ALTER TABLE `detallespedido` DISABLE KEYS */;
+/*!40000 ALTER TABLE `detallespedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -700,6 +756,26 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `ConsultarEstados` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarEstados`()
+BEGIN
+    SELECT estadoID, nombreEstado 
+    FROM estados;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `ConsultarFacturas` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -794,6 +870,29 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `ConsultarSugerencias` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarSugerencias`(
+    IN p_clienteID INT
+)
+BEGIN
+    SELECT consultaID, descripcion, clienteID
+    FROM consultas
+    WHERE clienteID = p_clienteID;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `EliminarArticulo` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -848,6 +947,29 @@ BEGIN
 		AND Contrasena = pContrasena
         AND estadoID = 1;
         END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `InsertarSugerencia` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarSugerencia`(
+    IN p_descripcion VARCHAR(500), 
+    IN p_clienteID INT
+)
+BEGIN
+    INSERT INTO consultas (descripcion, clienteID) 
+    VALUES (p_descripcion, p_clienteID);
+END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
@@ -1067,4 +1189,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-18  0:51:19
+-- Dump completed on 2024-12-18 12:31:40

@@ -9,7 +9,21 @@ function RegistrarSugerenciaModel($descripcion, $clienteID) {
         CerrarBD($enlace); 
         return $resultado;
     } catch (Exception $ex) {
-        die("Error al ejecutar el procedimiento almacenado: " . $ex->getMessage());
+        return false;
     }
 }
+
+function ConsultarSugerenciasModel($clienteID) {
+    try {
+        $enlace = AbrirBD();
+        $sentencia = "CALL ConsultarSugerencias($clienteID)";
+        $resultado = $enlace->query($sentencia);
+        CerrarBD($enlace);
+        return $resultado;
+    } catch (Exception $ex) {
+        return null;
+    }
+}
+
+
 ?>
