@@ -1,6 +1,6 @@
 <?php
-    include_once $_SERVER["DOCUMENT_ROOT"] . 'ProyectoAmbienteWeb/View/layout.php';
-    include_once $_SERVER["DOCUMENT_ROOT"] . 'ProyectoAmbienteWeb/Controller/CarritoController.php';
+    include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/View/layout.php';
+    include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/CarritoController.php';
 ?>
 
 <!doctype html>
@@ -10,7 +10,7 @@
     ReferenciasCSS();
 ?>
 
-<body class="page-wrapper">
+<body class="page-wrapper radial-gradient">
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
 

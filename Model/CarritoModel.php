@@ -1,5 +1,5 @@
 <?php
-    include_once $_SERVER["DOCUMENT_ROOT"] . 'ProyectoAmbienteWeb/Model/BaseDatos.php';
+    include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Model/BaseDatos.php';
 
     function RegistrarCarritoModel($clienteID, $articuloID, $cantidad)
     {
