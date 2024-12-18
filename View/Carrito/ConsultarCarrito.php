@@ -1,6 +1,7 @@
 <?php
     include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/View/layout.php';
     include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/CarritoController.php';
+
 ?>
 
 <!doctype html>
@@ -30,7 +31,7 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h5 class="card-title">Mi Carrito</h5>
+                        <h5 class="card-title fw-semibold mb-4">Mi Carrito</h5>
 
                             <div class="table-responsive">
                                 <table id="example" class="table text-nowrap align-middle mb-0">
@@ -46,19 +47,18 @@
                                     <tbody class="table-group-divider">
 
                                         <?php
-                                            $ClienteID = $_SESSION['ClienteID']; 
-                                            $datos = ConsultarCarrito($ClienteID);
+                                            $datos = ConsultarCarrito();
                                             while($fila = mysqli_fetch_array($datos))
                                             {
                                                 echo "<tr>";
-                                                echo "<td>" . $fila["ArticuloID"] . ' - '. $fila["Nombre"] . "</td>";
-                                                echo "<td>" . $fila["CantidadDeseada"] . "</td>";
-                                                echo "<td>¢ " . number_format($fila["TotalUnitario"],2) . "</td>";
-                                                echo "<td>¢ " . number_format($fila["Total"],2) . "</td>";
+                                                echo "<td>" . $fila["articuloID"] . ' - '. $fila["nombre"] . "</td>";
+                                                echo "<td>" . $fila["cantidadDeseada"] . "</td>";
+                                                echo "<td>¢ " . number_format($fila["totalUnitario"],2) . "</td>";
+                                                echo "<td>¢ " . number_format($fila["total"],2) . "</td>";
                                                 echo '<td>
 
                                                     <button id="btnOpenModal" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                                                        data-id=' . $fila["ArticuloID"] . ' data-name="' . $fila["Nombre"] . '">
+                                                        data-id=' . $fila["articuloID"] . ' data-name="' . $fila["nombre"] . '">
                                                         <i class="fa fa-trash" style="color:red; font-size: 1.6em;"></i>
                                                     </button>
 
@@ -83,7 +83,7 @@
                                             if($_SESSION["TotalCarrito"] != "0")
                                             {
                                                 echo '<button type="submit" id="btnPagarCarrito" name="btnPagarCarrito" class="btn btn-outline-primary" style="width:200px">
-                                                    Pagar
+                                                    Comprar Artículos
                                                 </button>';
                                             }
                                         ?>
@@ -116,7 +116,7 @@
                     <div class="modal-body">
                     
                         <input type="hidden" id="txtArticuloID" name="txtArticuloID">
-                        ¿Desea eliminar el producto <label id="lblNombreProducto"></label> de su carrito?
+                        ¿Desea eliminar el siguiente producto: <label id="lblNombreProducto"></label> de su carrito?
 
                     </div>
                     <div class="modal-footer">

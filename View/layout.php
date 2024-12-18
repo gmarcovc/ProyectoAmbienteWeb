@@ -1,8 +1,15 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/LoginController.php';
+include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/CarritoController.php';
+
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
+}
+
+if(isset($_SESSION["NombreCliente"]))
+{
+    ConsultarResumenCarrito();
 }
 
 function MostrarMenu()
@@ -26,7 +33,7 @@ function MostrarMenu()
                                 <a href="../Articulos/ConsultarArticulos.php" class="flex-c-m trans-04 p-lr-25">
                                     Artículos
                                 </a>
-                                <a href="../Sugerencias/consultarSugerencia.php" class="flex-c-m trans-04 p-lr-25">
+                                <a href="../Sugerencias/ConsultarSugerencia.php" class="flex-c-m trans-04 p-lr-25">
                                     Sugerencias
                                 </a>
 
@@ -52,86 +59,107 @@ function MostrarMenu()
 function MostrarHeader()
 {
     $cliente = "Invitado";
-    if (isset($_SESSION["NombreCliente"])) {
+    $cantidad = "0";
+    $total = "0";
+
+    if (isset($_SESSION["NombreCliente"])) 
+    {
         $cliente = $_SESSION["NombreCliente"];
+        $cantidad = $_SESSION["CantidadCarrito"];
+        $total = $_SESSION["TotalCarrito"];
     }
 
     echo '
-        <!-- Header -->
-        <header style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background-color: #fff; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
-            <!-- Header desktop -->
-            <div class="container-menu-desktop">
-                <!-- Topbar -->
-                
-                <div class="wrap-menu-desktop">
-                    <nav class="limiter-menu-desktop container">
-                        <!-- Logo desktop -->
-                        <a href="../Login/Home.php" class="logo">
-                            <img src="../images/logo-01.jpeg" alt="IMG-LOGO">
-                        </a>
-                        <!-- Menu desktop -->
-                        <div class="menu-desktop">
-                            <ul class="main-menu">';
-
-    if (isset($_SESSION["NombreCliente"])) {
-
-        echo '
-                                    <li>
-                                        <a href="../Cliente/consultarPerfil.php">Mi Perfil</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="../Cliente/cambiarAcceso.php">Seguridad</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="../Soporte/crearSolicitud.php">Servicio al Cliente</a>
-                                    </li>
-
-                                    <li>
-                                        <form action="" method="POST">
-                                            <button type="submit" style="width:150px" id="btnCerrarSesion" name="btnCerrarSesion"
-                                            class="btn btn-outline-primary mx-3 mt-2 d-block">Cerrar Sesión</button>
-                                        </form>
-                                    </li>';
-    } else {
-        echo '
-                                    <li>
-                                        <a href="../Login/inicioSesion.php" style="width:150px"
-                                                    class="btn btn-outline-primary mx-3 mt-2 d-block">Iniciar Sesión</a>
-                                    </li>';
-    }
-
+    <!-- Header -->
+    <header style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background-color: #fff; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+        <!-- Header desktop -->
+        <div class="container-menu-desktop">
+            <div class="wrap-menu-desktop">
+                <nav class="limiter-menu-desktop container">
+                    <!-- Logo desktop -->
+                    <a href="../Login/Home.php" class="logo">
+                        <img src="../images/logo-01.jpeg" alt="IMG-LOGO">
+                    </a>
+                    <!-- Menu desktop -->
+                    <div class="menu-desktop">
+                        <ul class="main-menu">';
+if (isset($_SESSION["NombreCliente"])) {
     echo '
-
-                            </ul>
-                        </div>
-
-                        <!-- Icon header -->
-                        <div class="wrap-icon-header flex-w flex-r-m">
-
-                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="1">
-                                <i class="zmdi zmdi-shopping-cart"></i>
-                            </div>
-
-                        </div>
-                    </nav>
-                </div>
-            </div>
-
-            <!-- Header Mobile -->
-            <div class="wrap-header-mobile">
-                <!-- Logo moblie -->
-                <div class="logo-mobile">
-                </div>
-
-                <!-- Icon header -->
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
-                        <i class="zmdi zmdi-shopping-cart"></i>
+                            <li>
+                                <a href="../Cliente/consultarPerfil.php">Mi Perfil</a>
+                            </li>
+                            <li>
+                                <a href="../Cliente/cambiarAcceso.php">Seguridad</a>
+                            </li>
+                            <li>
+                                <a href="../Sugerencias/CrearSugerencia.php">Servicio al Cliente</a>
+                            </li>
+                            <li>
+                                <a href="../Carrito/ConsultarCarrito.php">Mi Carrito</a>
+                            </li>
+                            <li>
+                                <a href="../Carrito/ConsultarFacturas.php">Mis Compras</a>
+                            </li>
+                            
+                            <li>
+                                <form action="" method="POST">
+                                    <button type="submit" style="width:150px" id="btnCerrarSesion" name="btnCerrarSesion"
+                                    class="btn btn-outline-primary mx-3 mt-2 d-block">Cerrar Sesión</button>
+                                </form>
+                            </li>';
+} else {
+    echo '
+                            <li>
+                                <a href="../Login/inicioSesion.php" style="width:150px"
+                                            class="btn btn-outline-primary mx-3 mt-2 d-block">Iniciar Sesión</a>
+                            </li>';
+}
+echo '
+                        </ul>
                     </div>
+                    <div class="wrap-icon-header flex-w flex-r-m">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="' . $cantidad . '">
+                            <i class="zmdi zmdi-shopping-cart"></i>
+                        </div>
+                    </div>
+                </nav>
             </div>
-        </header>
-        <div style="margin-top: 80px;"></div>'; // Espacio para compensar la altura del header fijo
+        </div>
+    </header>
+    <div style="margin-top: 80px;"></div>
+
+    <div class="wrap-header-cart js-panel-cart">
+        <div class="s-full js-hide-cart"></div>
+
+        <div class="header-cart flex-col-l p-l-65 p-r-25">
+            <div class="header-cart-title flex-w flex-sb-m p-b-8">
+                <span class="mtext-103 cl2">
+                    Su carrito
+                </span>
+
+                <div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
+                    <i class="zmdi zmdi-close"></i>
+                </div>
+            </div>
+
+            <div class="header-cart-content flex-w js-pscroll">
+                <ul class="header-cart-wrapitem w-full">
+                </ul>
+
+                <div class="w-full">
+                    <div class="header-cart-total w-full p-tb-40">
+                        Total: ¢' . number_format($total, 2) . '
+                    </div>
+
+                    <div class="header-cart-buttons flex-w w-full">
+                        <a href="../Carrito/consultarCarrito.php" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+                            Ver Carrito
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>';
 }
 
 

@@ -43,7 +43,7 @@ CREATE TABLE `articulos` (
 
 LOCK TABLES `articulos` WRITE;
 /*!40000 ALTER TABLE `articulos` DISABLE KEYS */;
-INSERT INTO `articulos` VALUES (1,'Prueba',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/product-12.jpg',1),(2,'PruebaActualizadaXXX',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/product-10.jpg',1),(3,'Zapatosx',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/product-12.jpg',1),(4,'Tela',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/banner-01.jpg',2),(5,'Fac',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/banner-02.jpg',2),(6,'fg',3.00,4,'/ProyectoAmbienteWeb/View/images/articulos/banner-03.jpg',1),(7,'g',1.00,3,'/ProyectoAmbienteWeb/View/images/articulos/product-16.jpg',1),(8,'Facundo',34.00,3,'/ProyectoAmbienteWeb/View/images/articulos/icon-pay-01.png',1);
+INSERT INTO `articulos` VALUES (1,'Prueba',1.00,0,'/ProyectoAmbienteWeb/View/images/articulos/product-12.jpg',1),(2,'PruebaActualizadaXXX',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/product-10.jpg',1),(3,'Zapatosx',1.00,0,'/ProyectoAmbienteWeb/View/images/articulos/product-12.jpg',1),(4,'Tela',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/banner-01.jpg',2),(5,'Fac',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/banner-02.jpg',2),(6,'fg',3.00,1,'/ProyectoAmbienteWeb/View/images/articulos/banner-03.jpg',1),(7,'g',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/product-16.jpg',1),(8,'Facundo',34.00,1,'/ProyectoAmbienteWeb/View/images/articulos/icon-pay-01.png',1);
 /*!40000 ALTER TABLE `articulos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,17 +55,17 @@ DROP TABLE IF EXISTS `carrito`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `carrito` (
-  `CarritoID` int(11) NOT NULL AUTO_INCREMENT,
-  `articuloID` int(11) NOT NULL,
-  `clienteID` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `fecha` datetime NOT NULL,
-  PRIMARY KEY (`CarritoID`),
+  `carritoID` int(11) NOT NULL AUTO_INCREMENT,
+  `articuloID` int(11) DEFAULT NULL,
+  `clienteID` int(11) DEFAULT NULL,
+  `cantidadDeseada` int(11) DEFAULT NULL,
+  `fecha` datetime DEFAULT NULL,
+  PRIMARY KEY (`carritoID`),
   KEY `FK_clientes` (`clienteID`),
   KEY `FK_articulo` (`articuloID`),
   CONSTRAINT `FK_articulo` FOREIGN KEY (`articuloID`) REFERENCES `articulos` (`articuloID`),
   CONSTRAINT `FK_clientes` FOREIGN KEY (`clienteID`) REFERENCES `clientes` (`clienteID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -142,7 +142,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (1,'11111111','Gian','Vasquez','Carrillo','1234',1,1,'2024-12-06 20:02:07',4,'XXX','20110','gmarcovc@gmail.com','84168055'),(2,'123456789','Perez','1234','22222','1234',1,2,'2024-12-06 20:39:19',1,'XXX','2','fac@email.com','22220202'),(3,'4532635','uidshfuisf','xhhjfnjh','cjhjhjgj','1234',1,2,'2024-12-07 13:41:18',1,'SGFfzdg','1111','zzz@email.com','498390'),(5,'1234','Prueba','Prueba','Prueba','1234',1,2,'2024-12-09 16:12:48',2,'Alajuela, Carrizal, XXX','2000','prueba@mail.com','000000'),(6,'118850897','Amber','Bustos','Araya','1234',1,1,'2024-12-09 20:35:12',1,'Ciudad Colón, Mora, del mas por menos 600 mts sur','40104','ambernatasha2209@gmail.com','25891818'),(7,'208730895','Joshua','Rodriguez','Perez','1234',1,2,'2024-12-11 10:05:12',2,'XXX','10110','jrodriguezperez602@gmail.com','84660438');
+INSERT INTO `clientes` VALUES (1,'11111111','Gian','Vasquez','Carrillo','12345',1,1,'2024-12-06 20:02:07',4,'XXX','20110','gmarcovc@gmail.com','84168055'),(2,'123456789','Perez','1234','22222','1234',1,2,'2024-12-06 20:39:19',1,'XXX','2','fac@email.com','22220202'),(3,'4532635','uidshfuisf','xhhjfnjh','cjhjhjgj','1234',1,2,'2024-12-07 13:41:18',1,'SGFfzdg','1111','zzz@email.com','498390'),(5,'1234','Prueba','Prueba','Prueba','1234',1,2,'2024-12-09 16:12:48',2,'Alajuela, Carrizal, XXX','2000','prueba@mail.com','000000'),(6,'118850897','Amber','Bustos','Araya','1234',1,1,'2024-12-09 20:35:12',1,'Ciudad Colón, Mora, del mas por menos 600 mts sur','40104','ambernatasha2209@gmail.com','25891818'),(7,'208730895','Joshua','Rodriguez','Perez','1234',1,2,'2024-12-11 10:05:12',2,'XXX','10110','jrodriguezperez602@gmail.com','84660438');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -154,18 +154,18 @@ DROP TABLE IF EXISTS `detalle`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `detalle` (
-  `detalleID` int(11) NOT NULL,
+  `detalleID` int(11) NOT NULL AUTO_INCREMENT,
   `maestroID` int(11) DEFAULT NULL,
   `articuloID` int(11) DEFAULT NULL,
   `cantidad` int(11) DEFAULT NULL,
   `precio` decimal(18,2) DEFAULT NULL,
-  `Total` decimal(18,2) DEFAULT NULL,
+  `total` decimal(18,2) DEFAULT NULL,
   PRIMARY KEY (`detalleID`),
   KEY `FK_DetalleMaestro` (`maestroID`),
   KEY `FK_DetalleArticulo` (`articuloID`),
   CONSTRAINT `FK_DetalleArticulo` FOREIGN KEY (`articuloID`) REFERENCES `articulos` (`articuloID`),
   CONSTRAINT `FK_DetalleMaestro` FOREIGN KEY (`maestroID`) REFERENCES `maestro` (`MaestroID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -174,36 +174,8 @@ CREATE TABLE `detalle` (
 
 LOCK TABLES `detalle` WRITE;
 /*!40000 ALTER TABLE `detalle` DISABLE KEYS */;
+INSERT INTO `detalle` VALUES (1,1,1,1,1.00,1.00),(2,1,3,1,1.00,1.00),(3,1,6,3,3.00,9.00),(4,1,7,2,1.00,2.00),(8,2,8,2,34.00,68.00);
 /*!40000 ALTER TABLE `detalle` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `detallespedido`
---
-
-DROP TABLE IF EXISTS `detallespedido`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `detallespedido` (
-  `detallePedidoID` int(11) NOT NULL AUTO_INCREMENT,
-  `pedidoID` int(11) NOT NULL,
-  `productoID` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `precioUnitario` decimal(10,2) NOT NULL,
-  PRIMARY KEY (`detallePedidoID`),
-  KEY `pedidoID` (`pedidoID`),
-  KEY `productoID` (`productoID`),
-  CONSTRAINT `detallespedido_ibfk_1` FOREIGN KEY (`pedidoID`) REFERENCES `pedidos` (`pedidoID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `detallespedido`
---
-
-LOCK TABLES `detallespedido` WRITE;
-/*!40000 ALTER TABLE `detallespedido` DISABLE KEYS */;
-/*!40000 ALTER TABLE `detallespedido` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -238,14 +210,14 @@ DROP TABLE IF EXISTS `maestro`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `maestro` (
-  `MaestroID` int(11) NOT NULL AUTO_INCREMENT,
-  `Fecha` datetime DEFAULT NULL,
-  `ClienteID` int(11) DEFAULT NULL,
-  `Total` decimal(18,2) DEFAULT NULL,
-  PRIMARY KEY (`MaestroID`),
-  KEY `FK_maestroUsuario` (`ClienteID`),
-  CONSTRAINT `FK_maestroUsuario` FOREIGN KEY (`ClienteID`) REFERENCES `clientes` (`clienteID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `maestroID` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha` datetime DEFAULT NULL,
+  `clienteID` int(11) DEFAULT NULL,
+  `total` decimal(18,2) DEFAULT NULL,
+  PRIMARY KEY (`maestroID`),
+  KEY `FK_maestroUsuario` (`clienteID`),
+  CONSTRAINT `FK_maestroUsuario` FOREIGN KEY (`clienteID`) REFERENCES `clientes` (`clienteID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -254,6 +226,7 @@ CREATE TABLE `maestro` (
 
 LOCK TABLES `maestro` WRITE;
 /*!40000 ALTER TABLE `maestro` DISABLE KEYS */;
+INSERT INTO `maestro` VALUES (1,'2024-12-17 23:41:26',1,13.00),(2,'2024-12-18 00:39:52',1,68.00);
 /*!40000 ALTER TABLE `maestro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -550,19 +523,15 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarCarrito`(pClienteID int)
 BEGIN
 
 SELECT 
-    C.CarritoID,
+    C.carritoID,
     C.articuloID,
-    A.Nombre AS NombreArticulo,
-    IFNULL(C.cantidad, 0) `CantidadDeseada`,
-    IFNULL(A.precio, 0) `TotalUnitario`,
-    IFNULL(C.cantidad * A.precio, 0) `Total`
-FROM 
-    tiendaambienteproyectowebb.carrito C
-INNER JOIN 
-    tiendaambienteproyectowebb.Articulo A
-    ON C.articuloID = A.articuloID
-WHERE 
-    C.ClienteID = pClienteID;
+    A.nombre,
+    IFNULL(C.cantidadDeseada, 0) `cantidadDeseada`,
+    IFNULL(A.precio, 0) `totalUnitario`,
+    IFNULL(C.cantidadDeseada * A.precio, 0) `total`
+FROM tiendaambienteproyectowebb.carrito C
+INNER JOIN tiendaambienteproyectowebb.articulos A ON C.articuloID = A.articuloID
+WHERE C.ClienteID = pClienteID;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -671,6 +640,34 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `ConsultarDetalleFactura` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarDetalleFactura`(pMaestroID int(11))
+BEGIN
+
+    SELECT  D.articuloID,
+			A.nombre,
+			D.cantidad,
+			D.precio,
+			D.total
+    FROM tiendaambienteproyectowebb.Detalle D
+    INNER JOIN tiendaambienteproyectowebb.Articulos A ON A.articuloID = D.articuloID
+    WHERE D.MaestroID = pMaestroID;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `ConsultarDetalleFacturas` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -686,7 +683,7 @@ BEGIN
 
     SELECT  
         D.detalleID,
-        P.Nombre,
+        A.Nombre,
         D.Cantidad,
         D.Precio,
         D.Total
@@ -695,7 +692,7 @@ BEGIN
     INNER JOIN 
         tiendaambienteproyectowebb.Articulos A ON A.articuloID = D.articuloID
     WHERE 
-        D.MaestroID = pdetalleID;
+        D.MaestroID = pMaestroID;
 
 END ;;
 DELIMITER ;
@@ -716,13 +713,13 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarFacturas`(pClienteID int)
 BEGIN
 
-SELECT  M.MaestroID,
-		M.Fecha,
-        C.Nombre AS NombreCliente,
-        M.Total
+SELECT  M.maestroID,
+		M.fecha,
+        C.nombre,
+        M.total
 FROM tiendaambienteproyectowebb.maestro M
-INNER JOIN tiendaambienteproyectowebb.clientes C on M.clienteID
-WHERE C.ClienteID = pClienteID;
+INNER JOIN tiendaambienteproyectowebb.clientes C on M.clienteID = C.clienteID
+WHERE C.clienteID = pClienteID;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -763,15 +760,11 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarResumenCarrito`(pClienteID int)
 BEGIN
 
-SELECT IFNULL(SUM(C.cantidad), 0) `CantidadDeseada`,
-    IFNULL(SUM(C.cantidad * A.precio), 0) `Total`
-FROM 
-    tiendaambienteproyectowebb.carrito C
-INNER JOIN 
-    tiendaambienteproyectowebb.Articulo A
-    ON C.articuloID = A.articuloID
-WHERE 
-    C.ClienteID = pClienteID;
+	SELECT  IFNULL(SUM(C.cantidadDeseada),0) 'Cantidad', 
+			IFNULL(SUM(C.cantidadDeseada * A.precio), 0) 'Total'
+	FROM tiendaambienteproyectowebb.Carrito C
+	INNER JOIN tiendaambienteproyectowebb.Articulos A ON C.articuloID = A.articuloID
+	WHERE C.clienteID = pClienteID;
 
 END ;;
 DELIMITER ;
@@ -870,38 +863,38 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `PagarCarrito`(pCarritoID bigint)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PagarCarrito`(pClienteID int)
 BEGIN
 
-    INSERT INTO tiendaambienteproyectowebb.maestro (Fecha, ClientesID, Total)
-    SELECT 
-        NOW(),
-        C.ClienteID,
-        IFNULL(SUM(C.Cantidad * A.Precio), 0)
+    INSERT INTO tiendaambienteproyectowebb.maestro (fecha, clienteID, total)
+    SELECT NOW(),
+        C.clienteID,
+        IFNULL(SUM(C.cantidadDeseada * A.precio), 0)
     FROM carrito C
-    INNER JOIN articulos A ON C.ArticuloID = A.ArticuloID
-    WHERE C.ClienteID = pCarritoID;
+    INNER JOIN articulos A ON C.articuloID = A.articuloID
+    WHERE C.clienteID = pClienteID;
 
 
-    INSERT INTO tiendaambienteproyectowebb.detalle (CarritoID, ArticuloID, Cantidad, Precio, Total)
-    SELECT 
-        LAST_INSERT_ID(),
-        C.ArticuloID,
-        IFNULL(C.Cantidad, 0),
-        IFNULL(A.Precio, 0),
-        IFNULL(C.Cantidad * A.Precio, 0)
+    INSERT INTO tiendaambienteproyectowebb.detalle (maestroID, articuloID, cantidad, precio, total)
+    SELECT  LAST_INSERT_ID(),
+			C.articuloID,
+			IFNULL(C.cantidadDeseada, 0),
+			IFNULL(A.precio, 0),
+			IFNULL(C.cantidadDeseada * A.Precio, 0)
     FROM carrito C
-    INNER JOIN articulos A ON C.ArticuloID = A.ArticuloID
-    WHERE C.ClienteID = pCarritoID;
+    INNER JOIN articulos A ON C.articuloID = A.articuloID
+    WHERE C.clienteID = pClienteID;
 
     UPDATE articulos A
-    INNER JOIN carrito C ON C.ArticuloID = A.ArticuloID
-    SET A.Cantidad = A.Cantidad - C.Cantidad
-    WHERE C.ClienteID = pCarritoID;
+    INNER JOIN carrito C ON A.articuloID = C.articuloID
+    SET A.Cantidad = A.Cantidad - C.cantidadDeseada
+    WHERE C.clienteID = pClienteID;
 
 
     DELETE FROM carrito
-    WHERE ClienteID = pCarritoID;
+    WHERE ClienteID = pClienteID;
+    
+    
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -980,25 +973,25 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `RegistrarCarrito`(
-    pClienteID INT,
-    pArticuloID INT,
-    pCantidad INT
-)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RegistrarCarrito`(	pClienteID INT,
+																pArticuloID INT,
+																pCantidad INT)
 BEGIN
 
-    IF (SELECT COUNT(*) FROM tiendaambienteproyecto.carrito 
-        WHERE ClienteID = pClienteID AND ArticuloID = pArticuloID) = 0 THEN
+    IF (SELECT COUNT(*) FROM carrito WHERE clienteID = pClienteID 
+									   AND articuloID = pArticuloID) = 0 
+	THEN
 
-        INSERT INTO tiendaambienteproyecto.carrito (ArticuloID, Nombre, Cantidad, Fecha)
+        INSERT INTO tiendaambienteproyectowebb.carrito (articuloID, clienteID, cantidadDeseada, fecha)
         VALUES (pArticuloID, pClienteID, pCantidad, NOW());
 
     ELSE
 
-        UPDATE tiendaambienteproyecto.carrito
-        SET Cantidad = pCantidad,
+        UPDATE tiendaambienteproyectowebb.carrito
+        SET cantidadDeseada = pCantidad,
             Fecha = NOW()
-        WHERE ClienteID = pClienteID AND ArticuloID = pArticuloID;
+        WHERE clienteID = pClienteID 
+        AND articuloID = pArticuloID;
 
     END IF;
 END ;;
@@ -1041,6 +1034,29 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `RemoverProductoCarrito` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RemoverProductoCarrito`(pClienteID int, pArticuloID int)
+BEGIN
+
+	DELETE FROM Carrito
+	WHERE	clienteID = pClienteID
+		AND articuloID = pArticuloID;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -1051,4 +1067,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-17 21:18:56
+-- Dump completed on 2024-12-18  0:51:19

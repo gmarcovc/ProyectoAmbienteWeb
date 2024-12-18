@@ -6,37 +6,40 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sugerencias</title>
-    <link rel="shortcut icon" type="image/png" href="../images/logo-01.jpeg" />
-    <link rel="stylesheet" href="../css/styles.min.css" />
-    <link rel="stylesheet" href="../css/proyecto.css" />
-</head>
+<?php
+    ReferenciasCSS();
+?>
 
-<body>
-    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-        data-sidebar-position="fixed" data-header-position="fixed">
-        <div
-            class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
-            <div class="d-flex align-items-center justify-content-center w-100">
-                <div class="row justify-content-center w-100">
-                    <div class="col-md-8 col-lg-6 col-xxl-4">
-                        <div class="card mb-0">
-                            <div class="card-body">
-                                <a href="../Login/home.php" class="logo-container">
-                                    <img src="../images/logo-01.jpeg" alt="Logo">
-                                </a>
+<body class="page-wrapper radial-gradient">
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed"  
+
+        <?php
+            MostrarMenu();
+        ?>
+
+        <div class="body-wrapper">
+            
+        <?php
+                MostrarHeader();
+        ?> 
+
+        <div class="container-fluid">
+                <div class="row">
+
+                    <div class="card">
+                        <div class="card-body">
                                 
-                                <h3 class="text-center mb-4">Nos encanta escucharte</h3>
-                                <p class="text-center">Envíanos tus sugerencias</p>
+                                <h3 class="card-title fw-semibold mb-4 text-center">Nos encanta escucharte</h3>
+                                <h5 class="text-center">Envíanos tus sugerencias</h5>
+                                <br/>
 
                                 <form action="" method="POST">
 
                                     <div class="mb-3">
                                         <textarea class="form-control" id="txtSugerencia" name="txtSugerencia" rows="5" required></textarea>
                                     </div>
+                                    <br/>
 
                                     <button type="submit" class="btn btn-primary w-100 py-2 fs-5">Enviar Sugerencia</button>
                                 </form>

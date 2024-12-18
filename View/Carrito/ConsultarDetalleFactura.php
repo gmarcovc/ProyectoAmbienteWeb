@@ -1,6 +1,6 @@
 <?php
-    include_once $_SERVER["DOCUMENT_ROOT"] . 'ProyectoAmbienteWeb/View/layout.php';
-    include_once $_SERVER["DOCUMENT_ROOT"] . 'ProyectoAmbienteWeb/Controller/CarritoController.php';
+    include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/View/layout.php';
+    include_once $_SERVER["DOCUMENT_ROOT"] . '/ProyectoAmbienteWeb/Controller/CarritoController.php';
 
     $id = $_GET["id"];
 ?>
@@ -12,7 +12,7 @@
     ReferenciasCSS();
 ?>
 
-<body class="page-wrapper">
+<body class="page-wrapper radial-gradient">
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
 
@@ -32,14 +32,13 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h5 class="card-title">Factura # <?php echo $id ?> </h5>
+                        <h5 class="card-title fw-semibold mb-4">Factura # <?php echo $id ?> </h5>
 
                             <div class="table-responsive">
                                 <table id="example" class="table text-nowrap align-middle mb-0">
                                     <thead>
                                         <tr class="border-2 border-bottom border-primary border-0">
-                                            <th scope="col">Cliente ID</th>
-                                            <th scope="col">Artículo ID</th>
+                                            <th scope="col">Artículo</th>
                                             <th scope="col">Cantidad</th>
                                             <th scope="col">Precio</th>
                                             <th scope="col">Total</th>
@@ -52,11 +51,10 @@
                                             While($fila = mysqli_fetch_array($datos))
                                             {
                                                 echo "<tr>";
-                                                echo "<td>" . $fila["ClienteID"] . "</td>";  
-                                                echo "<td>" . $fila["ArticuloID"] . "</td>"; 
-                                                echo "<td>" . $fila["Cantidad"] . "</td>";
-                                                echo "<td>" . number_format($fila["Precio"],2) . "</td>";
-                                                echo "<td>¢ " . number_format($fila["Total"],2) . "</td>";
+                                                echo "<td>" . $fila["articuloID"] . "</td>"; 
+                                                echo "<td>" . $fila["cantidad"] . "</td>";
+                                                echo "<td>" . number_format($fila["precio"],2) . "</td>";
+                                                echo "<td>¢ " . number_format($fila["total"],2) . "</td>";
                                                 echo "</tr>";   
                                             }
                                         ?>

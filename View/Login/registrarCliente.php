@@ -30,7 +30,7 @@
                                     <img src="../images/logo-01.jpeg" alt="Logo">
                                 </a>
 
-                                <p class="text-center">Registrarse</p>
+                                <h5 class="card-title fw-semibold mb-4">Registrarse</h5>
 
                                 <?php
                                     if(isset($_POST["txtMensaje"]))

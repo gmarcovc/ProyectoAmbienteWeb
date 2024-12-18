@@ -72,6 +72,8 @@
         </div>
     </div>
 
+    <script src="../js/ConsultarSugerencias.js"></script>
+
     <?php
         ReferenciasJS();
     ?>
