@@ -7,7 +7,7 @@
 
     if(isset($_POST["btnRegistrarCarrito"]))
     {
-        $ArticuloID = $_POST["ID_ARTICULO"];
+        $articuloID = $_POST["ID_ARTICULO"];
         $cantidad = $_POST["CANTIDAD"];
         
         $resultado = RegistrarCarritoModel($_SESSION["ClienteID"], $articuloID, $cantidad);
@@ -46,7 +46,7 @@
 
     if(isset($_POST["btnRemoverProductoCarrito"]))
     {
-        $ArticuloID = $_POST["txtArticuloID"];
+        $articuloID = $_POST["txtArticuloID"];
 
         $resultado = RemoverProductoCarritoModel($_SESSION["ClienteID"], $articuloID);
         

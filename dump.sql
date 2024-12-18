@@ -34,7 +34,7 @@ CREATE TABLE `articulos` (
   PRIMARY KEY (`articuloID`),
   KEY `categoriaID` (`categoriaID`),
   CONSTRAINT `articulos_ibfk_1` FOREIGN KEY (`categoriaID`) REFERENCES `categorias` (`categoriaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `articulos` (
 
 LOCK TABLES `articulos` WRITE;
 /*!40000 ALTER TABLE `articulos` DISABLE KEYS */;
-INSERT INTO `articulos` VALUES (1,'Prueba',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/product-12.jpg',1),(2,'PruebaActualizadaXXX',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/product-10.jpg',1);
+INSERT INTO `articulos` VALUES (1,'Prueba',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/product-12.jpg',1),(2,'PruebaActualizadaXXX',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/product-10.jpg',1),(3,'Zapatosx',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/product-12.jpg',1),(4,'Tela',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/banner-01.jpg',2),(5,'Fac',1.00,1,'/ProyectoAmbienteWeb/View/images/articulos/banner-02.jpg',2),(6,'fg',3.00,4,'/ProyectoAmbienteWeb/View/images/articulos/banner-03.jpg',1),(7,'g',1.00,3,'/ProyectoAmbienteWeb/View/images/articulos/product-16.jpg',1),(8,'Facundo',34.00,3,'/ProyectoAmbienteWeb/View/images/articulos/icon-pay-01.png',1);
 /*!40000 ALTER TABLE `articulos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,7 +88,7 @@ CREATE TABLE `categorias` (
   `categoriaID` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
   PRIMARY KEY (`categoriaID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +97,7 @@ CREATE TABLE `categorias` (
 
 LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
-INSERT INTO `categorias` VALUES (1,'Blusas'),(2,'Camisas'),(3,'Conjuntos completos'),(4,'Pantalón Masculino'),(5,'Pantalón Femenino'),(6,'Tennis de hombre'),(7,'Tennis de mujer'),(8,'Pijamas'),(9,'Accesorios');
+INSERT INTO `categorias` VALUES (1,'Zapatos'),(2,'Relojes');
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -546,21 +546,21 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarCarrito`(pClienteID int(11))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarCarrito`(pClienteID int)
 BEGIN
 
 SELECT 
-    C.idCarrito,
+    C.CarritoID,
     C.articuloID,
-    P.Nombre,
+    A.Nombre AS NombreArticulo,
     IFNULL(C.cantidad, 0) `CantidadDeseada`,
-    IFNULL(P.precio, 0) `TotalUnitario`,
-    IFNULL(C.cantidad * P.precio, 0) `Total`
+    IFNULL(A.precio, 0) `TotalUnitario`,
+    IFNULL(C.cantidad * A.precio, 0) `Total`
 FROM 
     tiendaambienteproyectowebb.carrito C
 INNER JOIN 
-    tiendaambienteproyectowebb.Articulo P 
-    ON C.articuloID = P.articuloID
+    tiendaambienteproyectowebb.Articulo A
+    ON C.articuloID = A.articuloID
 WHERE 
     C.ClienteID = pClienteID;
 END ;;
@@ -693,30 +693,10 @@ BEGIN
     FROM 
         tiendaambienteproyectowebb.Detalle D
     INNER JOIN 
-        tiendaambienteproyectowebb.Articulos P ON P.articuloID = D.articuloID
+        tiendaambienteproyectowebb.Articulos A ON A.articuloID = D.articuloID
     WHERE 
         D.MaestroID = pdetalleID;
 
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `ConsultarEstados` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarEstados`()
-BEGIN
-    SELECT estadoID, nombreEstado 
-    FROM estados;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -733,15 +713,15 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarFacturas`(pClienteID int(11))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarFacturas`(pClienteID int)
 BEGIN
 
 SELECT  M.MaestroID,
 		M.Fecha,
-        U.Nombre,
-        M.Fecha
+        C.Nombre AS NombreCliente,
+        M.Total
 FROM tiendaambienteproyectowebb.maestro M
-INNER JOIN tiendaambienteproyectowebb.clientes on M.clienteID
+INNER JOIN tiendaambienteproyectowebb.clientes C on M.clienteID
 WHERE C.ClienteID = pClienteID;
 END ;;
 DELIMITER ;
@@ -780,16 +760,16 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarResumenCarrito`(pClienteID int(11))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarResumenCarrito`(pClienteID int)
 BEGIN
 
 SELECT IFNULL(SUM(C.cantidad), 0) `CantidadDeseada`,
-    IFNULL(SUM(C.cantidad * P.precio), 0) `Total`
+    IFNULL(SUM(C.cantidad * A.precio), 0) `Total`
 FROM 
     tiendaambienteproyectowebb.carrito C
 INNER JOIN 
-    tiendaambienteproyectowebb.Articulo P 
-    ON C.articuloID = P.articuloID
+    tiendaambienteproyectowebb.Articulo A
+    ON C.articuloID = A.articuloID
 WHERE 
     C.ClienteID = pClienteID;
 
@@ -1001,25 +981,24 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `RegistrarCarrito`(
-    pNombre VARCHAR(100),
-    pArticuloID BIGINT,
+    pClienteID INT,
+    pArticuloID INT,
     pCantidad INT
 )
 BEGIN
 
     IF (SELECT COUNT(*) FROM tiendaambienteproyecto.carrito 
-        WHERE Nombre = pNombre AND ArticuloID = pArticuloID) = 0 THEN
-
+        WHERE ClienteID = pClienteID AND ArticuloID = pArticuloID) = 0 THEN
 
         INSERT INTO tiendaambienteproyecto.carrito (ArticuloID, Nombre, Cantidad, Fecha)
-        VALUES (pArticuloID, pNombre, pCantidad, NOW());
+        VALUES (pArticuloID, pClienteID, pCantidad, NOW());
 
     ELSE
 
         UPDATE tiendaambienteproyecto.carrito
         SET Cantidad = pCantidad,
             Fecha = NOW()
-        WHERE Nombre = pNombre AND ArticuloID = pArticuloID;
+        WHERE ClienteID = pClienteID AND ArticuloID = pArticuloID;
 
     END IF;
 END ;;
@@ -1072,4 +1051,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-17 20:41:54
+-- Dump completed on 2024-12-17 21:18:56
